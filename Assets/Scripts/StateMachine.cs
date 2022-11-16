@@ -47,13 +47,15 @@ public abstract class BaseState
 }
 public abstract class OnGroundState : BaseState
 {
-    protected OnGroundState(Observation observation, StateMachine machine, Player rigidbody) : base(observation, machine, rigidbody)
+    protected PlayerMovement _movement;
+
+    protected OnGroundState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody)
     {
+        _movement = movement;
     }
 
     public override void Update()
     {
-        //ToDo: Remove to BaseGroundState
         if (_observation.IsJumping)
         {
             _observation.SetIsJumping(false);
@@ -64,7 +66,7 @@ public abstract class OnGroundState : BaseState
 }
 public class IdleState : OnGroundState 
 {
-    public IdleState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+    public IdleState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
     {
     }
 
@@ -76,13 +78,13 @@ public class IdleState : OnGroundState
             _stateMachine.ChangeState(_player.WalkState);
         }
 
-        _player.SetXVelocity(0);
+        _movement.SetXVelocity(0);
     }
 }
 
 public class WalkState : OnGroundState
 {
-    public WalkState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+    public WalkState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
     {
     }
 
@@ -90,11 +92,12 @@ public class WalkState : OnGroundState
     {
         base.Update();
         if (_observation.Direction == 0)
-        {
             _stateMachine.ChangeState(_player.IdleState);
-        }
 
-        _player.SetXVelocity(_observation.Direction);
+        _movement.SetXVelocity(_observation.Direction);
+
+        if (_observation.IsPooshing())
+            _stateMachine.ChangeState(_player.PushState);
     }
 }
 public abstract class JumpState : BaseState
@@ -106,14 +109,17 @@ public abstract class JumpState : BaseState
 
 public class StartJumpState : JumpState
 {
-    public StartJumpState(Observation observation, StateMachine machine, Player rigidbody) : base(observation, machine, rigidbody)
+    PlayerMovement _movement;
+
+    public StartJumpState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody)
     {
+        _movement = movement;
     }
 
     public override void Enter()
     {
         base.Enter();
-        _player.Jump(300);
+        _movement.Jump(300);
     }
 
     public override void Update()
@@ -134,9 +140,7 @@ public class InAirState : JumpState
         //ToDO: Move in Air?
 
         if (_observation.IsOnEarth())
-        {
             _stateMachine.ChangeState(_player.LandingState);
-        }
     }
 }
 public class LandingState : JumpState
@@ -148,9 +152,7 @@ public class LandingState : JumpState
     public override void Update()
     {
         if (_observation.IsOnEarth())
-        {
             _stateMachine.ChangeState(_player.IdleState);
-        }
     }
 }
 
@@ -158,8 +160,7 @@ public class InteractionState : OnGroundState
 {
     private float _length;
 
-
-    public InteractionState(Observation observation, StateMachine machine, Player rigidbody) : base(observation, machine, rigidbody)
+    public InteractionState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody, movement)
     {
     }
 
@@ -178,6 +179,47 @@ public class InteractionState : OnGroundState
         {
             _stateMachine.ChangeState(_player.IdleState);
         }
+    }
+}
+
+public class PushState : OnGroundState
+{
+    public PushState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody, movement)
+    {
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        _movement.SetXVelocity(_observation.Direction);
+
+        if (_observation.IsPooshing() == false)
+        {
+            //ToDo: Different Cases
+            _stateMachine.ChangeState(_player.IdleState);
+
+        }
+    }
+}
+
+public class DeathState : BaseState
+{
+    private PlayerMovement _movement;
+
+    public DeathState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody)
+    {
+        _movement = movement;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        _movement.SetXVelocity(0);
+    }
+
+    public override void Update()
+    {
+        
     }
 }
 

@@ -1,17 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable, IActor
 {
     [SerializeField] private Observation _observation;
-    [SerializeField] private Rigidbody2D _rigidbody;
-
-
-    //ToDo: Create Stats class
-
-    [SerializeField] private float _speed = 3;
+    [SerializeField] private PlayerMovement _movement;
 
     private StateMachine _stateMachine;
     public IdleState IdleState { get; private set; }
@@ -20,18 +12,22 @@ public class Player : MonoBehaviour
     public InAirState InAirState { get; private set; }
     public LandingState LandingState { get; private set; }
     public InteractionState InteractionState { get; private set; }
+    public PushState PushState { get; private set; }
+    public DeathState DeathState { get; private set; }
 
 
     private void Awake()
     {
         _stateMachine = new StateMachine();
 
-        IdleState = new IdleState(_observation, _stateMachine, this);
-        WalkState = new WalkState(_observation, _stateMachine, this);
-        StartJumpState = new StartJumpState(_observation, _stateMachine, this);
+        IdleState = new IdleState(_observation, _stateMachine, this, _movement);
+        WalkState = new WalkState(_observation, _stateMachine, this, _movement);
+        StartJumpState = new StartJumpState(_observation, _stateMachine, this, _movement);
         InAirState = new InAirState(_observation, _stateMachine, this);
         LandingState = new LandingState(_observation, _stateMachine, this);
-        InteractionState = new InteractionState(_observation, _stateMachine, this);
+        InteractionState = new InteractionState(_observation, _stateMachine, this, _movement);
+        PushState = new PushState(_observation, _stateMachine, this, _movement);
+        DeathState = new DeathState(_observation, _stateMachine, this, _movement);
 
         _stateMachine.Init(IdleState);
     }
@@ -41,7 +37,9 @@ public class Player : MonoBehaviour
         _stateMachine.Current.Update();
     }
 
-    public void SetXVelocity(float value) => _rigidbody.velocity = new Vector2(value * _speed, _rigidbody.velocity.y);
-
-    public void Jump(int value) => _rigidbody.AddForce(Vector2.up * value);
+    public void TakeDamage()
+    {
+        Debug.Log(nameof(TakeDamage));
+        _stateMachine.ChangeState(DeathState);
+    }
 }
