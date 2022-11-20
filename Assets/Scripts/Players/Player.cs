@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum Elements 
+{
+    Dark,
+    Light
+}
+
 public class Player : MonoBehaviour, IDamageable, IActor
 {
     [SerializeField] private Observation _observation;
@@ -15,6 +21,7 @@ public class Player : MonoBehaviour, IDamageable, IActor
     public PushState PushState { get; private set; }
     public DeathState DeathState { get; private set; }
 
+    [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
     private void Awake()
     {

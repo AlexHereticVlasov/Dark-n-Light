@@ -1,3 +1,3 @@
 ﻿using UnityEngine;
 
-public class GroundCheckPoint : MonoBehaviour { }
+public class GroundCheckPoint : BasePoint { }

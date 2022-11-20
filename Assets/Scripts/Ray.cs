@@ -8,6 +8,7 @@ public class Ray : MonoBehaviour
     private const string ReflectionTag = "Mirror";
 
     [SerializeField] private LineRenderer _renderer;
+    [SerializeField] private float _angularSpeed;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class Ray : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward, 5 * Time.deltaTime, Space.World);
+        transform.Rotate(Vector3.forward, _angularSpeed * Time.deltaTime, Space.World);
 
         int pointsAmount = 1;
         var ray = new Ray2D(transform.position, -transform.right);

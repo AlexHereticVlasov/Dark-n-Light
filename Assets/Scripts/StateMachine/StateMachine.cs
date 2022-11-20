@@ -20,17 +20,6 @@ public class StateMachine
 
 public abstract class BaseState
 {
-    protected Observation _observation;
-    protected StateMachine _stateMachine;
-    protected Player _player;
-
-    public BaseState(Observation observation, StateMachine machine, Player rigidbody)
-    {
-        _observation = observation;
-        _stateMachine = machine;
-        _player = rigidbody;
-    }
-
     public virtual void Enter()
     {
         Debug.Log($"Enter {this}");
@@ -38,14 +27,29 @@ public abstract class BaseState
     }
 
     public abstract void Update();
-        
+
     public virtual void Exit()
     {
         Debug.Log(nameof(Exit));
         //ToDo: EndAnimation
     }
 }
-public abstract class OnGroundState : BaseState
+
+public abstract class BaseCharacterState : BaseState
+{
+    protected Observation _observation;
+    protected StateMachine _stateMachine;
+    protected Player _player;
+
+    public BaseCharacterState(Observation observation, StateMachine machine, Player rigidbody)
+    {
+        _observation = observation;
+        _stateMachine = machine;
+        _player = rigidbody;
+    }
+
+}
+public abstract class OnGroundState : BaseCharacterState
 {
     protected PlayerMovement _movement;
 
@@ -100,7 +104,7 @@ public class WalkState : OnGroundState
             _stateMachine.ChangeState(_player.PushState);
     }
 }
-public abstract class JumpState : BaseState
+public abstract class JumpState : BaseCharacterState
 {
     protected JumpState(Observation observation, StateMachine machine, Player rigidbody) : base(observation, machine, rigidbody)
     {
@@ -109,7 +113,8 @@ public abstract class JumpState : BaseState
 
 public class StartJumpState : JumpState
 {
-    PlayerMovement _movement;
+    private PlayerMovement _movement;
+    private float _delay;
 
     public StartJumpState(Observation observation, StateMachine machine, Player rigidbody, PlayerMovement movement) : base(observation, machine, rigidbody)
     {
@@ -120,12 +125,17 @@ public class StartJumpState : JumpState
     {
         base.Enter();
         _movement.Jump(300);
+        _delay = .25f;
     }
 
     public override void Update()
     {
         if (_observation.IsOnEarth() == false) // ToDo: Use Polymorph
             _stateMachine.ChangeState(_player.InAirState);
+
+        _delay -= Time.deltaTime;
+        if (_delay <= 0)
+            _stateMachine.ChangeState(_player.IdleState);
     }
 }
 
@@ -202,7 +212,7 @@ public class PushState : OnGroundState
     }
 }
 
-public class DeathState : BaseState
+public class DeathState : BaseCharacterState
 {
     private PlayerMovement _movement;
 

@@ -12,14 +12,14 @@ public class Observation : MonoBehaviour
     public bool IsJumping { get; private set; }
     public bool IsInteract { get; private set; }
 
-    internal void SetDirection(float direction)
+    public void SetDirection(float direction)
     {
         if (IsNeedToFlip(direction))
             Flip();
 
         Direction = direction;
     }
-
+    
     private bool IsNeedToFlip(float direction) => direction != 0 && Mathf.Sign(direction) != _facingDirection;
 
 
@@ -31,10 +31,10 @@ public class Observation : MonoBehaviour
                                            transform.localScale.y);
     }
 
-    internal void SetIsJumping(bool value) => IsJumping = value;
+    public void SetIsJumping(bool value) => IsJumping = value;
 
-    internal void SetIsInteract(bool value) => IsInteract = value;
-
+    public void SetIsInteract(bool value) => IsInteract = value;
+    //TODO:Create new classes for RayCheck
     public bool IsOnEarth()
     {
         foreach (var point in _groundCheckPoints)
