@@ -2,13 +2,21 @@
 
 public sealed class Diamond : BaseCollectable
 {
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private ParticleSystem _particles;
+
     [field: SerializeField] public Elements Element { get; private set; }
 
     protected override bool CanCollect(Player player) => player.Element == Element;
 
     protected override void Collect(Player player)
     {
-        Destroy(gameObject);
+        _collider.enabled = false;
+        //ToDo: Start BezierRoutine
+
+        //Hack:Temp solution
+        //Destroy(gameObject);
+        _particles.Stop();
     }
 }
 

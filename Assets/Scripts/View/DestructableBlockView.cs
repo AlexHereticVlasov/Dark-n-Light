@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DestructableBlockView : MonoBehaviour
 {
-    [SerializeField] private DestructableBlock _block;
+    [SerializeField] private BaseDestructableBlock _block;
     [SerializeField] private SpriteRenderer _renderer;
 
     private void OnEnable() => _block.Melted += OnMelted;
