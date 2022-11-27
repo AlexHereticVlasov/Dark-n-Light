@@ -1,11 +1,5 @@
 using UnityEngine;
 
-public enum Elements 
-{
-    Dark,
-    Light
-}
-
 public class Player : MonoBehaviour, IDamageable, IActor
 {
     [SerializeField] private Observation _observation;
@@ -39,14 +33,12 @@ public class Player : MonoBehaviour, IDamageable, IActor
         _stateMachine.Init(IdleState);
     }
 
-    private void Update()
-    {
-        _stateMachine.Current.Update();
-    }
+    private void Update() => _stateMachine.Current.Update();
 
     public void TakeDamage()
     {
-        Debug.Log(nameof(TakeDamage));
         _stateMachine.ChangeState(DeathState);
     }
+
+    public void AddForce(Vector2 force) => _movement.AddForce(force);
 }

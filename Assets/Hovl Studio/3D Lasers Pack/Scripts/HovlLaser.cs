@@ -4,8 +4,9 @@ public class HovlLaser : MonoBehaviour
 {
     private const string MainTexture = "_MainTex";
     private const string Noise = "_Noise";
+    private const string ReflectionTag = "Mirror";
 
-    private readonly float _maxLength = 30;
+    private readonly float _maxLength = 100;
 
     [SerializeField] private LayerMask _mask;
     public GameObject HitEffect;
@@ -24,65 +25,118 @@ public class HovlLaser : MonoBehaviour
     private ParticleSystem[] _effects;
     private ParticleSystem[] _hit;
 
+    [SerializeField] private GameObject _hitedObject;
+
     private void Start()
     {
         _line = GetComponent<LineRenderer>();
         _effects = GetComponentsInChildren<ParticleSystem>();
         _hit = HitEffect.GetComponentsInChildren<ParticleSystem>();
+        _line.SetPosition(0, transform.position);
     }
 
     private void Update()
     {
         _line.material.SetTextureScale(MainTexture, new Vector2(_length[0], _length[1]));
         _line.material.SetTextureScale(Noise, new Vector2(_length[2], _length[3]));
-        //To set LineRender position
-        if (_line != null && _updateSaver == false)
+        
+        int pointsAmount = 1;
+        var ray = new Ray2D(transform.position, transform.forward);
+        _line.SetPosition(0, transform.position);
+        BuildRay(ray, gameObject, ref pointsAmount);
+        _line.positionCount = pointsAmount + 1;
+
+        //    //Insurance against the appearance of a laser in the center of coordinates!
+        if (_line.enabled == false && _laserSaver == false)
         {
-            _line.SetPosition(0, transform.position);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, _maxLength, _mask);
-            if (hit.collider != null)
+            _laserSaver = true;
+            _line.enabled = true;
+        }
+        //}
+    }
+
+    private void BuildRay(Ray2D ray2D, GameObject @this, ref int index)
+    {
+        var hits = Physics2D.RaycastAll(ray2D.origin, ray2D.direction, _maxLength, _mask);
+
+        foreach (var hit in hits)
+        {
+            if (hit.transform.gameObject == @this)
+                continue;
+
+            _line.SetPosition(index, hit.point);
+            if (hit.transform.CompareTag(ReflectionTag))
             {
-                //End laser position if collides with object
-                _line.SetPosition(1, hit.point);
-
-                HitEffect.transform.position = hit.point + hit.normal * HitOffset;
-                if (useLaserRotation)
-                    HitEffect.transform.rotation = transform.rotation;
-                else
-                    HitEffect.transform.LookAt(hit.point + hit.normal);
-
-                foreach (var effect in _effects)
-                    if (effect.isPlaying == false)
-                        effect.Play();
-
-                //Texture tiling
-                TextureTiling(hit.point);
+                Vector2 reflection = Vector2.Reflect(ray2D.direction, hit.normal);
+                index++;
+                _line.positionCount = index + 1;
+                var ray = new Ray2D(hit.point, reflection);
+                BuildRay(ray, hit.transform.gameObject, ref index);
             }
+            //ToDo: Portal case
             else
             {
-                //End laser position if doesn't collide with object
-                var endPos = transform.position + transform.forward * _maxLength;
-                _line.SetPosition(1, endPos);
-                HitEffect.transform.position = endPos;
-                foreach (var effect in _hit)
-                    if (effect.isPlaying) effect.Stop();
-
-                //Texture tiling
-                TextureTiling(endPos);
+                if (hit)
+                    EndOnCollision(hit, index);
+                else
+                    EndInInfinity(index);
             }
-            //Insurance against the appearance of a laser in the center of coordinates!
-            if (_line.enabled == false && _laserSaver == false)
-            {
-                _laserSaver = true;
-                _line.enabled = true;
-            }
+            return;
         }
     }
 
-    private void TextureTiling(Vector3 EndPos)
+    private void EndInInfinity(int index)
     {
-        _length[0] = MainTextureLength * (Vector3.Distance(transform.position, EndPos));
-        _length[2] = NoiseTextureLength * (Vector3.Distance(transform.position, EndPos));
+        var endPos = transform.position + transform.forward * _maxLength;
+        _line.SetPosition(index, endPos);
+        HitEffect.transform.position = endPos;
+        foreach (var effect in _hit)
+            if (effect.isPlaying) effect.Stop();
+
+        TextureTiling(endPos);
+    }
+
+    private void EndOnCollision(RaycastHit2D hit, int index)
+    {
+        _line.SetPosition(index, hit.point);
+
+        HitEffect.transform.position = hit.point + hit.normal * HitOffset;
+        if (useLaserRotation)
+            HitEffect.transform.rotation = transform.rotation;
+        else
+            HitEffect.transform.LookAt(hit.point + hit.normal);
+
+        foreach (var effect in _effects)
+            if (effect.isPlaying == false)
+                effect.Play();
+
+        TextureTiling(hit.point);
+
+        if (_hitedObject != hit.transform.gameObject)
+        {
+            DeactivatePrevious();
+            _hitedObject = hit.transform.gameObject;
+            ActivateNew();
+        }
+    }
+
+    private void DeactivatePrevious()
+    {
+        if (_hitedObject != null && _hitedObject.TryGetComponent(out RayHost previous))
+            previous.Deactivate();
+    }
+
+    private void ActivateNew()
+    {
+        if (_hitedObject.TryGetComponent(out RayHost host))
+            host.Activate();
+    }
+
+
+    private void TextureTiling(Vector2 endPos)
+    {
+        _length[0] = MainTextureLength * (Vector2.Distance(transform.position, endPos));
+        _length[2] = NoiseTextureLength * (Vector2.Distance(transform.position, endPos));
     }
 
     public void DisablePrepare()

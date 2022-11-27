@@ -6,11 +6,13 @@ public class TestActivailiable : BaseActivailiable
 
     public override void Activate()
     {
+        base.Activate();
         _renderer.color = Color.cyan;
     }
 
     public override void Deactivate()
     {
+        base.Deactivate();
         _renderer.color = Color.white;
     }
 }

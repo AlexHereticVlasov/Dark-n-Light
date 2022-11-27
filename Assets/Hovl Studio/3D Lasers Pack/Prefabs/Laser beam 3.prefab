@@ -33935,12 +33935,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 3319
   HitEffect: {fileID: 1140256074895502}
   HitOffset: 0.05
   useLaserRotation: 0
   MainTextureLength: 0.1
   NoiseTextureLength: 0.3
+  _hitedObject: {fileID: 0}
 --- !u!120 &120645954716574990
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class BaseActivailiable : MonoBehaviour
 {
-    public abstract void Activate();
+    public event UnityAction Activated;
+    public event UnityAction Deactivated;
 
-    public abstract void Deactivate();
+    public virtual void Activate() => Activated?.Invoke();
+
+    public virtual void Deactivate() => Deactivated?.Invoke();
 }

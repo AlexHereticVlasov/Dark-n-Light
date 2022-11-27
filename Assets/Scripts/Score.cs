@@ -19,7 +19,7 @@ public sealed class Score : MonoBehaviour
 
     private IEnumerator CountTime()
     {
-        while (_value >= 0)
+        while (_value > 0)
         {
             yield return _delay;
             _value--;

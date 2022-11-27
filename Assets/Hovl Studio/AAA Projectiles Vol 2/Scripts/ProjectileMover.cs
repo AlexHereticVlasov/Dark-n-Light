@@ -43,6 +43,8 @@ public class ProjectileMover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.LogWarning(collision.transform.name);
+
         //Lock all axes movement and rotation
         _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         speed = 0;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Observation : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class Observation : MonoBehaviour
         _facingDirection *= -1;
         transform.localScale = new Vector3(transform.localScale.x * -1,
                                            transform.localScale.y);
+    }
+
+    internal void Change()
+    {
+        Direction = 0;
     }
 
     public void SetIsJumping(bool value) => IsJumping = value;
