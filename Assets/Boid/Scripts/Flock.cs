@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 //https://www.youtube.com/watch?v=DbQjieYgAKA&list=PL5KbKbJ6Gf99UlyIqzV1UpOzseyRn5H1d&index=9
@@ -11,6 +12,7 @@ namespace Boid
         private BoidFabric _fabric;
 
         [SerializeField] private FlockBehaviour _behaviour;
+        [SerializeField] private FlockBehaviour[] _scenario;
         [SerializeField] private float _driveFactor = 10;
         [SerializeField] private float _maxSpeed = 5;
         [SerializeField] private float _neighbourRadius = 1.5f;
@@ -30,11 +32,12 @@ namespace Boid
             SqrAwoidenceRadius = _sqrNeighbourRadius * _awoidenceRadiusMultiplier * _awoidenceRadiusMultiplier;
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
             Init();
 
             _agents = _fabric.Spawn();
+            yield return PlayScenario();
         }
 
         private void Update()
@@ -62,6 +65,19 @@ namespace Boid
                     context.Add(collider.transform);
 
             return context;
+        }
+
+        private IEnumerator PlayScenario()
+        {
+            int index = 0;
+            while (true)
+            {
+                Debug.Log(index);
+                yield return new WaitForSeconds(7);
+                index++;
+                index %= _scenario.Length;
+                _behaviour = _scenario[index];
+            }
         }
     }
 }

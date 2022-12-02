@@ -4,6 +4,7 @@ public sealed class UserInput : MonoBehaviour
 {
     [SerializeField] private Observation[] _observation;
     [SerializeField] private CameraFollow _cameraFollow;
+    [SerializeField] private PauseMenu _pause;
 
     private int _current;
 
@@ -23,6 +24,9 @@ public sealed class UserInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
             SwitchCharacter();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            StayOnPause();
     }
 
     private void TryInteract()
@@ -48,6 +52,28 @@ public sealed class UserInput : MonoBehaviour
     //Hack: Temp Solution, Cast overlap to find IInteractable object
     private bool CanInteract()
     {
-        return true;
+        //ToDO: Masks and etc...
+        var colliders = Physics2D.OverlapPointAll(_observation[_current].transform.position);
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent(out IInteractable interactable))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void StayOnPause()
+    {
+        if (Time.timeScale == 0)
+        {
+            _pause.Continue();
+        }
+        else 
+        {
+            _pause.PauseGame();
+        }
     }
 }

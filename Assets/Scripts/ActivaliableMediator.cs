@@ -5,7 +5,7 @@ public class ActivaliableMediator : MonoBehaviour
     private bool _isActive = false;
 
     [SerializeField] private BaseActivailiable[] _activailiables;
-    [SerializeField] private BaseButton[] _buttons;
+    [SerializeField] private BaseActivator[] _buttons;
 
     private void OnEnable()
     {

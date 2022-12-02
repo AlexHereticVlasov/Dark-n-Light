@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public abstract class BaseDestructableBlock : MonoBehaviour 
 {
-    public event UnityAction<float> Melted;
+    public event UnityAction<float> TransperancyChanged;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -34,7 +34,7 @@ public abstract class BaseDestructableBlock : MonoBehaviour
 
     protected IEnumerator ChangeTransperancy(float factor)
     {
-        Melted?.Invoke(factor);
+        TransperancyChanged?.Invoke(factor);
         yield return null;
     }
 

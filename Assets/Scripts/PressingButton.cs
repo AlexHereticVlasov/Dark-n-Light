@@ -21,13 +21,28 @@ public class PressingButton : BaseButton
     }
 }
 
-public abstract class BaseButton : MonoBehaviour
+public abstract class BaseActivator : MonoBehaviour
 {
     public event UnityAction Activated;
     public event UnityAction Deactivated;
 
     public bool IsActive { get; private set; }
 
+    protected virtual void Activate()
+    {
+        IsActive = true;
+        Activated?.Invoke();
+    }
+
+    protected void Deactivate()
+    {
+        IsActive = false;
+        Deactivated?.Invoke();
+    }
+}
+
+public abstract class BaseButton : BaseActivator
+{
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IActor actor))
@@ -42,16 +57,4 @@ public abstract class BaseButton : MonoBehaviour
 
     protected abstract void TryActivate(IActor actor);
     protected abstract void TryDeactivate(IActor actor);
-
-    protected virtual void Activate()
-    {
-        IsActive = true;
-        Activated?.Invoke();
-    }
-
-    protected void Deactivate()
-    {
-        IsActive = false;
-        Deactivated?.Invoke();
-    }
 }

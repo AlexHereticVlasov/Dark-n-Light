@@ -61,8 +61,7 @@ public class HovlLaser : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            if (hit.transform.gameObject == @this)
-                continue;
+            if (hit.transform.gameObject == @this) continue;
 
             _line.SetPosition(index, hit.point);
             if (hit.transform.CompareTag(ReflectionTag))
@@ -131,7 +130,6 @@ public class HovlLaser : MonoBehaviour
         if (_hitedObject.TryGetComponent(out RayHost host))
             host.Activate();
     }
-
 
     private void TextureTiling(Vector2 endPos)
     {

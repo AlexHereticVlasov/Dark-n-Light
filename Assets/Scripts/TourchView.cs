@@ -27,13 +27,15 @@ public class TourchView : MonoBehaviour
 
     private void OnDeactivated()
     {
-        _renderer.color = Color.blue;
-        _light.intensity = 0;
+        _renderer.color = Color.white;
+        //_light.intensity = 0;
+        _light.gameObject.SetActive(false);
     }
 
     private void OnActivated()
     {
         _renderer.color = Color.yellow;
-        _light.intensity = 1;
+        _light.gameObject.SetActive(true);
+        //_light.intensity = 1;
     }
 }

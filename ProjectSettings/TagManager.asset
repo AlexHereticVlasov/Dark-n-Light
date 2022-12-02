@@ -37,7 +37,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Helper
   - ZonesAndTriggers
   m_SortingLayers:
   - name: Default
@@ -45,4 +45,13 @@ TagManager:
     locked: 0
   - name: New Layer
     uniqueID: 3594770479
+    locked: 0
+  - name: Fluids
+    uniqueID: 3134876715
+    locked: 0
+  - name: MidWalls
+    uniqueID: 1168479373
+    locked: 0
+  - name: UI
+    uniqueID: 2917537081
     locked: 0

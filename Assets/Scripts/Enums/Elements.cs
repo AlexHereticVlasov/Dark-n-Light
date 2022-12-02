@@ -2,5 +2,9 @@
 {
     Dark,
     Light,
-    Fire
+    Fire,
+    Water,
+    Earth,
+    Air,
+    Astral
 }

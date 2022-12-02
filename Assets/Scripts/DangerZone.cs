@@ -2,11 +2,11 @@
 
 public class DangerZone : Trap
 {
-    [SerializeField] private Elements _element;
+    [field: SerializeField] public Elements Element { get; private set; }
 
     protected override void Kill(Player player)
     {
-        if (player.Element != _element)
+        if (player.Element != Element)
             base.Kill(player);
     }
 }
