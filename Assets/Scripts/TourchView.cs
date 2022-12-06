@@ -17,6 +17,8 @@ public class TourchView : MonoBehaviour
     {
         if (_tourch.IsActive)
             OnActivated();
+        else
+            OnDeactivated();
     }
 
     private void OnDisable()

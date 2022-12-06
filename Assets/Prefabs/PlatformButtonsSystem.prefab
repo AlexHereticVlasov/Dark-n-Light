@@ -52,6 +52,7 @@ MonoBehaviour:
   _buttons:
   - {fileID: 9153224944163189070}
   - {fileID: 571109413179151862}
+  _color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &240140449991117611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,6 +193,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 584674be19b370347af83102b2caefd7, type: 3}
 --- !u!4 &571109413179151860 stripped
@@ -269,6 +282,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5964725103022161864, guid: c8d7ffad52ff2584894abbba582e2c78, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964725103022161864, guid: c8d7ffad52ff2584894abbba582e2c78, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d7ffad52ff2584894abbba582e2c78, type: 3}
 --- !u!4 &240140451018543248 stripped
@@ -340,6 +361,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 340543539724319551, guid: 584674be19b370347af83102b2caefd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201544550545671402, guid: 584674be19b370347af83102b2caefd7, type: 3}
+      propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

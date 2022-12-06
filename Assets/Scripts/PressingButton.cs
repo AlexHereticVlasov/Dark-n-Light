@@ -26,7 +26,7 @@ public abstract class BaseActivator : MonoBehaviour
     public event UnityAction Activated;
     public event UnityAction Deactivated;
 
-    public bool IsActive { get; private set; }
+    [field:SerializeField] public bool IsActive { get; private set; }
 
     protected virtual void Activate()
     {
@@ -57,4 +57,9 @@ public abstract class BaseButton : BaseActivator
 
     protected abstract void TryActivate(IActor actor);
     protected abstract void TryDeactivate(IActor actor);
+}
+
+public interface IObjectViev
+{
+    void ChangeColor(Color color);
 }

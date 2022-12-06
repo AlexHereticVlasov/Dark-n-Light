@@ -6,6 +6,7 @@ public class LeverMidiator : MonoBehaviour
 
     [SerializeField] private Interactable[] _interactables;
     [SerializeField] private BaseActivailiable[] _activailiables;
+    [SerializeField] private Color _color;
 
     private void OnEnable()
     {
@@ -29,5 +30,12 @@ public class LeverMidiator : MonoBehaviour
         {
             activaliable.Activate();
         }
+    }
+
+    public void Recolor()
+    {
+        var vievs = GetComponentsInChildren<IObjectViev>();
+        foreach (var view in vievs)
+            view.ChangeColor(_color);
     }
 }

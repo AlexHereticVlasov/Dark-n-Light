@@ -6,6 +6,7 @@ public class ActivaliableMediator : MonoBehaviour
 
     [SerializeField] private BaseActivailiable[] _activailiables;
     [SerializeField] private BaseActivator[] _buttons;
+    [SerializeField] private Color _color;
 
     private void OnEnable()
     {
@@ -45,5 +46,14 @@ public class ActivaliableMediator : MonoBehaviour
 
         foreach (var activailiable in _activailiables)
             activailiable.Activate();
+    }
+
+    public void Recolor()
+    {
+        IObjectViev[] vievs = GetComponentsInChildren<IObjectViev>();
+        foreach (var viev in vievs)
+        {
+            viev.ChangeColor(_color);
+        }
     }
 }
