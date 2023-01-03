@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7215859138128920280}
   - component: {fileID: 7215859138128920281}
   - component: {fileID: 7215859138128920278}
-  m_Layer: 0
+  - component: {fileID: 7732435499680430030}
+  m_Layer: 13
   m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8166c8a7f84dff4ba77748cc0383785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectTemplate: {fileID: 198831076092193846, guid: 51e88bfc3811dab48ac0c06617654e1a, type: 3}
-  _collider: {fileID: 7215859138128920280}
   <Element>k__BackingField: 0
+  _collider: {fileID: 7215859138128920280}
 --- !u!114 &7215859138128920278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +133,26 @@ MonoBehaviour:
   _renderer: {fileID: 7215859138128920283}
   _light: {fileID: 2744357714637829318}
   _colors: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
+--- !u!114 &7732435499680430030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215859138128920279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c218c5b22962d64e90398a0ab538833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectBeans:
+  - {fileID: 11400000, guid: a9b464fce02ac7742a203802ab946803, type: 2}
+  - {fileID: 11400000, guid: 0723167633169c9408f35558ce677848, type: 2}
+  - {fileID: 11400000, guid: b342fa8df53aae1429d3d5ded70be5b5, type: 2}
+  - {fileID: 11400000, guid: 1b80ce7478fbe254ab46dfc8cab84dba, type: 2}
+  - {fileID: 11400000, guid: 046968537a54e0b4c95811ac8b994535, type: 2}
+  - {fileID: 11400000, guid: 87f1cdb7ffc37f74e9e0ee7e9c459e5f, type: 2}
+  - {fileID: 11400000, guid: da2b8e43fa891b34c887f3cda16a8778, type: 2}
 --- !u!1 &7916042818947130170
 GameObject:
   m_ObjectHideFlags: 0

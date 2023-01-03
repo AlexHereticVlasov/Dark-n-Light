@@ -34,7 +34,7 @@ public abstract class BaseActivator : MonoBehaviour
         Activated?.Invoke();
     }
 
-    protected void Deactivate()
+    protected virtual void Deactivate()
     {
         IsActive = false;
         Deactivated?.Invoke();
@@ -57,9 +57,4 @@ public abstract class BaseButton : BaseActivator
 
     protected abstract void TryActivate(IActor actor);
     protected abstract void TryDeactivate(IActor actor);
-}
-
-public interface IObjectViev
-{
-    void ChangeColor(Color color);
 }

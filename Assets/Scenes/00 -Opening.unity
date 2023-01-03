@@ -523,6 +523,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5913547415919112044, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913547415919112044, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913547415919112044, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5913547415919112045, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

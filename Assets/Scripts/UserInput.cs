@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public sealed class UserInput : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public sealed class UserInput : MonoBehaviour
 
     private int _current;
 
+    public event UnityAction<Player> CharacterSwithed;
+
     private void Update() => ReadInput();
 
     private void ReadInput()
@@ -16,10 +19,10 @@ public sealed class UserInput : MonoBehaviour
         _observation[_current].SetDirection(direction);
 
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (ShouldJump())
             TryJump();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (ShouldInteract())
             TryInteract();
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -27,7 +30,16 @@ public sealed class UserInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
             StayOnPause();
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            _cameraFollow.ChangeView();
     }
+
+    private bool ShouldInteract() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F);
+
+    private bool ShouldJump() => Input.GetKeyDown(KeyCode.W) ||
+                                 Input.GetKeyDown(KeyCode.UpArrow) ||
+                                 Input.GetKeyDown(KeyCode.Space);
 
     private void TryInteract()
     {
@@ -47,20 +59,17 @@ public sealed class UserInput : MonoBehaviour
         _current++;
         _current %= _observation.Length;
         _cameraFollow.ChangeTarget(_observation[_current].transform);
+        CharacterSwithed?.Invoke(_observation[_current].GetComponent<Player>());
     }
 
-    //Hack: Temp Solution, Cast overlap to find IInteractable object
+    //ToDo:Remove to observations
     private bool CanInteract()
     {
         //ToDO: Masks and etc...
         var colliders = Physics2D.OverlapPointAll(_observation[_current].transform.position);
         foreach (var collider in colliders)
-        {
             if (collider.TryGetComponent(out IInteractable interactable))
-            {
                 return true;
-            }
-        }
 
         return false;
     }

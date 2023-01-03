@@ -48281,7 +48281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mask:
     serializedVersion: 2
-    m_Bits: 3319
+    m_Bits: 7415
   HitEffect: {fileID: 1132006484797202}
   HitOffset: 0.01
   useLaserRotation: 0

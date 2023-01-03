@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Liver : MonoBehaviour
+//ToDo: Fix pivot position calculation and Change position logic
+public sealed class Liver : MonoBehaviour
 {
     private const float MinOffset = -0.45f;
     private const float MaxOffset = 0.45f;
@@ -11,6 +12,13 @@ public class Liver : MonoBehaviour
     public event UnityAction<float> PositionChanged;
 
     private void Start() => _previousPosition = transform.localPosition;
+
+    public void SetPosition(float x)
+    {
+        x = Mathf.Clamp(x, MinOffset, MaxOffset);
+        transform.localPosition = new Vector2(x, transform.localPosition.y);
+        _previousPosition = transform.localPosition;
+    }
 
     private void FixedUpdate()
     {

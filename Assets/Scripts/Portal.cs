@@ -13,11 +13,7 @@ public class Portal : BaseActivailiable
     
     [field: SerializeField] public Transform DestinationPoint { get; private set; }
 
-    private void Start()
-    {
-        _direction = (transform.position - DestinationPoint.position).normalized;
-
-    }
+    private void Start() => _direction = (transform.position - DestinationPoint.position).normalized;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

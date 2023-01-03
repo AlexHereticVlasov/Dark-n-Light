@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class RotatableMirror : BaseActivailiable
+public sealed class RotatableMirror : BaseActivailiable
 {
     [SerializeField] private float _rotationSpeed = 90;
 

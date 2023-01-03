@@ -6,6 +6,7 @@ public class TourchView : MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private Tourch _tourch;
     [SerializeField] private SpriteRenderer _renderer;
+    [SerializeField] private ParticleSystem _orb;
 
     private void OnEnable()
     {
@@ -30,14 +31,14 @@ public class TourchView : MonoBehaviour
     private void OnDeactivated()
     {
         _renderer.color = Color.white;
-        //_light.intensity = 0;
         _light.gameObject.SetActive(false);
+        _orb.Stop();
     }
 
     private void OnActivated()
     {
         _renderer.color = Color.yellow;
         _light.gameObject.SetActive(true);
-        //_light.intensity = 1;
+        _orb.Play();
     }
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0e4ba3e6e4e364c8ef15a1a9e93810, type: 3}
+  m_Name: 06 - Air
+  m_EditorClassIdentifier: 
+  _particles:
+  - {fileID: 198717023933481710, guid: 29fec53fa5329e345981c83555fa131e, type: 3}
+  - {fileID: 198988523848601504, guid: df365974c854a33438e5aea62ca4b975, type: 3}

@@ -2,11 +2,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EndZoneMediator : MonoBehaviour
+public sealed class EndZoneMediator : MonoBehaviour
 {
     [SerializeField] private Exit[] _exits;
 
     private Coroutine _checkRoutine;
+    private WaitForSeconds _delay = new WaitForSeconds(1.75f);
 
     public event UnityAction Victory;
 
@@ -19,7 +20,6 @@ public class EndZoneMediator : MonoBehaviour
         }
     }
 
-
     private void OnDisable()
     {
         foreach (var exit in _exits)
@@ -27,7 +27,6 @@ public class EndZoneMediator : MonoBehaviour
             exit.Disable();
             exit.StateChanged -= OnStateChanged;
         }
-
     }
 
     private void OnStateChanged()
@@ -44,20 +43,16 @@ public class EndZoneMediator : MonoBehaviour
         }
 
         _checkRoutine = StartCoroutine(CheckForVictory());
-
     }
 
     private IEnumerator CheckForVictory()
     {
-        Debug.Log("StartCheck");
-
-        yield return new WaitForSeconds(3);
+        yield return _delay;
         
         foreach (var exit in _exits)
             if (exit.IsInside == false)
                 yield break;
 
         Victory?.Invoke();
-        Debug.Log("Victory");
     }
 }

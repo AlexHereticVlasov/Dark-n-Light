@@ -36,5 +36,3 @@ public class MessageView : MonoBehaviour
         _text.text = string.Empty;
     }
 }
-
-

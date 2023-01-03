@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 603401336515363804}
   - component: {fileID: 603401336515363805}
   - component: {fileID: 2508482829627979960}
+  - component: {fileID: 1190843719267809196}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -119,6 +120,21 @@ MonoBehaviour:
   _victory: {fileID: 603401337939689866}
   _lose: {fileID: 603401337939689867}
   _animator: {fileID: 0}
+--- !u!114 &1190843719267809196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603401336515363801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6fb0c375b14dd140b4ba8c1469592cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventory: {fileID: 0}
+  _cells: []
+  _bean: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
 --- !u!1 &603401336621664169
 GameObject:
   m_ObjectHideFlags: 0

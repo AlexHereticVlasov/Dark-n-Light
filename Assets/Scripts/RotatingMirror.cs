@@ -8,6 +8,13 @@ public class RotatingMirror : MonoBehaviour
 
     private void OnEnable() => _liver.PositionChanged += OnPositionChanged;
 
+    private void Start()
+    {
+        float z = transform.rotation.eulerAngles.z;
+        Debug.Log(z);
+        _liver.SetPosition(z / 180);
+    }
+
     private void OnDisable() => _liver.PositionChanged -= OnPositionChanged;
 
     private void OnPositionChanged(float value)

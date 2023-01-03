@@ -10,10 +10,7 @@ public class FadePanel : MonoBehaviour
 
     private int _fadeInHash;
 
-    private void Awake()
-    {
-        _fadeInHash = Animator.StringToHash(FadeIn);
-    }
+    private void Awake() => _fadeInHash = Animator.StringToHash(FadeIn);
 
     private void OnEnable()
     {
@@ -27,13 +24,7 @@ public class FadePanel : MonoBehaviour
         _lose.Defeate -= OnDefeate;
     }
 
-    private void OnDefeate()
-    {
-        _animator.SetTrigger(_fadeInHash);
-    }
+    private void OnDefeate() => _animator.SetTrigger(_fadeInHash);
 
-    private void OnWin()
-    {
-        _animator.SetTrigger(_fadeInHash);
-    }
+    private void OnWin() => _animator.SetTrigger(_fadeInHash);
 }

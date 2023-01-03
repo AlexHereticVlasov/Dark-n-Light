@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
-//Diamonds
-//Shots
+using UnityEngine.Events;
 
-public abstract class BaseCollectable : MonoBehaviour
+public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
 {
-    [SerializeField] private ParticleSystem _effectTemplate;
+    public event UnityAction<BaseCollectable> Collected;
+    public event UnityAction<Elements> Spawned;
+
+    [field: SerializeField] public Elements Element { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,8 +14,9 @@ public abstract class BaseCollectable : MonoBehaviour
         {
             if (CanCollect(player))
             {
+                Collected?.Invoke(this);
+                Spawned?.Invoke(Element);
                 Collect(player);
-                SpawnEffect();
             }
         }
     }
@@ -21,11 +24,9 @@ public abstract class BaseCollectable : MonoBehaviour
     protected abstract void Collect(Player player);
 
     protected abstract bool CanCollect(Player player);
+}
 
-    private void SpawnEffect()
-    {
-        var effect = Instantiate(_effectTemplate, transform.position, Quaternion.identity);
-        float duration = effect.main.duration;
-        Destroy(effect, duration);
-    }
+public interface IEffectOrigin
+{
+    event UnityAction<Elements> Spawned;
 }

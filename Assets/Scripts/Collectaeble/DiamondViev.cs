@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class DiamondViev : MonoBehaviour, IRecoloreable
+public sealed class DiamondViev : MonoBehaviour, IRecoloreable
 {
     [SerializeField] private Diamond _diamond;
     [SerializeField] private SpriteRenderer _renderer;
@@ -10,6 +10,7 @@ public class DiamondViev : MonoBehaviour, IRecoloreable
     //Hack:Temp Solution
     [SerializeField] private ColorBean _colors;
 
+    private void Awake() => Recolor();
 
     public void Recolor()
     {

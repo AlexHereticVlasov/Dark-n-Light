@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 3958576347205188237}
   - component: {fileID: 1491020840375961381}
   - component: {fileID: 1884328079657680510}
+  - component: {fileID: 8961394286306045115}
   m_Layer: 6
   m_Name: TestCharacter
   m_TagString: Untagged
@@ -352,6 +353,26 @@ MonoBehaviour:
   _player: {fileID: 3958576347205188226}
   _renderer: {fileID: 3958576347205188225}
   _bean: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
+--- !u!114 &8961394286306045115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958576347205188236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c218c5b22962d64e90398a0ab538833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectBeans:
+  - {fileID: 11400000, guid: a9b464fce02ac7742a203802ab946803, type: 2}
+  - {fileID: 11400000, guid: 0723167633169c9408f35558ce677848, type: 2}
+  - {fileID: 11400000, guid: b342fa8df53aae1429d3d5ded70be5b5, type: 2}
+  - {fileID: 11400000, guid: 1b80ce7478fbe254ab46dfc8cab84dba, type: 2}
+  - {fileID: 11400000, guid: 046968537a54e0b4c95811ac8b994535, type: 2}
+  - {fileID: 11400000, guid: 87f1cdb7ffc37f74e9e0ee7e9c459e5f, type: 2}
+  - {fileID: 11400000, guid: da2b8e43fa891b34c887f3cda16a8778, type: 2}
 --- !u!1 &5043048037571203759
 GameObject:
   m_ObjectHideFlags: 0

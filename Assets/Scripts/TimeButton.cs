@@ -14,10 +14,7 @@ public class TimeButton : BaseButton
         StartCoroutine(DeactivateRoutine());
     }
 
-    protected override void TryActivate(IActor actor)
-    {
-        Activate();
-    }
+    protected override void TryActivate(IActor actor) => Activate();
 
     protected override void TryDeactivate(IActor actor)
     {

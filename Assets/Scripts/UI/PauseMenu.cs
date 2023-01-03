@@ -5,6 +5,11 @@ public sealed class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _panel;
     [SerializeField] private SceneLoader _loader;
 
+    private void OnEndLoading()
+    {
+        Time.timeScale = 1;
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;

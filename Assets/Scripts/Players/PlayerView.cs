@@ -9,5 +9,10 @@ public class PlayerView : MonoBehaviour
     private void OnEnable()
     {
         _renderer.color = _bean[_player.Element];
+        _player.Death += OnDeath;
     }
+
+    private void OnDisable() => _player.Death -= OnDeath;
+
+    private void OnDeath() => _renderer.enabled = false;
 }
