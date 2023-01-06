@@ -6,6 +6,7 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
     public event UnityAction<BaseCollectable> Collected;
     public event UnityAction<Elements> Spawned;
 
+    [field: SerializeField] public int Cost { get; private set; } = 50;
     [field: SerializeField] public Elements Element { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,9 +25,4 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
     protected abstract void Collect(Player player);
 
     protected abstract bool CanCollect(Player player);
-}
-
-public interface IEffectOrigin
-{
-    event UnityAction<Elements> Spawned;
 }

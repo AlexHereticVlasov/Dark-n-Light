@@ -1,13 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public sealed class LoadingScreen : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private Slider _loadBar = default;
     [SerializeField] private TMP_Text _progressText = default;
     [SerializeField] private GameObject _loadingScreen = default;
+
+    [Inject] private SceneLoader _sceneLoader;
 
     private void OnEnable()
     {

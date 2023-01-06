@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using TMPro;
+using Zenject;
 
 public sealed class ScoreView : MonoBehaviour
 {
-    [SerializeField] private Score _score;
     [SerializeField] private TMP_Text _text;
+    
+    [Inject] private Score _score;
 
     private void OnEnable() => _score.ValueChanged += OnValueChanged;
 

@@ -1,21 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public sealed class Score : MonoBehaviour
 {
     private readonly int _startValue = 100;
+    private readonly WaitForSeconds _delay = new WaitForSeconds(1);
 
+    [Inject] private Victory _victory;
+    
     private int _value;
-    private WaitForSeconds _delay = new WaitForSeconds(1);
+    private Coroutine _countRoutine;
 
     public event UnityAction<int> ValueChanged;
 
     private void Start()
     {
         _value = _startValue;
-        StartCoroutine(CountTime());
+        ValueChanged?.Invoke(_value);
+        _countRoutine = StartCoroutine(CountTime());
     }
+
+    private void OnEnable() => _victory.Win += OnWin;
+
+    private void OnDisable() => _victory.Win -= OnWin;
+
+    private void OnWin() => StopCoroutine(_countRoutine);
 
     private IEnumerator CountTime()
     {
@@ -27,5 +38,9 @@ public sealed class Score : MonoBehaviour
         }
     }
 
-    //ToDo: Subscribe on collection event
+    public void Add(BaseCollectable collectable)
+    {
+        _value += collectable.Cost; ;
+        ValueChanged?.Invoke(_value);
+    }
 }

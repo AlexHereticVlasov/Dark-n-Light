@@ -54,6 +54,16 @@ public class Observation : MonoBehaviour
     }
 
     public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(_facingDirection, 0), 0.55f, _blockMask);
+
+    internal Transform GetDestinaton()
+    {
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
+        foreach (var collider in colliders)
+            if (collider.TryGetComponent(out LevelEndExitEffect effect))
+                return effect.transform;
+
+        throw new Exception("No ExitZone");
+    }
 }
 
 public class RayCheck : MonoBehaviour

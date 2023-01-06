@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public sealed class UserInput : MonoBehaviour
 {
     [SerializeField] private Observation[] _observation;
-    [SerializeField] private CameraFollow _cameraFollow;
-    [SerializeField] private PauseMenu _pause;
 
+    [Inject] private PauseMenu _pause;
+    [Inject] private CameraFollow _cameraFollow;
+    
     private int _current;
 
     public event UnityAction<Player> CharacterSwithed;

@@ -11,7 +11,6 @@ public class RotatingMirror : MonoBehaviour
     private void Start()
     {
         float z = transform.rotation.eulerAngles.z;
-        Debug.Log(z);
         _liver.SetPosition(z / 180);
     }
 

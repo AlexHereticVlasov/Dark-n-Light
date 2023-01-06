@@ -22,3 +22,12 @@ public sealed class RayHost : MonoBehaviour
         Deactivated?.Invoke();
     }
 }
+
+public sealed class RayHostViev : MonoBehaviour, IObjectViev
+{
+    public void ChangeColor(Color color)
+    {
+        //ToDo: Realize class Logic
+        throw new System.NotImplementedException();
+    }
+}

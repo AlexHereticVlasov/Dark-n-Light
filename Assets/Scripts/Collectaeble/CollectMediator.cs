@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using Zenject;
 
 public class CollectMediator : MonoBehaviour
 {
-    [SerializeField] private Inventory _inventory;
+    [Inject] private Inventory _inventory;
+    [Inject] private Score _score;
+
     private BaseCollectable[] _collectables;
 
     private void Awake() => _collectables = GetComponentsInChildren<BaseCollectable>();
@@ -32,9 +35,9 @@ public class CollectMediator : MonoBehaviour
 
     private void OnCollected(BaseCollectable collectable)
     {
-        //??
         if (collectable is Diamond diamond)
         {
+            _score.Add(diamond);
             _inventory.Collected(diamond.Element);
         }
     }

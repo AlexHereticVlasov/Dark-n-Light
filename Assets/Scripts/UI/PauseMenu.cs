@@ -1,14 +1,11 @@
 using UnityEngine;
+using Zenject;
 
 public sealed class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
-    [SerializeField] private SceneLoader _loader;
-
-    private void OnEndLoading()
-    {
-        Time.timeScale = 1;
-    }
+    
+    [Inject] private SceneLoader _loader;
 
     public void PauseGame()
     {

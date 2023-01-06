@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class InventoryViev : MonoBehaviour
 {
-    [SerializeField] private Inventory _inventory;
     [SerializeField] private CellViev[] _cells;
     [SerializeField] private ColorBean _bean;
+    
+    [Inject] private Inventory _inventory;
 
     private void OnEnable()
     {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using FinalStateMachine;
 
 public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public DeathState DeathState { get; private set; }
     public LevitationState IdleLevitationState { get; private set; }
     public LevitationState MoveLevitationState { get; private set; }
+    public LevelCompliteState LevelCompliteState { get; private set; }
 
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         DeathState = new DeathState(_observation, _stateMachine, this, _movement);
         IdleLevitationState = new IdleLevitationState(_observation, _stateMachine, this, _movement);
         MoveLevitationState = new MoveLevitationState(_observation, _stateMachine, this, _movement);
+        LevelCompliteState = new LevelCompliteState(_observation, _stateMachine, this);
 
         _stateMachine.Init(IdleState);
     }
@@ -58,9 +61,12 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 
     public void TakeDamage()
     {
-        _stateMachine.ChangeState(DeathState);
-        Spawned?.Invoke(Element);
-        Death?.Invoke();
+        if (_stateMachine.Current != DeathState)
+        {
+            _stateMachine.ChangeState(DeathState);
+            Spawned?.Invoke(Element);
+            Death?.Invoke();
+        }
     }
 
     public void AddForce(Vector2 force) => _movement.AddForce(force);

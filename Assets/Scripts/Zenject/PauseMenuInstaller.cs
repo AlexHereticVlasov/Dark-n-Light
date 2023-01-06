@@ -1,0 +1,13 @@
+﻿using UnityEngine;
+using Zenject;
+
+public sealed class PauseMenuInstaller : MonoInstaller
+{
+    [SerializeField] private PauseMenu _pauseMenu;
+
+    public override void InstallBindings()
+    {
+        Container.Bind<PauseMenu>().FromInstance(_pauseMenu).AsSingle().NonLazy();
+        Container.QueueForInject(_pauseMenu);
+    }
+}

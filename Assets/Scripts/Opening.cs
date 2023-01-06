@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public sealed class Opening : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _loader;
+    [Inject] private SceneLoader _loader;
     
     private string _message = "あなたが種をまくもの、あなたは刈り取るでしょう、罪は贖われることはできません。";
 

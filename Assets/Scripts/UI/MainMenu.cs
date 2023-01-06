@@ -1,10 +1,12 @@
 using UnityEngine;
+using Zenject;
 
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] _panels;
-    [SerializeField] private SceneLoader _loader;
+    
+    [Inject] private SceneLoader _loader;
 
     //Hack:TempSolution
     public void Play() => _loader.LoadScene(2);
