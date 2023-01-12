@@ -19,10 +19,16 @@ public sealed class PauseMenu : MonoBehaviour
         _panel.SetActive(false);
     }
 
+    public void LoadMap()
+    {
+        Time.timeScale = 1;
+        _loader.LoadScene(Constants.MapSceneIndex);
+    }
+
     public void GoToMain()
     {
         Time.timeScale = 1;
-        _loader.LoadScene(1);
+        _loader.LoadScene(Constants.MainMenuIndex);
     }
 
     public void Restart()
@@ -31,9 +37,9 @@ public sealed class PauseMenu : MonoBehaviour
         _loader.Restart();
     }
 
-    public void LoadNext(int index)
+    public void LoadNext()
     { 
         Time.timeScale = 1;
-        _loader.LoadScene(index);
+        _loader.LoadNextScene();
     }
 }

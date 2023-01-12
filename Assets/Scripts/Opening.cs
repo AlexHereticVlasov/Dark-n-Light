@@ -6,8 +6,6 @@ public sealed class Opening : MonoBehaviour
 {
     [Inject] private SceneLoader _loader;
     
-    private string _message = "あなたが種をまくもの、あなたは刈り取るでしょう、罪は贖われることはできません。";
-
     private void Start() => StartCoroutine(LoadMainScene());
 
     private IEnumerator LoadMainScene()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using FinalStateMachine;
+using System;
 
 public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 {
@@ -26,6 +27,9 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
+    public event UnityAction Selected;
+    public event UnityAction Deselected;
+
     private void Awake()
     {
         _stateMachine = new StateMachine();
@@ -43,6 +47,16 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         LevelCompliteState = new LevelCompliteState(_observation, _stateMachine, this);
 
         _stateMachine.Init(IdleState);
+    }
+
+    internal void Select()
+    {
+        Selected?.Invoke();
+    }
+
+    public void Deselect()
+    {
+        Deselected?.Invoke();
     }
 
     private void Update() => _stateMachine.Current.Update();

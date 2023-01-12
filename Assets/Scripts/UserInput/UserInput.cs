@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using Zenject;
 
-public sealed class UserInput : MonoBehaviour
+public sealed class UserInput : BaseUserInput
 {
     [SerializeField] private Observation[] _observation;
 
@@ -13,9 +13,22 @@ public sealed class UserInput : MonoBehaviour
 
     public event UnityAction<Player> CharacterSwithed;
 
-    private void Update() => ReadInput();
+    private void Start()
+    {
+        for (int i = 0; i < _observation.Length; i++)
+        {
+            var player = _observation[i].GetComponent<Player>();
+            if (i == _current)
+            {
+                player.Select();
+                continue;
+            }
 
-    private void ReadInput()
+            player.Deselect();
+        }
+    }
+
+    protected override void ReadInput()
     {
         float direction = Input.GetAxis("Horizontal");
         _observation[_current].SetDirection(direction);
@@ -58,10 +71,15 @@ public sealed class UserInput : MonoBehaviour
     private void SwitchCharacter()
     {
         _observation[_current].Change();
+        var previous = _observation[_current].GetComponent<Player>();
+        previous.Deselect();
+
         _current++;
         _current %= _observation.Length;
         _cameraFollow.ChangeTarget(_observation[_current].transform);
-        CharacterSwithed?.Invoke(_observation[_current].GetComponent<Player>());
+        var player = _observation[_current].GetComponent<Player>();
+        CharacterSwithed?.Invoke(player);
+        player.Select();
     }
 
     //ToDo:Remove to observations
@@ -79,12 +97,8 @@ public sealed class UserInput : MonoBehaviour
     private void StayOnPause()
     {
         if (Time.timeScale == 0)
-        {
             _pause.Continue();
-        }
         else 
-        {
             _pause.PauseGame();
-        }
     }
 }

@@ -12,6 +12,8 @@ public sealed class SceneLoader : MonoBehaviour
 
     public void LoadScene(int buildIndex) => StartCoroutine(Load(buildIndex));
 
+    public void LoadNextScene() => StartCoroutine(Load(GetCurrentSceneIndex() + 1));
+
     public void Restart() => LoadScene(SceneIndex);
 
     private IEnumerator Load(int buildIndex)
@@ -26,4 +28,6 @@ public sealed class SceneLoader : MonoBehaviour
             yield return null;
         }
     }
+
+    private int GetCurrentSceneIndex() => SceneManager.GetActiveScene().buildIndex;
 }

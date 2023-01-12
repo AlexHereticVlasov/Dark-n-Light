@@ -13,3 +13,16 @@ public class ActivaliableMediatorEditor : Editor
             mediator.Recolor();
     }
 }
+
+[CustomEditor(typeof(LightBridge))]
+public sealed class LightBridgeEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var lightBridge = (LightBridge)target;
+        if (GUILayout.Button(nameof(lightBridge.Recolor)))
+            lightBridge.Recolor();
+    }
+}

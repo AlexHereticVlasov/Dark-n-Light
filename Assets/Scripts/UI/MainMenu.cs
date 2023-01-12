@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     [Inject] private SceneLoader _loader;
 
     //Hack:TempSolution
-    public void Play() => _loader.LoadScene(2);
+    public void Play() => _loader.LoadScene(Constants.MapSceneIndex);
 
     public void ShowPanel(GameObject panelToShow)
     {
