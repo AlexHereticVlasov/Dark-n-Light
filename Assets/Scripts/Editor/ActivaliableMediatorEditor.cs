@@ -21,7 +21,20 @@ public sealed class LightBridgeEditor : Editor
     {
         DrawDefaultInspector();
 
-        var lightBridge = (LightBridge)target;
+        var lightBridge = (MagicBridge)target;
+        if (GUILayout.Button(nameof(lightBridge.Recolor)))
+            lightBridge.Recolor();
+    }
+}
+
+[CustomEditor(typeof(VoidBridge))]
+public sealed class VoidBridgeEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var lightBridge = (MagicBridge)target;
         if (GUILayout.Button(nameof(lightBridge.Recolor)))
             lightBridge.Recolor();
     }

@@ -23,15 +23,15 @@ public class LinkedPlatforms : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (true)
-        {
-            _second.position = new Vector2(_second.position.x, -_first.position.y);
+        //if (true)
+        //{
+        //    _second.position = new Vector2(_second.position.x, -_first.position.y);
 
-        }
-        else
-        {
-            _first.position = new Vector2(_first.position.x, -_second.position.y);
-        }
+        //}
+        //else
+        //{
+        //    _first.position = new Vector2(_first.position.x, -_second.position.y);
+        //}
     }
 }
 

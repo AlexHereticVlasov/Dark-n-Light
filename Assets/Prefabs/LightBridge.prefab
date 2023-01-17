@@ -4881,3 +4881,4 @@ MonoBehaviour:
   _particles: {fileID: 1680600031355070546}
   _collider: {fileID: 1555740963944144198}
   _size: {x: 9, y: 0.25}
+  <IsActive>k__BackingField: 1

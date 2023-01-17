@@ -1,14 +1,5 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public sealed class LightBridge : BaseActivailiable, IRecoloreable
+﻿public sealed class LightBridge : MagicBridge
 {
-    [SerializeField] private ParticleSystem _particles;
-    [SerializeField] private BoxCollider2D _collider;
-    [SerializeField] private Vector2 _size = Vector2.one;
-
-    private WaitForSeconds _delay = new WaitForSeconds(1);
-
     public override void Activate()
     {
         base.Activate();
@@ -19,37 +10,6 @@ public sealed class LightBridge : BaseActivailiable, IRecoloreable
     {
         base.Deactivate();
         StartCoroutine(DeactivateRoutine());
-    }
-
-    public void Recolor()
-    {
-        if (_size.x <= 0 || _size.y <= 0)
-            throw new System.Exception("Size sides must be more then zero");
-
-        _collider.size = _size;
-
-        var shape = _particles.shape;
-        shape.scale = _size;
-
-        var emission = _particles.emission;
-        emission.rateOverTime = Mathf.RoundToInt(100 * _size.x * _size.y);
-
-        //ToDo: Change color here if it need
-    }
-
-    private IEnumerator ActivateRoutine()
-    {
-        _particles.Play();
-        yield return _delay;
-        //Hack:Here is potentialy problem place, character can cross the collider area on enable of collider.
-        _collider.enabled = true;
-    }
-
-    private IEnumerator DeactivateRoutine()
-    {
-        _particles.Stop();
-        yield return _delay;
-        _collider.enabled = false;
     }
 }
 
