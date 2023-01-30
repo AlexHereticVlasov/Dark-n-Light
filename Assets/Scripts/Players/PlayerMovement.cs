@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,11 +14,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(int value)
     {
-        if (_rigidbody.velocity.y < 0)
+        //if (_rigidbody.velocity.y < 0)
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
 
         _rigidbody.AddForce(_jumpDirection * value);
     }
 
     public void AddForce(Vector2 force) => _rigidbody.AddForce(force, ForceMode2D.Force);
+
+    internal void Freaze()
+    {
+        _rigidbody.isKinematic = true;
+    }
 }

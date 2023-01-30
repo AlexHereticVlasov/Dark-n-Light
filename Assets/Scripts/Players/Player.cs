@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using FinalStateMachine;
-using System;
 
 public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 {
@@ -10,6 +9,8 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 
     private StateMachine _stateMachine;
 
+    public event UnityAction Selected;
+    public event UnityAction Deselected;
     public event UnityAction Death;
     public event UnityAction<Elements> Spawned;
 
@@ -24,11 +25,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public LevitationState IdleLevitationState { get; private set; }
     public LevitationState MoveLevitationState { get; private set; }
     public LevelCompliteState LevelCompliteState { get; private set; }
-
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
-
-    public event UnityAction Selected;
-    public event UnityAction Deselected;
 
     private void Awake()
     {
@@ -44,19 +41,9 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         DeathState = new DeathState(_observation, _stateMachine, this, _movement);
         IdleLevitationState = new IdleLevitationState(_observation, _stateMachine, this, _movement);
         MoveLevitationState = new MoveLevitationState(_observation, _stateMachine, this, _movement);
-        LevelCompliteState = new LevelCompliteState(_observation, _stateMachine, this);
+        LevelCompliteState = new LevelCompliteState(_observation, _stateMachine, this, _movement);
 
         _stateMachine.Init(IdleState);
-    }
-
-    internal void Select()
-    {
-        Selected?.Invoke();
-    }
-
-    public void Deselect()
-    {
-        Deselected?.Invoke();
     }
 
     private void Update() => _stateMachine.Current.Update();
@@ -73,15 +60,26 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
             _stateMachine.ChangeState(InAirState);
     }
 
+    public void Select() => Selected?.Invoke();
+
+    public void Deselect() => Deselected?.Invoke();
+
     public void TakeDamage()
     {
+        if (_stateMachine.Current == LevelCompliteState) return;
+
         if (_stateMachine.Current != DeathState)
-        {
-            _stateMachine.ChangeState(DeathState);
-            Spawned?.Invoke(Element);
-            Death?.Invoke();
-        }
+            Die();
+    }
+
+    private void Die()
+    {
+        _stateMachine.ChangeState(DeathState);
+        Spawned?.Invoke(Element);
+        Death?.Invoke();
     }
 
     public void AddForce(Vector2 force) => _movement.AddForce(force);
+
+    public void Warp() => _stateMachine.ChangeState(LevelCompliteState);
 }

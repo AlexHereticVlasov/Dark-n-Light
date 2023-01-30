@@ -10,6 +10,8 @@ public class Observation : MonoBehaviour
 
     private int _facingDirection = 1;
 
+    [field:SerializeField] public CoyotityTime CayotityTime { get; private set; }
+
     public float Direction { get; private set; }
     public bool IsJumping { get; private set; }
     public bool IsInteract { get; private set; }
@@ -55,7 +57,7 @@ public class Observation : MonoBehaviour
 
     public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(_facingDirection, 0), 0.55f, _blockMask);
 
-    internal Transform GetDestinaton()
+    public Transform GetDestinaton()
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
         foreach (var collider in colliders)
@@ -63,6 +65,24 @@ public class Observation : MonoBehaviour
                 return effect.transform;
 
         throw new Exception("No ExitZone");
+    }
+
+    public bool CanJump()
+    {
+        return IsOnEarth() || CayotityTime.CanJump();
+    }
+
+    public void ResetCayotityTime() => CayotityTime.ResetValue();
+
+    public bool CanInteract()
+    {
+        //ToDO: Masks and etc...
+        var colliders = Physics2D.OverlapCircleAll(transform.position, Constants.InteractionRadius, _interactableMask);
+        foreach (var collider in colliders)
+            if (collider.TryGetComponent(out IInteractable interactable))
+                return true;
+
+        return false;
     }
 }
 

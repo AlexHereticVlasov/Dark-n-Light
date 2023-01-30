@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 5883439}
   - component: {fileID: 5883440}
   - component: {fileID: 5883442}
+  - component: {fileID: 5883443}
   m_Layer: 0
   m_Name: SlideShow
   m_TagString: Untagged
@@ -197,6 +198,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextScene: 2
   slides: []
+--- !u!114 &5883443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc182e0c6a83dc4f9c58be015c87268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 664223390}
 --- !u!1 &45185021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5913547415919112042, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}
@@ -257,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -983,6 +997,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 1019683864}
+  - {fileID: 817028698}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:

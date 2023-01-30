@@ -39,7 +39,14 @@ public class CollectMediator : MonoBehaviour
         {
             _score.Add(diamond);
             _inventory.Collected(diamond.Element);
+            return;
         }
+
+        //Collectable is Rune, add rune to RuneStorage
+        //if (true)
+        //{
+            
+        //}
     }
 }
 

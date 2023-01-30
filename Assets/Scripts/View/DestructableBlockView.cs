@@ -1,14 +1,28 @@
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
+//namespace GameObjectView
+//{
 public class DestructableBlockView : MonoBehaviour, IRecoloreable
 {
     [SerializeField] private BaseDestructableBlock _block;
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private ColorBean _bean;
+    [SerializeField] private ElementBean _bean;
+    [SerializeField] private ShadowCaster2D _shadowCaster;
 
-    private void OnEnable() => _block.TransperancyChanged += OnMelted;
+    private void OnEnable()
+    {
+        _block.Spawned += OnStartMelted;
+        _block.TransperancyChanged += OnMelted;
+        _block.Restored += OnRestored;
+    }
 
-    private void OnDisable() => _block.TransperancyChanged -= OnMelted;
+    private void OnDisable()
+    {
+        _block.Spawned -= OnStartMelted;
+        _block.TransperancyChanged -= OnMelted;
+        _block.Restored -= OnRestored;
+    }
 
     private void OnMelted(float alpha)
     {
@@ -17,9 +31,14 @@ public class DestructableBlockView : MonoBehaviour, IRecoloreable
         _renderer.color = color;
     }
 
+    private void OnRestored() => _shadowCaster.enabled = true;
+
+    private void OnStartMelted(Elements element) => _shadowCaster.enabled = false;
+
     public void Recolor()
     {
         if (_block is DestructableBlock block)
-            _renderer.color = _bean[block.Element];
+            _renderer.color = _bean[block.Element].MainColor;
     }
 }
+//}

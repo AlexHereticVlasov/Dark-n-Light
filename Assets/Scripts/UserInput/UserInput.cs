@@ -33,7 +33,6 @@ public sealed class UserInput : BaseUserInput
         float direction = Input.GetAxis("Horizontal");
         _observation[_current].SetDirection(direction);
 
-
         if (ShouldJump())
             TryJump();
 
@@ -58,13 +57,13 @@ public sealed class UserInput : BaseUserInput
 
     private void TryInteract()
     {
-        if (CanInteract())
+        if (_observation[_current].CanInteract())
             _observation[_current].SetIsInteract(true);
     }
 
     private void TryJump()
     {
-        if (_observation[_current].IsOnEarth())
+        if (_observation[_current].CanJump())
             _observation[_current].SetIsJumping(true);
     }
 
@@ -83,16 +82,7 @@ public sealed class UserInput : BaseUserInput
     }
 
     //ToDo:Remove to observations
-    private bool CanInteract()
-    {
-        //ToDO: Masks and etc...
-        var colliders = Physics2D.OverlapPointAll(_observation[_current].transform.position);
-        foreach (var collider in colliders)
-            if (collider.TryGetComponent(out IInteractable interactable))
-                return true;
-
-        return false;
-    }
+    
 
     private void StayOnPause()
     {

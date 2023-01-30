@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class WindEffect : BaseZoneEffect
@@ -21,6 +23,24 @@ public class WindEffect : BaseZoneEffect
 public class Exit
 {
     [SerializeField] private Elements _element;
+
+    public void Warp(Vector2 position)
+    {
+        var colliders = Physics2D.OverlapCircleAll(position, 1.5f).Where(collider => collider.TryGetComponent(out Player p));
+        Player player = null;
+        foreach (var collider in colliders)
+        {
+            player = collider.GetComponent<Player>();
+            if (player != null)
+            {
+                player.Warp();
+                return;
+            }
+        }
+
+        Debug.Log(position);
+
+    }
 
     public event UnityAction StateChanged;
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class VictoryInstaller : MonoInstaller
+public sealed class VictoryInstaller : MonoInstaller
 {
     [SerializeField] private Victory _victory;
 

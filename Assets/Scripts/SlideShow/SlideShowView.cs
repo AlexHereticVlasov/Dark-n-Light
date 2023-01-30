@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using Zenject;
 
 public sealed class SlideShowView : MonoBehaviour
 {
     [Inject] private SlideShow _slideShow;
+    [SerializeField] private TMP_Text _text;
 
     private void OnEnable() => _slideShow.SlideChanged += OnSlideChanged;
 
@@ -11,6 +13,6 @@ public sealed class SlideShowView : MonoBehaviour
 
     private void OnSlideChanged(Slide slide)
     {
-        
+        _text.text = slide.Message.Text;
     }
 }

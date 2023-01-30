@@ -2,7 +2,7 @@
 
 public class EffectSpawner : MonoBehaviour
 {
-    [SerializeField] private EffectBean[] _effectBeans;
+    [SerializeField] private ElementBean _effectBeans;
 
     private IEffectOrigin _effectOrigin;
 
@@ -22,7 +22,7 @@ public class EffectSpawner : MonoBehaviour
 
     private void SpawnEffect(Elements elements)
     {
-        foreach (var particle in _effectBeans[(int)elements].Particles)
+        foreach (var particle in _effectBeans[elements].Particles)
         {
             var effect = Instantiate(particle, transform.position, Quaternion.identity);
             float duration = effect.main.duration;

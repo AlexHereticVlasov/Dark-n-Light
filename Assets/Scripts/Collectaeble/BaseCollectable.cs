@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
@@ -12,17 +13,27 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Player player))
-        {
             if (CanCollect(player))
-            {
-                Collected?.Invoke(this);
-                Spawned?.Invoke(Element);
-                Collect(player);
-            }
-        }
+                StartCoroutine(Collect(player));
     }
 
-    protected abstract void Collect(Player player);
+    protected virtual IEnumerator Collect(Player player)
+    {
+        Collected?.Invoke(this);
+        yield return null;
+    }
 
     protected abstract bool CanCollect(Player player);
+
+    protected void Spawn() => Spawned?.Invoke(Element);
+}
+
+public class Rune : BaseCollectable
+{
+    protected override bool CanCollect(Player player) => true;
+}
+
+public class GeluPart : BaseCollectable
+{
+    protected override bool CanCollect(Player player) => true;
 }

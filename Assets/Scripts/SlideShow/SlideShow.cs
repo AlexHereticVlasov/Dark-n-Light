@@ -22,7 +22,7 @@ public class SlideShow : MonoBehaviour
         foreach (var slide in slides)
         {
             SlideChanged?.Invoke(slide);
-            yield return new WaitForSeconds(slide.Message.Clip.length);
+            yield return new WaitForSeconds(/*slide.Message.Clip.length*/ 2);
         }
 
         _canSkip = false;
@@ -39,3 +39,4 @@ public class SlideShow : MonoBehaviour
         }
     }
 }
+

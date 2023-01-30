@@ -25,6 +25,7 @@ public sealed class EndZoneMediator : MonoBehaviour
         foreach (var exit in _exits)
         {
             exit.Disable();
+
             exit.StateChanged -= OnStateChanged;
         }
     }
@@ -37,7 +38,7 @@ public sealed class EndZoneMediator : MonoBehaviour
             {
                 if (_checkRoutine != null)
                     StopCoroutine(_checkRoutine);
-                
+
                 return;
             }
         }
@@ -48,11 +49,15 @@ public sealed class EndZoneMediator : MonoBehaviour
     private IEnumerator CheckForVictory()
     {
         yield return _delay;
-        
+
         foreach (var exit in _exits)
             if (exit.IsInside == false)
                 yield break;
 
+        foreach (var exit in _exits)
+            exit.Warp(exit.EnterEffect.transform.position);
+
+        yield return _delay;
         Victory?.Invoke();
     }
 }

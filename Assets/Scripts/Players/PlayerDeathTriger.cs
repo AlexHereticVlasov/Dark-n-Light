@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PlayerDeathTriger : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    private IDamageable _damageable;
 
-    private void OnTriggerEnter2D(Collider2D collision) => _player.TakeDamage();
+    private void Awake() => _damageable = transform.parent.GetComponent<IDamageable>();
+
+    private void OnTriggerEnter2D(Collider2D collision) => _damageable.TakeDamage();
 }

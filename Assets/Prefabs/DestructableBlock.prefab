@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8801990675971654370}
   - component: {fileID: 8801990675971654373}
   - component: {fileID: 8801990675971654382}
+  - component: {fileID: 3629191749358113182}
+  - component: {fileID: 7898528089977767900}
   m_Layer: 0
   m_Name: DestructableBlock
   m_TagString: Untagged
@@ -72,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1113031637
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f7ede23b9d6a944c892ebb244fe12c6, type: 3}
   m_Color: {r: 0.27467555, g: 0, b: 0.6698113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,3 +163,43 @@ MonoBehaviour:
   _block: {fileID: 8801990675971654371}
   _renderer: {fileID: 8801990675971654368}
   _bean: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
+  _shadowCaster: {fileID: 3629191749358113182}
+--- !u!114 &3629191749358113182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801990675971654372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000002fd843d62b6cdaba8d94a5452b7ca8bd3915e6ad3f14efee
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 123590
+--- !u!114 &7898528089977767900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801990675971654372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c218c5b22962d64e90398a0ab538833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectBeans: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}

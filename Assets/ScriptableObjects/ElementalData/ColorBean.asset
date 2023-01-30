@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc13a6df383d4334291b88a2d2bc27da, type: 3}
+  m_Name: ColorBean
+  m_EditorClassIdentifier: 
+  _element:
+  - {fileID: 11400000, guid: 583361ed77bc1604f905abdde806d24f, type: 2}
+  - {fileID: 11400000, guid: 5cf9e3dacd5da2541b2ae2119caeaa00, type: 2}
+  - {fileID: 11400000, guid: e957dbe3a1d1264498f5b629650fa05e, type: 2}
+  - {fileID: 11400000, guid: d08fd78440786c5428d46e7e8699ffda, type: 2}
+  - {fileID: 11400000, guid: 7815ed36bb28c1645918c7d9312baf0a, type: 2}
+  - {fileID: 11400000, guid: 4d763d4630a261b4fa2862150e683c91, type: 2}
+  - {fileID: 11400000, guid: fe0d671090d6396428f9e1809b7660d2, type: 2}
+  - {fileID: 11400000, guid: 24519ef0328ddec4588ace095beae72f, type: 2}

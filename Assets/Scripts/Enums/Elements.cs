@@ -6,5 +6,6 @@
     Water,
     Earth,
     Air,
-    Astral
+    Astral,
+    None
 }

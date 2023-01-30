@@ -106,6 +106,12 @@ namespace FinalStateMachine
 
         public override void Update()
         {
+            if (_observation.IsOnEarth() == false)
+            {
+                _stateMachine.ChangeState(_player.InAirState);
+                _observation.ResetCayotityTime();
+            }
+
             if (_observation.IsJumping)
             {
                 _observation.SetIsJumping(false);
@@ -173,8 +179,9 @@ namespace FinalStateMachine
 
         public override void Enter()
         {
+            //ToDo:Remove constants to player Config
             base.Enter();
-            _movement.Jump(300);
+            _movement.Jump(310);
             _delay = .25f;
         }
 
@@ -195,9 +202,23 @@ namespace FinalStateMachine
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+        }
+
         public override void Update()
         {
             //ToDO: Move in Air?
+            if (_observation.IsJumping)
+            {
+                _observation.SetIsJumping(false);
+                if (_observation.CayotityTime.CanJump())
+                {
+                    _stateMachine.ChangeState(_player.StartJumpState);
+                    _observation.CayotityTime.SetValue(0);
+                }
+            }
 
             if (_observation.IsOnEarth())
                 _stateMachine.ChangeState(_player.LandingState);
@@ -231,7 +252,7 @@ namespace FinalStateMachine
             //Hack: Temp Solituon, get length from animation
             _length = 0.5f;
 
-            var colliders = Physics2D.OverlapPointAll(_player.transform.position);
+            var colliders = Physics2D.OverlapCircleAll(_player.transform.position, Constants.InteractionRadius);
             foreach (var collider in colliders)
             {
                 if (collider.TryGetComponent(out IInteractable interactable))
@@ -272,7 +293,6 @@ namespace FinalStateMachine
             {
                 //ToDo: Different Cases
                 _stateMachine.ChangeState(_player.IdleState);
-
             }
         }
     }
@@ -290,21 +310,25 @@ namespace FinalStateMachine
         {
             base.Enter();
             _movement.SetXVelocity(0);
+            _movement.Freaze();
         }
 
         public override void Update()
         {
-
+            ;
         }
     }
 
     public class LevelCompliteState : BaseCharacterState
     {
+        PlayerMovement _movement;
         private Transform _destination;
         private float _factor;
+        private bool _isComplited;
 
-        public LevelCompliteState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+        public LevelCompliteState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
         {
+            _movement = movement;
         }
 
         public override void Enter()
@@ -312,17 +336,24 @@ namespace FinalStateMachine
             base.Enter();
             _factor = 0;
             _destination = _observation.GetDestinaton();
+            _movement.Freaze();
         }
 
         public override void Update()
         {
+            if (_isComplited) return;
+
             if (_factor < 1)
             {
                 _player.transform.position = Vector2.Lerp(_player.transform.position, _destination.position, _factor);
-                _factor += Time.deltaTime;
-
-                _player.transform.localScale = Vector2.one * (1 - _factor);
+                _player.transform.localScale = Vector2.one * (1 - _factor) * 0.9f;
+                _factor += Time.deltaTime * 1.5f;
+                _factor = Mathf.Clamp01(_factor);
+                return;
             }
+
+            _isComplited = true;
+            Debug.Log("SpawnFX");
         }
     }
 }

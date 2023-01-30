@@ -4,9 +4,9 @@ public class DangerZone : Trap
 {
     [field: SerializeField] public Elements Element { get; private set; }
 
-    protected override void Kill(Player player)
+    protected override void Kill(IDamageable damageable)
     {
-        if (player.Element != Element)
-            base.Kill(player);
+        if (damageable.Element != Element)
+            base.Kill(damageable);
     }
 }

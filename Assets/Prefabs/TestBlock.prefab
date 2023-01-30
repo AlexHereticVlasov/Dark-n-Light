@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4767093126162764347}
   - component: {fileID: 4767093126162764344}
   - component: {fileID: 4767093126162764348}
+  - component: {fileID: 6236093795635302795}
   m_Layer: 7
   m_Name: TestBlock
   m_TagString: Untagged
@@ -130,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.78, y: 0.78}
   m_EdgeRadius: 0.1
 --- !u!114 &4767093126162764348
 MonoBehaviour:
@@ -145,3 +146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 4767093126162764347}
+  _isFreazeable: 1
+  <Element>k__BackingField: 7
+--- !u!114 &6236093795635302795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767093126162764345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c218c5b22962d64e90398a0ab538833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectBeans: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}

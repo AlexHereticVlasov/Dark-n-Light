@@ -21,7 +21,7 @@ TagManager:
   - Portals
   - Lux
   - Collectable
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -52,6 +52,12 @@ TagManager:
   - name: MidWalls
     uniqueID: 1168479373
     locked: 0
+  - name: ForvardWalls
+    uniqueID: 3181935659
+    locked: 0
   - name: UI
     uniqueID: 2917537081
+    locked: 0
+  - name: OnCollect
+    uniqueID: 4008645695
     locked: 0

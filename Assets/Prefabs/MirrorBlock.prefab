@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7460092676274843296}
   - component: {fileID: 7460092676274843299}
   - component: {fileID: 7460092676274843298}
+  - component: {fileID: 8834920126729280798}
   m_Layer: 9
   m_Name: MirrorBlock
   m_TagString: Untagged
@@ -145,6 +146,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56717132ee4b3b641813b531fc0cbe96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 7460092676274843296}
+  _isFreazeable: 0
+  <Element>k__BackingField: 7
+--- !u!114 &8834920126729280798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460092676274843301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c218c5b22962d64e90398a0ab538833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectBeans: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
 --- !u!1 &7460092677561444855
 GameObject:
   m_ObjectHideFlags: 0

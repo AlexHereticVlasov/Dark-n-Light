@@ -2,9 +2,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class BaseDestructableBlock : MonoBehaviour 
+public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin 
 {
+    //public event UnityAction StartMelted;
+    public event UnityAction Restored;
     public event UnityAction<float> TransperancyChanged;
+    public event UnityAction<Elements> Spawned;
+
+    [field: SerializeField] public Elements Element { get; private set; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -15,12 +20,11 @@ public abstract class BaseDestructableBlock : MonoBehaviour
 
     protected abstract bool ShouldMelt(Player player);
     
-    protected abstract void Remove();
+    protected abstract void Finish();
 
     private IEnumerator Melt()
     {
-       
-
+        Spawned?.Invoke(Element);
         float factor = 1;
 
         while (factor > 0)
@@ -28,8 +32,8 @@ public abstract class BaseDestructableBlock : MonoBehaviour
             factor -= Time.deltaTime;
             yield return ChangeTransperancy(factor);   
         }
-        //ToDo: need better name for this method
-        Remove();
+
+        Finish();
     }
 
     protected IEnumerator ChangeTransperancy(float factor)
@@ -38,4 +42,5 @@ public abstract class BaseDestructableBlock : MonoBehaviour
         yield return null;
     }
 
+    protected virtual void Restore() => Restored?.Invoke();
 }

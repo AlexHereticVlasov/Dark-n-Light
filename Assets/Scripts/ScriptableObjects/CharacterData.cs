@@ -4,5 +4,5 @@
 
 public class CharacterData : ScriptableObject
 {
-    [field: SerializeField] public EffectBean[] DeathEffects { get; private set; }
+    [field: SerializeField] public Element DeathEffects { get; private set; }
 }

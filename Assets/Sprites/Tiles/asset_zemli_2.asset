@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: asset_zemli_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 33be4aae787b66945bca7d9adb91b776, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79eebb783cd6463448c7f93c0776bdf6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

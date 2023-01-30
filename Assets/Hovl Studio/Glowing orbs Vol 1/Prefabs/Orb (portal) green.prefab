@@ -14630,6 +14630,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hit 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1756388448045022, guid: 7aecd72ab12564a45b1aadaccf4b2490, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4482311385707434, guid: 7aecd72ab12564a45b1aadaccf4b2490, type: 3}
       propertyPath: m_RootOrder
       value: 3

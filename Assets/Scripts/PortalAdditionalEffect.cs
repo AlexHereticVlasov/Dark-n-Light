@@ -9,16 +9,16 @@ public class PortalAdditionalEffect : MonoBehaviour
 
     private void OnDisable() => _enterEffect.PlayerInside -= OnPlayerInside;
 
-    private void OnPlayerInside(Player arg0)
+    private void OnPlayerInside(Player player)
     {
-        //if (_enterEffect.Element == arg0.Element)
+        //if (_enterEffect.Element == player.Element)
         //{
-            _particles.Play();
+        _particles.Play();
         //}
     }
 }
 
 public class PortalAditionalEffectView : MonoBehaviour
-{ 
-    [SerializeField] private 
+{
+    //[SerializeField] private 
 }
