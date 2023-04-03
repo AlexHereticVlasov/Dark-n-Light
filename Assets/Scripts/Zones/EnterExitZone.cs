@@ -9,7 +9,6 @@ public class EnterExitZone : BaseZone
         if (collision.TryGetComponent(out Player player))
             _exitEffect.Apply(player);
     }
-
 }
 
 

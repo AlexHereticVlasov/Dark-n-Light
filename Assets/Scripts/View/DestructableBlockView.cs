@@ -5,16 +5,25 @@ using UnityEngine.Experimental.Rendering.Universal;
 //{
 public class DestructableBlockView : MonoBehaviour, IRecoloreable
 {
+    private const string ColorProperty = "_Color";
+
     [SerializeField] private BaseDestructableBlock _block;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private ElementBean _bean;
     [SerializeField] private ShadowCaster2D _shadowCaster;
+    [SerializeField] private DissolvedEffect _effect;
 
     private void OnEnable()
     {
         _block.Spawned += OnStartMelted;
         _block.TransperancyChanged += OnMelted;
         _block.Restored += OnRestored;
+    }
+
+    private void Start()
+    {
+        Recolor();
+        _effect.Init(_bean[_block.Element]);
     }
 
     private void OnDisable()
@@ -24,12 +33,7 @@ public class DestructableBlockView : MonoBehaviour, IRecoloreable
         _block.Restored -= OnRestored;
     }
 
-    private void OnMelted(float alpha)
-    {
-        Color color = _renderer.color;
-        color[3] = alpha;
-        _renderer.color = color;
-    }
+    private void OnMelted(float alpha) => _effect.Evaluate(alpha);
 
     private void OnRestored() => _shadowCaster.enabled = true;
 
@@ -38,7 +42,11 @@ public class DestructableBlockView : MonoBehaviour, IRecoloreable
     public void Recolor()
     {
         if (_block is DestructableBlock block)
-            _renderer.color = _bean[block.Element].MainColor;
+        {
+            _renderer.color = Color.white;
+            _renderer.sprite = _bean[_block.Element].DestructableStone;
+            _renderer.sharedMaterial.SetColor(ColorProperty, _bean[_block.Element].DissolveColor);
+        }
     }
 }
 //}

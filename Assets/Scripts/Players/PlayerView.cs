@@ -16,16 +16,30 @@ public class PlayerView : MonoBehaviour
 
     private void OnEnable()
     {
-        //ToDo: Subscribe on Level FinalState and stop body particles when it begun
         _renderer.color = _bean[_player.Element].MainColor;
         _player.Death += OnDeath;
+        _player.Captured += OnCaptured;
+        _player.Unlished += OnUnlished;
     }
 
-    private void OnDisable() => _player.Death -= OnDeath;
-
-    private void OnDeath()
+    private void OnDisable()
     {
-        _body.Stop();
-        //_renderer.enabled = false;
+        _player.Death -= OnDeath;
+        _player.Captured -= OnCaptured;
+        _player.Unlished -= OnUnlished;
+    }
+
+    private void OnDeath() => _body.Stop();
+
+    private void OnCaptured()
+    {
+        Debug.Log("Pause");
+        _body.Pause();
+    }
+
+    private void OnUnlished()
+    {
+        Debug.Log("Play");
+        _body.Play();
     }
 }

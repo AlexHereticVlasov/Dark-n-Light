@@ -4,7 +4,8 @@ using UnityEngine.Events;
 
 public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin 
 {
-    //public event UnityAction StartMelted;
+    protected bool _isMelted;
+
     public event UnityAction Restored;
     public event UnityAction<float> TransperancyChanged;
     public event UnityAction<Elements> Spawned;
@@ -14,7 +15,7 @@ public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.TryGetComponent(out Player player))
-            if (ShouldMelt(player))
+            if (ShouldMelt(player) && _isMelted == false)
                 StartCoroutine(Melt());
     }
 
@@ -24,12 +25,14 @@ public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin
 
     private IEnumerator Melt()
     {
+        _isMelted = true;
         Spawned?.Invoke(Element);
         float factor = 1;
 
         while (factor > 0)
         {
             factor -= Time.deltaTime;
+            factor = Mathf.Clamp01(factor);
             yield return ChangeTransperancy(factor);   
         }
 

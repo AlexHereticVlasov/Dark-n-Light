@@ -304,9 +304,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _light: {fileID: 4983550450235104726}
+  _subLight: {fileID: 7849118393606807543}
   _tourch: {fileID: 4983550452241836525}
   _renderer: {fileID: 4983550451747406306}
   _orb: {fileID: 6346875723544686817}
+  _mark: {fileID: 4983550452241836515}
 --- !u!114 &4983550452241836525
 MonoBehaviour:
   m_ObjectHideFlags: 0

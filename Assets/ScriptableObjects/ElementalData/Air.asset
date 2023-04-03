@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7df58050e2aff4c98b253ffc4c3dcc, type: 3}
   m_Name: Air
   m_EditorClassIdentifier: 
-  <MainColor>k__BackingField: {r: 0.45882353, g: 0.94509804, b: 1, a: 1}
   _particles:
   - {fileID: 198717023933481710, guid: 29fec53fa5329e345981c83555fa131e, type: 3}
   - {fileID: 198988523848601504, guid: df365974c854a33438e5aea62ca4b975, type: 3}
+  <MainColor>k__BackingField: {r: 0.45882353, g: 0.94509804, b: 1, a: 1}
+  <AdditionalColor>k__BackingField: {r: 0.45882353, g: 0.94509804, b: 1, a: 1}
+  <DissolveColor>k__BackingField:
+    serializedVersion: 2
+    rgba: 4294963573
+  <Body>k__BackingField: {fileID: 0}
+  <PoolMaterial>k__BackingField: {fileID: 2100000, guid: fd8eef070c48fc8498c7118c67fbc6a7, type: 2}
+  <DestructableStone>k__BackingField: {fileID: 21300000, guid: 1b2aacb4ef4cbaf44a824d9a98f42fc2, type: 3}

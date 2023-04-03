@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7df58050e2aff4c98b253ffc4c3dcc, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  <MainColor>k__BackingField: {r: 0, g: 0.4145937, b: 1, a: 1}
   _particles:
   - {fileID: 198232958877599884, guid: c42932cbc55cdd94c992455a94bfd523, type: 3}
   - {fileID: 198697135880744300, guid: 8f5e087c57b11ef4cbed619d26886292, type: 3}
+  <MainColor>k__BackingField: {r: 0, g: 0.4145937, b: 1, a: 1}
+  <AdditionalColor>k__BackingField: {r: 0, g: 0.41568628, b: 1, a: 1}
+  <DissolveColor>k__BackingField:
+    serializedVersion: 2
+    rgba: 4294928896
+  <Body>k__BackingField: {fileID: 198249770336932938, guid: 58cd9a85f39caa9419689e35eb9744dd, type: 3}
+  <PoolMaterial>k__BackingField: {fileID: 2100000, guid: 9a67b2f142b6f604597b8b0c3801e0d4, type: 2}
+  <DestructableStone>k__BackingField: {fileID: 21300000, guid: 44e9d2937a38bca4c9fed122f940b713, type: 3}

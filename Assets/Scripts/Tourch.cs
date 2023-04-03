@@ -13,7 +13,11 @@ public sealed class Tourch : BaseActivator
         }
     }
 
-    private bool ShouldTurnOn(Player player) => player.Element == Elements.Light && IsActive == false;
+    private bool ShouldTurnOn(Player player) => (player.Element == Elements.Light ||
+                                                 player.Element == Elements.Fire) &&
+                                                 IsActive == false;
 
-    private bool ShouldTurnOff(Player player) => player.Element == Elements.Dark && IsActive;
+    private bool ShouldTurnOff(Player player) => (player.Element == Elements.Dark ||
+                                                  player.Element == Elements.Water) &&
+                                                  IsActive;
 }

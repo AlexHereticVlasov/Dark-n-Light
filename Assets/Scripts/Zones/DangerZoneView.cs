@@ -13,7 +13,7 @@ public class DangerZoneView : MonoBehaviour, IRecoloreable
     //ToDo: Create Mode with out particles
     public void Recolor()
     {
-        _renderer.color = _bean[_zone.Element].MainColor;
+        _renderer.material = _bean[_zone.Element].PoolMaterial;
 
         if (_size.x <= 0 || _size.y <= 0)
             throw new System.Exception("Size must be more zero");

@@ -42,21 +42,22 @@ namespace FinalStateMachine
         protected Observation _observation;
         protected StateMachine _stateMachine;
         protected Player _player;
+        protected PlayerSettings _config;
 
-        public BaseCharacterState(Observation observation, StateMachine machine, Player player)
+        public BaseCharacterState(Observation observation, StateMachine machine, Player player, PlayerSettings config)
         {
             _observation = observation;
             _stateMachine = machine;
             _player = player;
+            _config = config;
         }
-
     }
 
     public abstract class LevitationState : BaseCharacterState
     {
         protected PlayerMovement _movement;
 
-        protected LevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
+        protected LevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
             _movement = movement;
         }
@@ -64,17 +65,14 @@ namespace FinalStateMachine
 
     public class IdleLevitationState : LevitationState
     {
-        public IdleLevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public IdleLevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
         public override void Update()
         {
-            //base.Update();
             if (_observation.Direction != 0)
-            {
                 _stateMachine.ChangeState(_player.MoveLevitationState);
-            }
 
             _movement.SetXVelocity(0);
         }
@@ -82,7 +80,7 @@ namespace FinalStateMachine
 
     public class MoveLevitationState : LevitationState
     {
-        public MoveLevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public MoveLevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
@@ -91,7 +89,7 @@ namespace FinalStateMachine
             if (_observation.Direction == 0)
                 _stateMachine.ChangeState(_player.IdleLevitationState);
 
-            _movement.SetXVelocityInAir(_observation.Direction);
+            _movement.SetXVelocity(_observation.Direction * _config.InAirSpeed);
         }
     }
 
@@ -99,7 +97,7 @@ namespace FinalStateMachine
     {
         protected PlayerMovement _movement;
 
-        protected OnGroundState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
+        protected OnGroundState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
             _movement = movement;
         }
@@ -107,26 +105,37 @@ namespace FinalStateMachine
         public override void Update()
         {
             if (_observation.IsOnEarth() == false)
-            {
-                _stateMachine.ChangeState(_player.InAirState);
-                _observation.ResetCayotityTime();
-            }
+                TransiteToInAirState();
 
             if (_observation.IsJumping)
-            {
-                _observation.SetIsJumping(false);
-                _stateMachine.ChangeState(_player.StartJumpState);
-            }
+                TryJump();
             else if (_observation.IsInteract)
-            {
-                _observation.SetIsInteract(false);
-                _stateMachine.ChangeState(_player.InteractionState);
-            }
+                Interact();
+        }
+
+        private void Interact()
+        {
+            _observation.SetIsInteract(false);
+            _stateMachine.ChangeState(_player.InteractionState);
+        }
+
+        private void TransiteToInAirState()
+        {
+            _stateMachine.ChangeState(_player.InAirState);
+            _observation.ResetCayotityTime();
+        }
+
+        private void TryJump()
+        {
+            _observation.SetIsJumping(false);
+
+            if (_observation.IsOnIce == false)
+                _stateMachine.ChangeState(_player.StartJumpState);
         }
     }
     public class IdleState : OnGroundState
     {
-        public IdleState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public IdleState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
@@ -134,9 +143,7 @@ namespace FinalStateMachine
         {
             base.Update();
             if (_observation.Direction != 0)
-            {
                 _stateMachine.ChangeState(_player.WalkState);
-            }
 
             _movement.SetXVelocity(0);
         }
@@ -144,7 +151,7 @@ namespace FinalStateMachine
 
     public class WalkState : OnGroundState
     {
-        public WalkState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public WalkState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
@@ -154,7 +161,8 @@ namespace FinalStateMachine
             if (_observation.Direction == 0)
                 _stateMachine.ChangeState(_player.IdleState);
 
-            _movement.SetXVelocity(_observation.Direction);
+            var speed = _observation.IsOnIce ? _config.OnIceSpeed : _config.NormalSpeed;
+            _movement.SetXVelocity(_observation.Direction * speed);
 
             if (_observation.IsPooshing())
                 _stateMachine.ChangeState(_player.PushState);
@@ -162,7 +170,7 @@ namespace FinalStateMachine
     }
     public abstract class JumpState : BaseCharacterState
     {
-        protected JumpState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+        protected JumpState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
         {
         }
     }
@@ -172,7 +180,7 @@ namespace FinalStateMachine
         private PlayerMovement _movement;
         private float _delay;
 
-        public StartJumpState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
+        public StartJumpState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
             _movement = movement;
         }
@@ -181,7 +189,7 @@ namespace FinalStateMachine
         {
             //ToDo:Remove constants to player Config
             base.Enter();
-            _movement.Jump(310);
+            _movement.Jump(_config.NormalJumpForce);
             _delay = .25f;
         }
 
@@ -198,8 +206,11 @@ namespace FinalStateMachine
 
     public class InAirState : JumpState
     {
-        public InAirState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+        private PlayerMovement _movement;
+
+        public InAirState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
+            _movement = movement;
         }
 
         public override void Enter()
@@ -209,7 +220,10 @@ namespace FinalStateMachine
 
         public override void Update()
         {
-            //ToDO: Move in Air?
+            if (Mathf.Abs(_observation.Direction) > 0.5f)
+                if (_observation.YVelocity > -6)
+                    _movement.SetXVelocity(_observation.Direction * _config.NormalSpeed);
+
             if (_observation.IsJumping)
             {
                 _observation.SetIsJumping(false);
@@ -226,7 +240,7 @@ namespace FinalStateMachine
     }
     public class LandingState : JumpState
     {
-        public LandingState(Observation observation, StateMachine machine, Player player) : base(observation, machine, player)
+        public LandingState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
         {
         }
 
@@ -242,7 +256,7 @@ namespace FinalStateMachine
         private float _length;
         private IInteractable _interactable;
 
-        public InteractionState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public InteractionState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
@@ -262,7 +276,6 @@ namespace FinalStateMachine
                 }
             }
 
-            Debug.LogWarning("Interactable == null");
             _stateMachine.ChangeState(_player.IdleState);
         }
 
@@ -280,14 +293,14 @@ namespace FinalStateMachine
 
     public class PushState : OnGroundState
     {
-        public PushState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player, movement)
+        public PushState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
         public override void Update()
         {
             base.Update();
-            _movement.SetXVelocity(_observation.Direction);
+            _movement.SetXVelocity(_observation.Direction * _config.NormalSpeed);
 
             if (_observation.IsPooshing() == false)
             {
@@ -301,7 +314,7 @@ namespace FinalStateMachine
     {
         private PlayerMovement _movement;
 
-        public DeathState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
+        public DeathState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
             _movement = movement;
         }
@@ -315,7 +328,7 @@ namespace FinalStateMachine
 
         public override void Update()
         {
-            ;
+            return;
         }
     }
 
@@ -326,7 +339,7 @@ namespace FinalStateMachine
         private float _factor;
         private bool _isComplited;
 
-        public LevelCompliteState(Observation observation, StateMachine machine, Player player, PlayerMovement movement) : base(observation, machine, player)
+        public LevelCompliteState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
         {
             _movement = movement;
         }
@@ -354,6 +367,18 @@ namespace FinalStateMachine
 
             _isComplited = true;
             Debug.Log("SpawnFX");
+        }
+    }
+
+    public class InPrisonState : BaseCharacterState
+    {
+        public InPrisonState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
+        {
+        }
+
+        public override void Update()
+        {
+            ;
         }
     }
 }

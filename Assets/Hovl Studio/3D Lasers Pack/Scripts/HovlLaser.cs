@@ -20,7 +20,7 @@ public class HovlLaser : MonoBehaviour
     private Vector4 _length = new Vector4(1, 1, 1, 1);
 
     private bool _laserSaver = false;
-    private bool _updateSaver = false;
+    //private bool _updateSaver = false;
 
     private ParticleSystem[] _effects;
     private ParticleSystem[] _hit;
@@ -142,7 +142,7 @@ public class HovlLaser : MonoBehaviour
         if (_line != null)
             _line.enabled = false;
         
-        _updateSaver = true;
+        //_updateSaver = true;
         //Effects can = null in multiply shooting
         if (_effects != null)
         {

@@ -7,6 +7,8 @@ public class Lose : MonoBehaviour
     [SerializeField] private Player[] _players;
     [SerializeField] private GameObject _panel;
 
+    private WaitForSeconds _delay = new WaitForSeconds(1);
+
     public event UnityAction Defeate;
 
     private void OnEnable()
@@ -21,12 +23,13 @@ public class Lose : MonoBehaviour
             player.Death -= OnDeath;
     }
 
+    //ToDo: Invoke Event to fix camera on Dead Player;
     private void OnDeath() => StartCoroutine(Die());
 
     private IEnumerator Die()
     {
         Defeate?.Invoke();
-        yield return new WaitForSeconds(1);
+        yield return _delay;
         Time.timeScale = 0;
         _panel.SetActive(true);
     }

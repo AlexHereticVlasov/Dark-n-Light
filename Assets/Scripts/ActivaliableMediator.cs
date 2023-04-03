@@ -52,9 +52,7 @@ public class ActivaliableMediator : MonoBehaviour
     {
         IObjectViev[] vievs = GetComponentsInChildren<IObjectViev>();
         foreach (var viev in vievs)
-        {
             viev.ChangeColor(_color);
-        }
     }
 }
 

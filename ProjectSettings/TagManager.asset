@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mirror
   - Portal
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,12 @@ TagManager:
   - name: New Layer
     uniqueID: 3594770479
     locked: 0
+  - name: Boxes
+    uniqueID: 3602610327
+    locked: 0
+  - name: BackMid
+    uniqueID: 3580391239
+    locked: 0
   - name: Fluids
     uniqueID: 3134876715
     locked: 0
@@ -54,6 +61,15 @@ TagManager:
     locked: 0
   - name: ForvardWalls
     uniqueID: 3181935659
+    locked: 0
+  - name: Water
+    uniqueID: 4219449741
+    locked: 0
+  - name: Dust
+    uniqueID: 2229483943
+    locked: 0
+  - name: Dark
+    uniqueID: 2814959971
     locked: 0
   - name: UI
     uniqueID: 2917537081

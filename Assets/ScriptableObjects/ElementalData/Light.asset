@@ -16,4 +16,9 @@ MonoBehaviour:
   - {fileID: 198459042000340154, guid: e90b0a20dc997ef4c9e67b1c8b6db6c9, type: 3}
   <MainColor>k__BackingField: {r: 1, g: 0.8980392, b: 0.20392157, a: 1}
   <AdditionalColor>k__BackingField: {r: 0.98039216, g: 1, b: 0.5803922, a: 1}
+  <DissolveColor>k__BackingField:
+    serializedVersion: 2
+    rgba: 4281656831
   <Body>k__BackingField: {fileID: 198955772641930066, guid: a9a8085973fbdcc4eb4d6023e629e769, type: 3}
+  <PoolMaterial>k__BackingField: {fileID: 2100000, guid: 830d978ea08d5374b95a1d4577fd7df0, type: 2}
+  <DestructableStone>k__BackingField: {fileID: 21300000, guid: 191776dc6a1ed664aae9ec2c391a1393, type: 3}

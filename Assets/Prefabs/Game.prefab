@@ -127,8 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fb0c375b14dd140b4ba8c1469592cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cells: []
-  _bean: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
 --- !u!1 &603401336621664169
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,9 +234,9 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.3
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 000000008d94a5452b7ca8bd
+  m_ApplyToSortingLayers: 000000008d94a5452b7ca8bd9778bbd6476f68d5
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -277,6 +275,7 @@ GameObject:
   - component: {fileID: 603401337939689864}
   - component: {fileID: 603401337939689866}
   - component: {fileID: 603401337939689867}
+  - component: {fileID: 869877084019182377}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -405,6 +404,59 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _panel: {fileID: 0}
+--- !u!114 &869877084019182377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603401337939689874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a428cb8906504d9438ed6849fbe0cf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 0}
+  _from:
+    <length>k__BackingField: 1
+    m_Loop: 1
+    m_ZeroValue: 0.5
+    m_Range: 1
+    m_Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.20091324
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  _to:
+    <length>k__BackingField: 1
+    m_Loop: 1
+    m_ZeroValue: 0.5
+    m_Range: 1
+    m_Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.20091324
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
 --- !u!1001 &5955594686200125130
 PrefabInstance:
   m_ObjectHideFlags: 0

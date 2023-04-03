@@ -33,8 +33,16 @@ public sealed class UserInput : BaseUserInput
         float direction = Input.GetAxis("Horizontal");
         _observation[_current].SetDirection(direction);
 
-        if (ShouldJump())
+        //ToDo: Jumps power
+        if (ShouldStartJump())
+        {
             TryJump();
+        }
+
+        if (ShouldJump())
+        {
+            ;
+        }
 
         if (ShouldInteract())
             TryInteract();
@@ -47,13 +55,23 @@ public sealed class UserInput : BaseUserInput
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
             _cameraFollow.ChangeView();
+
+        //Hack:DebugOnly
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //Hide/Show Canvas
+        }
     }
 
     private bool ShouldInteract() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F);
 
-    private bool ShouldJump() => Input.GetKeyDown(KeyCode.W) ||
-                                 Input.GetKeyDown(KeyCode.UpArrow) ||
-                                 Input.GetKeyDown(KeyCode.Space);
+    private bool ShouldStartJump() => Input.GetKeyDown(KeyCode.W) ||
+                                      Input.GetKeyDown(KeyCode.UpArrow) ||
+                                      Input.GetKeyDown(KeyCode.Space);
+
+    private bool ShouldJump() => Input.GetKeyUp(KeyCode.W) ||
+                                 Input.GetKeyUp(KeyCode.UpArrow) ||
+                                 Input.GetKeyUp(KeyCode.Space);
 
     private void TryInteract()
     {
@@ -69,7 +87,7 @@ public sealed class UserInput : BaseUserInput
 
     private void SwitchCharacter()
     {
-        _observation[_current].Change();
+        _observation[_current].Stop();
         var previous = _observation[_current].GetComponent<Player>();
         previous.Deselect();
 
@@ -80,9 +98,6 @@ public sealed class UserInput : BaseUserInput
         CharacterSwithed?.Invoke(player);
         player.Select();
     }
-
-    //ToDo:Remove to observations
-    
 
     private void StayOnPause()
     {

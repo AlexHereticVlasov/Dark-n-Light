@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8801990675971654382}
   - component: {fileID: 3629191749358113182}
   - component: {fileID: 7898528089977767900}
+  - component: {fileID: 8572618752691213350}
   m_Layer: 0
   m_Name: DestructableBlock
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a90e348d0a052a44bacef1ce982b924e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4f7ede23b9d6a944c892ebb244fe12c6, type: 3}
-  m_Color: {r: 0.27467555, g: 0, b: 0.6698113, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,6 +165,7 @@ MonoBehaviour:
   _renderer: {fileID: 8801990675971654368}
   _bean: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
   _shadowCaster: {fileID: 3629191749358113182}
+  _effect: {fileID: 8572618752691213350}
 --- !u!114 &3629191749358113182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 123590
+  m_InstanceId: 46938
 --- !u!114 &7898528089977767900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +205,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectBeans: {fileID: 11400000, guid: 3497df18ee01d254b973675551330e6e, type: 2}
+--- !u!114 &8572618752691213350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801990675971654372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4947edd8c85c54da8c8229ff1d2236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,15 +8,9 @@ public class Victory : MonoBehaviour
 
     public event UnityAction Win;
 
-    private void OnEnable()
-    {
-        _endZone.Victory += OnVictory;
-    }
+    private void OnEnable() => _endZone.Victory += OnVictory;
 
-    private void OnDisable()
-    {
-        _endZone.Victory -= OnVictory;
-    }
+    private void OnDisable() => _endZone.Victory -= OnVictory;
 
     private void OnVictory()
     {

@@ -27,6 +27,20 @@ public sealed class LightBridgeEditor : Editor
     }
 }
 
+[CustomEditor(typeof(FlameBridge))]
+public sealed class FlameBridgeEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var flameBridge = (MagicBridge)target;
+        if (GUILayout.Button(nameof(flameBridge.Recolor)))
+            flameBridge.Recolor();
+    }
+}
+
+
 [CustomEditor(typeof(VoidBridge))]
 public sealed class VoidBridgeEditor : Editor
 {

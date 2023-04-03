@@ -289,7 +289,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: This power belongs to me!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &60524153
@@ -1068,7 +1068,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &298102011
@@ -1997,6 +1997,7 @@ GameObject:
   - component: {fileID: 858587851}
   - component: {fileID: 858587855}
   - component: {fileID: 858587856}
+  - component: {fileID: 858587857}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2091,6 +2092,420 @@ MonoBehaviour:
   _image: {fileID: 1643220496}
   _header: {fileID: 883259047}
   _description: {fileID: 298102010}
+--- !u!114 &858587857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858587850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41ec24ad5f84274f86e3471f3732ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField:
+    _levels:
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
+    - <WasComplited>k__BackingField: 0
+      <Score>k__BackingField: 0
 --- !u!1 &883259045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,8 +2771,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3026,7 +3441,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: I surrender...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3090,7 +3505,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1542108726
@@ -3463,8 +3878,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3714,8 +4129,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3915,8 +4330,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4140,7 +4555,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4204,7 +4619,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2030666851
@@ -4274,8 +4689,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4408,8 +4823,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: achievements
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4542,7 +4957,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Is that all you' ve got?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_sharedMaterial: {fileID: -3999325413104323415, guid: 46143976e96e2644c80b0a1fe8afa6ac, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4606,7 +5021,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2096484288

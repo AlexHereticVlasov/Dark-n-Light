@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public sealed class RotatableMirror : BaseActivailiable
 {
+    [SerializeField, Range(0, 360)] private float _angle;
     [SerializeField] private float _rotationSpeed = 90;
 
     private Coroutine _rotationRoutine;
@@ -16,7 +18,7 @@ public sealed class RotatableMirror : BaseActivailiable
 
     private IEnumerator Rotate()
     {
-        float angle = 90;
+        float angle = _angle;
         while (angle > 0)
         {
             float delta = _rotationSpeed * Time.deltaTime;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Cinemachine;
 using System;
 
@@ -12,6 +13,8 @@ public sealed class CameraFollow : MonoBehaviour
     private Coroutine _zoomRoutine;
     private float factor;
     private float _target;
+
+    public event UnityAction<float> SizeChanged;
 
     public void ChangeTarget(Transform target) => _virtualCamera.Follow = target;
 
@@ -30,12 +33,15 @@ public sealed class CameraFollow : MonoBehaviour
         factor = _virtualCamera.m_Lens.OrthographicSize;
         while (func())
         {
-            yield return null;
+            //yield return null;
             factor += Time.deltaTime * speed;
             _virtualCamera.m_Lens.OrthographicSize = factor;
+            SizeChanged?.Invoke(_virtualCamera.m_Lens.OrthographicSize);
+            yield return new WaitForEndOfFrame();
         }
 
         _virtualCamera.m_Lens.OrthographicSize = target;
+        SizeChanged?.Invoke(_virtualCamera.m_Lens.OrthographicSize);
         _zoomRoutine = null;
     }
 }

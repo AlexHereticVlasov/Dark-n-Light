@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.55
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 8d94a545
+  m_ApplyToSortingLayers: 8d94a5459778bbd6
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 1
   m_LightOrder: 0
@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 8961394286306045115}
   - component: {fileID: 8752219001852813759}
   - component: {fileID: 3801780852968489013}
+  - component: {fileID: 6565881240537324548}
   m_Layer: 6
   m_Name: TestCharacter
   m_TagString: Untagged
@@ -416,6 +417,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _observation: {fileID: 3958576347205188237}
   _movement: {fileID: 1491020840375961381}
+  _configs:
+  - {fileID: 11400000, guid: 7a1214543e60eba44b16dacd7c92cb58, type: 2}
+  - {fileID: 11400000, guid: 420abc0dfa8d0d34488e164ffb94ee31, type: 2}
+  - {fileID: 11400000, guid: 1bb8229c39128be45aca2e840ff39b2a, type: 2}
+  - {fileID: 11400000, guid: 748a8a2b497674a47a0fa099aebf913e, type: 2}
+  - {fileID: 11400000, guid: b309e015a8e19d544b49330d6dc424e4, type: 2}
+  - {fileID: 11400000, guid: a9b92760593532846b7f9401b1412559, type: 2}
   <Element>k__BackingField: 1
 --- !u!114 &3958576347205188237
 MonoBehaviour:
@@ -429,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bf4ac326b8b114a9c1b82eb9739c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 3958576347205188227}
   _groundCheckPoints:
   - {fileID: 8505550362243625068}
   - {fileID: 459874064241264754}
@@ -456,7 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 3958576347205188227}
-  _speed: 3.25
 --- !u!114 &1884328079657680510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +519,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455657961ca821b4dac0bc6d43233867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6565881240537324548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3958576347205188236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d48b8c1863ff0a418a7d79f655d275d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 3958576347205188226}
+  _collider: {fileID: 3958576347205188224}
+  _template: {fileID: 4332783504692177915, guid: 7b91c9a1e61f7ed419afbd72f2dd32ff, type: 3}
 --- !u!1 &5043048037571203759
 GameObject:
   m_ObjectHideFlags: 0

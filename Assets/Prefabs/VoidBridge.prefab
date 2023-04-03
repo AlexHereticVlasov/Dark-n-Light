@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 360698197794051081}
   - component: {fileID: 360698197794051080}
   - component: {fileID: 360698197794051078}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VoidBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4881,4 +4881,5 @@ MonoBehaviour:
   _particles: {fileID: 559818421741855005}
   _collider: {fileID: 360698197794051081}
   _size: {x: 5, y: 1}
+  _rateOverTimeMultiplier: 1
   <IsActive>k__BackingField: 0

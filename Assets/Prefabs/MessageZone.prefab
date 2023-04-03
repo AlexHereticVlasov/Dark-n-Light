@@ -68,15 +68,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Can You hear me?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e378730c973eb6548aec6618538e8f11, type: 2}
-  m_sharedMaterial: {fileID: -3999325413104323415, guid: e378730c973eb6548aec6618538e8f11, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
+  m_sharedMaterial: {fileID: 6570996011392745089, guid: d7d880cfbb6857548b8fa7bd48f8b49d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280098161
-  m_fontColor: {r: 0.4433962, g: 0.11503205, b: 0.11503205, a: 1}
+    rgba: 4280098236
+  m_fontColor: {r: 0.735849, g: 0.114542544, b: 0.114542544, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535

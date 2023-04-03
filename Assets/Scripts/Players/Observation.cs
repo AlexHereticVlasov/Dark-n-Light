@@ -1,20 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Observation : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private GroundCheckPoint[] _groundCheckPoints;
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private LayerMask _blockMask;
     [SerializeField] private LayerMask _interactableMask;
-
-    private int _facingDirection = 1;
+    //private int _facingDirection = 1;
 
     [field:SerializeField] public CoyotityTime CayotityTime { get; private set; }
 
     public float Direction { get; private set; }
     public bool IsJumping { get; private set; }
     public bool IsInteract { get; private set; }
+    public bool IsOnIce { get; private set; }
+    public float YVelocity => _rigidbody.velocity.y;
 
     public void SetDirection(float direction)
     {
@@ -24,26 +27,16 @@ public class Observation : MonoBehaviour
         Direction = direction;
     }
     
-    private bool IsNeedToFlip(float direction) => direction != 0 && Mathf.Sign(direction) != _facingDirection;
+    private bool IsNeedToFlip(float direction) => direction != 0 && Mathf.Sign(direction) != Mathf.Sign(transform.localScale.x) /*_facingDirection*/;
 
-    private void Flip()
-    {
-        _facingDirection *= -1;
-        transform.localScale = new Vector3(transform.localScale.x * -1,
-                                           transform.localScale.y);
-    }
+    private void Flip() => transform.localScale = new Vector3(transform.localScale.x * -1,
+                                                              transform.localScale.y);
 
-    public void Change() => Direction = 0;
+    public void Stop() => Direction = 0;
 
     public void SetIsJumping(bool value) => IsJumping = value;
 
     public void SetIsInteract(bool value) => IsInteract = value;
-
-    public void TryInteract()
-    {
-        if (true)
-            SetIsInteract(true);
-    }
 
     //TODO:Create new classes for RayCheck
     public bool IsOnEarth()
@@ -55,7 +48,7 @@ public class Observation : MonoBehaviour
         return false;
     }
 
-    public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(_facingDirection, 0), 0.55f, _blockMask);
+    public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(/*_facingDirection*/ transform.localScale.x, 0), 0.55f, _blockMask);
 
     public Transform GetDestinaton()
     {
@@ -67,16 +60,12 @@ public class Observation : MonoBehaviour
         throw new Exception("No ExitZone");
     }
 
-    public bool CanJump()
-    {
-        return IsOnEarth() || CayotityTime.CanJump();
-    }
+    public bool CanJump() => IsOnEarth() || CayotityTime.CanJump();
 
     public void ResetCayotityTime() => CayotityTime.ResetValue();
 
     public bool CanInteract()
     {
-        //ToDO: Masks and etc...
         var colliders = Physics2D.OverlapCircleAll(transform.position, Constants.InteractionRadius, _interactableMask);
         foreach (var collider in colliders)
             if (collider.TryGetComponent(out IInteractable interactable))
@@ -84,6 +73,8 @@ public class Observation : MonoBehaviour
 
         return false;
     }
+
+    public void SetIsOnIce(bool value) => IsOnIce = value;
 }
 
 public class RayCheck : MonoBehaviour

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7df58050e2aff4c98b253ffc4c3dcc, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-  <MainColor>k__BackingField: {r: 0.02745098, g: 0.67058825, b: 0.03529412, a: 1}
   _particles:
   - {fileID: 198289174273238766, guid: a18abcc036ab57445b15bc526991da46, type: 3}
   - {fileID: 198652190930494444, guid: 7e59152fc3be99d4aa2760fb61212ce2, type: 3}
+  <MainColor>k__BackingField: {r: 0.02745098, g: 0.67058825, b: 0.03529412, a: 1}
+  <AdditionalColor>k__BackingField: {r: 0.02745098, g: 0.67058825, b: 0.03529412, a: 1}
+  <Body>k__BackingField: {fileID: 0}
+  <PoolMaterial>k__BackingField: {fileID: 2100000, guid: 34632d1ffa0fc9a489d04974d4e113e0, type: 2}
+  <DestructableStone>k__BackingField: {fileID: 21300000, guid: 43c512a8eb42e5945b4519325b36c1f1, type: 3}

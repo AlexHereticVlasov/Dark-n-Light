@@ -9,7 +9,6 @@ public class BaseZone : MonoBehaviour
         if (collision.TryGetComponent(out Player player))
             _enterEffect.Apply(player);
     }
-
 }
 
 

@@ -27,6 +27,7 @@ public class RestorableBlock : BaseDestructableBlock
     protected override void Restore()
     {
         base.Restore();
+        _isMelted = false;
         _collider.enabled = true;
     }
 }

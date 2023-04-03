@@ -7,7 +7,6 @@ public sealed class Diamond : BaseCollectable
 {
     [SerializeField] private Collider2D _collider;
     [Inject] private BazierCurve _curve;
-    //[SerializeField] private ParticleSystem _particles;
 
     public event UnityAction StartCollected;
     public event UnityAction EndCollected;
@@ -19,7 +18,7 @@ public sealed class Diamond : BaseCollectable
         StartCollected?.Invoke();
         _collider.enabled = false;
         Spawn();
-        //ToDo: Start BezierRoutine
+
         yield return Fly();
         yield return base.Collect(player);
 

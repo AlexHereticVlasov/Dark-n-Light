@@ -32,8 +32,3 @@ public class Rune : BaseCollectable
 {
     protected override bool CanCollect(Player player) => true;
 }
-
-public class GeluPart : BaseCollectable
-{
-    protected override bool CanCollect(Player player) => true;
-}

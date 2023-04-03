@@ -63,8 +63,38 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeLevels/Level 14(P) - Glass Block.unity
     guid: 878c87e60dfc123449a05c7acdbcd128
   - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 15(P).unity
+    guid: cb5db850425df204b8ea951f2e400b00
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 16(P) - FakeDeathWall.unity
+    guid: 6e2ecfa7fe7f397438db01891f333095
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 17(P).unity
+    guid: 190989a28ff5f4a45898e6e5641c1f61
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 18(P) In Tubes.unity
+    guid: c20944742a4851646925d307e10d511f
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 19(P) - Undone.unity
+    guid: 3b7c78e7134a7054b9d23e20afc084da
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 20(P) - Stone Rock Down.unity
+    guid: ef490336937aa0c4e8ba5da5785e193f
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Level 21(P).unity
     guid: 6fdeb26c0d5cece45a7b7a85801608a6
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 22(P) - Save Aqua and Igni.unity
+    guid: 0842a48cb2405ab45ad46bb76c89c6a5
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 23(P) - Umbra and Aqua.unity
+    guid: 2851959828f226a4ea295282b54f75d9
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 24(P) - Lux and Igni.unity
+    guid: 55b6812bd538be14c915fe53f6e954aa
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level 25(P) - Part of Gelu.unity
+    guid: 152e8786cd2c1b84cbc5632663cae833
   - enabled: 1
     path: Assets/Scenes/PrototypeLevels/DemoEndScene.unity
     guid: cb66c7735523d7f4ca9116c686339423

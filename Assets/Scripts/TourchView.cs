@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class TourchView : MonoBehaviour
+public class TourchView : MonoBehaviour, IObjectViev
 {
     [SerializeField] private Light2D _light;
+    [SerializeField] private Light2D _subLight;
     [SerializeField] private Tourch _tourch;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private ParticleSystem _orb;
+    [SerializeField] private SpriteRenderer _mark;
 
     private void OnEnable()
     {
@@ -32,6 +34,7 @@ public class TourchView : MonoBehaviour
     {
         _renderer.color = Color.white;
         _light.gameObject.SetActive(false);
+        _subLight.gameObject.SetActive(false);
         _orb.Stop();
     }
 
@@ -39,6 +42,9 @@ public class TourchView : MonoBehaviour
     {
         _renderer.color = Color.yellow;
         _light.gameObject.SetActive(true);
+        _subLight.gameObject.SetActive(true);
         _orb.Play();
     }
+
+    public void ChangeColor(Color color) => _mark.color = color;
 }
