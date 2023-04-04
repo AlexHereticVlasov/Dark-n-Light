@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Zenject;
 
-//Undone: Reflection has a treamble problem when main camera stands close to camera Boarders
 
 public sealed class WaterCameraFollow : MonoBehaviour
 {
@@ -43,7 +42,12 @@ public sealed class WaterCameraFollow : MonoBehaviour
         {
             _previousPosition = Camera.main.transform.position;
             _waterCamera.transform.position = new Vector3(_previousPosition.x, _currentY, _z);
+            ClampLocalPosition();
             transform.position = new Vector3(_previousPosition.x, _y, _z);
         }
     }
+
+    private void ClampLocalPosition() => _waterCamera.transform.localPosition = new Vector3(0,
+                                         _waterCamera.transform.localPosition.y,
+                                         _waterCamera.transform.localPosition.z);
 }
