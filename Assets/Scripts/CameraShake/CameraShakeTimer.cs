@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace CameraSharer
+namespace CameraShaker
 {
     public sealed class CameraShakeTimer : MonoBehaviour
     {

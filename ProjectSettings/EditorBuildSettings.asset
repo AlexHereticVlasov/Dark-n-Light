@@ -81,7 +81,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeLevels/Level 20(P) - Stone Rock Down.unity
     guid: ef490336937aa0c4e8ba5da5785e193f
   - enabled: 1
-    path: Assets/Scenes/PrototypeLevels/Level 21(P).unity
+    path: Assets/Scenes/PrototypeLevels/Level XX1(P).unity
     guid: 6fdeb26c0d5cece45a7b7a85801608a6
   - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Level 22(P) - Save Aqua and Igni.unity

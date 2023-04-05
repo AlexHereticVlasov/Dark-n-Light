@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace CameraSharer
+namespace CameraShaker
 {
     public sealed class CameraShake : MonoBehaviour
     {

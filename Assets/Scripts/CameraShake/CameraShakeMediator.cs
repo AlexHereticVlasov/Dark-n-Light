@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace CameraSharer
+namespace CameraShaker
 {
     public sealed class CameraShakeMediator : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using CameraSharer;
+﻿using CameraShaker;
 using UnityEngine;
 using Zenject;
 

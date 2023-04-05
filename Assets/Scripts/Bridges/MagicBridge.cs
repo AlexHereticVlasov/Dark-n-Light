@@ -34,14 +34,22 @@ public abstract class MagicBridge : BaseActivailiable, IRecoloreable
             throw new System.Exception("Size sides must be more then zero");
 
         _collider.size = _size;
-
-        var shape = _particles.shape;
-        shape.scale = _size;
-
-        var emission = _particles.emission;
-        emission.rateOverTime = Mathf.RoundToInt(100 * _size.x * _size.y * _rateOverTimeMultiplier);
+        SetParticlesShapeSize();
+        SetParticlesEmissionRateOverTime();
 
         //ToDo: Change color here if it need
+    }
+
+    private void SetParticlesEmissionRateOverTime()
+    {
+        var emission = _particles.emission;
+        emission.rateOverTime = Mathf.RoundToInt(100 * _size.x * _size.y * _rateOverTimeMultiplier);
+    }
+
+    private void SetParticlesShapeSize()
+    {
+        var shape = _particles.shape;
+        shape.scale = _size;
     }
 }
 
