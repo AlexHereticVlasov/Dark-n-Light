@@ -11,8 +11,5 @@ public sealed class SlideShowView : MonoBehaviour
 
     private void OnDisable() => _slideShow.SlideChanged -= OnSlideChanged;
 
-    private void OnSlideChanged(Slide slide)
-    {
-        _text.text = slide.Message.Text;
-    }
+    private void OnSlideChanged(Slide slide) => _text.text = slide.Message.Text;
 }

@@ -104,6 +104,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         _movement.Unfreaze();
         _stateMachine.ChangeState(IdleState);
         Unlished?.Invoke();
+        transform.SetParent(null);
     }
 
     public void Capture()

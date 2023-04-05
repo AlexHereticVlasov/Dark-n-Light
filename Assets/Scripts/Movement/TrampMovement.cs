@@ -11,11 +11,19 @@ public class TrampMovement : BaseMovement
         float delta = Time.deltaTime * _speed;
         Vector2 target = _path.GetPoint(_currentPoint);
         transform.position = Vector2.MoveTowards(transform.position, target, delta);
+        CheckIsDestinationReached(delta, target);
+    }
+
+    private void CheckIsDestinationReached(float delta, Vector2 target)
+    {
         if (Vector2.Distance(transform.position, target) < delta)
-        {
-            transform.position = target;
-            _currentPoint++;
-            _currentPoint %= _path.Count;
-        }
+            EndMovement(target);
+    }
+
+    private void EndMovement(Vector2 target)
+    {
+        transform.position = target;
+        _currentPoint++;
+        _currentPoint %= _path.Count;
     }
 }

@@ -9,8 +9,6 @@ public sealed class Inventory : MonoBehaviour
 
     private int[] _diamonds;
     private int[] _collected;
-
-    
     
     public void Init(int[] diamonds)
     {
@@ -24,7 +22,11 @@ public sealed class Inventory : MonoBehaviour
         _diamonds[(int)element]--;
         _collected[(int)element]++;
         AmountChanged?.Invoke(_diamonds);
+        CheckIsAllCollected(element);
+    }
 
+    private void CheckIsAllCollected(Elements element)
+    {
         if (_diamonds[(int)element] == 0)
             AllWasCollected?.Invoke(element);
     }

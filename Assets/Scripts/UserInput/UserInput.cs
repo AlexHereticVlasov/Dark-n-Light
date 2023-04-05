@@ -35,9 +35,7 @@ public sealed class UserInput : BaseUserInput
 
         //ToDo: Jumps power
         if (ShouldStartJump())
-        {
             TryJump();
-        }
 
         if (ShouldJump())
         {
@@ -55,12 +53,6 @@ public sealed class UserInput : BaseUserInput
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
             _cameraFollow.ChangeView();
-
-        //Hack:DebugOnly
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //Hide/Show Canvas
-        }
     }
 
     private bool ShouldInteract() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F);

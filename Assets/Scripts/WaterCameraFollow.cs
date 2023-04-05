@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using Zenject;
 
-
 public sealed class WaterCameraFollow : MonoBehaviour
 {
     [SerializeField] private Camera _waterCamera;
+    [SerializeField] private Transform _viev;
 
     [Inject] private CameraFollow _cameraFollow;
-    [SerializeField] private Transform _viev;
 
     private float _y;
     private float _currentY;
@@ -23,19 +22,6 @@ public sealed class WaterCameraFollow : MonoBehaviour
 
     private void OnEnable() => _cameraFollow.SizeChanged += OnSizeChanged;
 
-    private void OnDisable() => _cameraFollow.SizeChanged -= OnSizeChanged;
-
-    private void OnSizeChanged(float size)
-    {
-        float screenRatio = (float)Screen.width / (float)Screen.height;
-        float screenHeightInUnits = size * 2;
-        float screenWidthInUnits = screenHeightInUnits * screenRatio;
-
-        _viev.localScale = new Vector3(screenWidthInUnits, _viev.localScale.y);
-        _waterCamera.orthographicSize = size;
-        _currentY = _y - 5 + size;
-    }
-
     private void Update()
     {
         if (Camera.main.transform.position != _previousPosition)
@@ -45,6 +31,23 @@ public sealed class WaterCameraFollow : MonoBehaviour
             ClampLocalPosition();
             transform.position = new Vector3(_previousPosition.x, _y, _z);
         }
+    }
+
+    private void OnDisable() => _cameraFollow.SizeChanged -= OnSizeChanged;
+
+    private void OnSizeChanged(float size)
+    {
+        float screenWidthInUnits = CalculateWidthInUnits(size);
+        _viev.localScale = new Vector3(screenWidthInUnits, _viev.localScale.y);
+        _waterCamera.orthographicSize = size;
+        _currentY = _y - 5 + size;
+    }
+
+    private float CalculateWidthInUnits(float size)
+    {
+        float screenRatio = Screen.width / (float)Screen.height;
+        float screenHeightInUnits = size * 2;
+        return screenHeightInUnits * screenRatio;
     }
 
     private void ClampLocalPosition() => _waterCamera.transform.localPosition = new Vector3(0,

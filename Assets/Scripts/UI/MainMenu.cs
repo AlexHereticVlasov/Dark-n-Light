@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 
-public class MainMenu : MonoBehaviour
+public sealed class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] _panels;
     

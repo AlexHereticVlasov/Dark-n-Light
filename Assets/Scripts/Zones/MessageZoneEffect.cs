@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 //ToDo: Think About Linked message zone effects
-public class MessageZoneEffect : BaseZoneEffect
+public sealed class MessageZoneEffect : BaseZoneEffect
 {
     [SerializeField] private Message _message;
     [SerializeField] private float _delay = 0;

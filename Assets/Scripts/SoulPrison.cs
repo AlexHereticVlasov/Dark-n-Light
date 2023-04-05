@@ -14,7 +14,6 @@ public class SoulPrison : MonoBehaviour, IDamageable, IEffectOrigin
         _collider.enabled = false;
         var player = transform.GetChild(0).GetComponent<Player>();
         player.Unlish();
-        player.transform.SetParent(null);
         Spawned?.Invoke(Element);
         Destroy(gameObject);
     }

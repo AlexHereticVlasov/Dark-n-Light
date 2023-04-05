@@ -25,9 +25,11 @@ public sealed class LoadingScreen : MonoBehaviour
 
     private void OnLoading(float progress)
     {
-        progress = Mathf.Clamp01(progress / 0.9f);
+        progress = Mathf.Clamp01(progress / 0.9f);                    
         _loadBar.value = progress;
-        _progressText.text = $"{ Mathf.RoundToInt(progress * 100)}%";
+        _progressText.text = $"{ Mathf.RoundToInt(progress * 100)}%"; 
+        //ToDo: Create a LoadingScreenPresenter to convert values to simple data end send it to View 
+        //ToDo: Create a loading ScreenView class to set this value
     }
 
     private void OnStartLoading() => _loadingScreen.SetActive(true);

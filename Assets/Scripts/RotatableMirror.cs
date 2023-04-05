@@ -21,15 +21,24 @@ public sealed class RotatableMirror : BaseActivailiable
         float angle = _angle;
         while (angle > 0)
         {
-            float delta = _rotationSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.back, delta);
-            angle -= delta;
-
+            angle = ChangeAngle(angle);
             yield return null;
         }
 
-        transform.Rotate(Vector3.back, angle);
+        EndRotation(angle);
+    }
 
+    private void EndRotation(float angle)
+    {
+        transform.Rotate(Vector3.back, angle);
         _rotationRoutine = null;
+    }
+
+    private float ChangeAngle(float angle)
+    {
+        float delta = _rotationSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.back, delta);
+        angle -= delta;
+        return angle;
     }
 }

@@ -32,16 +32,22 @@ public sealed class CameraFollow : MonoBehaviour
         _target = target;
         factor = _virtualCamera.m_Lens.OrthographicSize;
         while (func())
-        {
-            //yield return null;
-            factor += Time.deltaTime * speed;
-            _virtualCamera.m_Lens.OrthographicSize = factor;
-            SizeChanged?.Invoke(_virtualCamera.m_Lens.OrthographicSize);
-            yield return new WaitForEndOfFrame();
-        }
+            yield return ChangeZoom(speed);
+        EndZoom();
+    }
 
-        _virtualCamera.m_Lens.OrthographicSize = target;
+    private void EndZoom()
+    {
+        _virtualCamera.m_Lens.OrthographicSize = _target;
         SizeChanged?.Invoke(_virtualCamera.m_Lens.OrthographicSize);
         _zoomRoutine = null;
+    }
+
+    private IEnumerator ChangeZoom(float speed)
+    {
+        factor += Time.deltaTime * speed;
+        _virtualCamera.m_Lens.OrthographicSize = factor;
+        SizeChanged?.Invoke(_virtualCamera.m_Lens.OrthographicSize);
+        yield return new WaitForEndOfFrame();
     }
 }

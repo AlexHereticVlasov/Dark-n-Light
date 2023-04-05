@@ -1,4 +1,4 @@
-﻿public class WayPoint : BasePoint
+﻿public sealed class WayPoint : BasePoint
 { 
 
 }

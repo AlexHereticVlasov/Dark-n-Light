@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace CameraSharer
 {
-    public class CameraShakeTimer : MonoBehaviour
+    public sealed class CameraShakeTimer : MonoBehaviour
     {
         [SerializeField] private float _averageRate;
         [SerializeField] private float _rateDiviaton;
@@ -17,12 +17,18 @@ namespace CameraSharer
         private void Update()
         {
             _timer -= Time.deltaTime;
+            CheckIsTimeIsRunningOut();
+        }
+
+        private void CheckIsTimeIsRunningOut()
+        {
             if (_timer <= 0)
             {
                 RecalculateTimer();
                 TimeIsRunnongOut?.Invoke();
             }
         }
+
         private void RecalculateTimer() => _timer = Random.Range(_averageRate - _rateDiviaton,
                                                              _averageRate + _rateDiviaton);
     }

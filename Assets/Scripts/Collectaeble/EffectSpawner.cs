@@ -9,24 +9,31 @@ public class EffectSpawner : MonoBehaviour
     private void Awake()
     {
         _effectOrigin = GetComponent<IEffectOrigin>();
-
-        if (_effectOrigin == null)
-            throw new System.Exception($"{name} at {transform.position} doesn't containe Component that emplement {nameof(IEffectOrigin)} interface");
+        CheckIsEffectoriginContaines();
     }
 
     private void OnEnable() => _effectOrigin.Spawned += OnSpawned;
 
     private void OnDisable() => _effectOrigin.Spawned -= OnSpawned;
 
-    private void OnSpawned(Elements elements) => SpawnEffect(elements);
+    private void OnSpawned(Elements elements) => SpawnEffects(elements);
 
-    private void SpawnEffect(Elements elements)
+    private void SpawnEffects(Elements elements)
     {
         foreach (var particle in _effectBeans[elements].Particles)
-        {
-            var effect = Instantiate(particle, transform.position, Quaternion.identity);
-            float duration = effect.main.duration;
-            Destroy(effect, duration);
-        }
+            SpawnEffect(particle);
+    }
+
+    private void SpawnEffect(ParticleSystem particle)
+    {
+        var effect = Instantiate(particle, transform.position, Quaternion.identity);
+        float duration = effect.main.duration;
+        Destroy(effect, duration);
+    }
+
+    private void CheckIsEffectoriginContaines()
+    {
+        if (_effectOrigin == null)
+            throw new System.Exception($"{name} at {transform.position} doesn't containe Component that emplement {nameof(IEffectOrigin)} interface");
     }
 }

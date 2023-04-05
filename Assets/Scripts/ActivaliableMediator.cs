@@ -34,8 +34,7 @@ public class ActivaliableMediator : MonoBehaviour
 
         _isActive = false;
 
-        foreach (var activailiable in _activailiables)
-            activailiable.Deactivate();
+        DeactivateAll();
     }
 
     private void OnActivated()
@@ -43,7 +42,16 @@ public class ActivaliableMediator : MonoBehaviour
         if (_isActive) return;
 
         _isActive = true;
+        ActivateAll();
+    }
+    private void DeactivateAll()
+    {
+        foreach (var activailiable in _activailiables)
+            activailiable.Deactivate();
+    }
 
+    private void ActivateAll()
+    {
         foreach (var activailiable in _activailiables)
             activailiable.Activate();
     }

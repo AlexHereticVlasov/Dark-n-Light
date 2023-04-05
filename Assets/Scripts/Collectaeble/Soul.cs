@@ -20,7 +20,6 @@ public class Soul : BaseCollectable
 
     private IEnumerator FlyRoutine()
     {
-        //Fly to destination Point
         while (IsTargetReached() == false)
         {
             transform.position = Vector2.MoveTowards(transform.position, _destination.transform.position,

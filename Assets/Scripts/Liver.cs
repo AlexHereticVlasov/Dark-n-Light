@@ -25,7 +25,11 @@ public sealed class Liver : MonoBehaviour
         if (_previousPosition == transform.localPosition) return;
 
         _previousPosition = transform.position;
+        ChangePosition();
+    }
 
+    private void ChangePosition()
+    {
         float x = transform.localPosition.x;
         x = Mathf.Clamp(x, MinOffset, MaxOffset);
         transform.localPosition = new Vector2(x, transform.localPosition.y);

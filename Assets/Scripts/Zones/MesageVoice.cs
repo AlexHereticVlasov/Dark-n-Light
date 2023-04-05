@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MesageVoice : MonoBehaviour
+public sealed class MesageVoice : MonoBehaviour
 {
     [SerializeField] private MessageZoneEffect _zoneEffect;
     [SerializeField] private AudioSource _source;

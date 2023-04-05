@@ -41,7 +41,7 @@ public class DestructableBlockView : MonoBehaviour, IRecoloreable
 
     public void Recolor()
     {
-        if (_block is DestructableBlock block)
+        if (_block is DestructableBlock)
         {
             _renderer.color = Color.white;
             _renderer.sprite = _bean[_block.Element].DestructableStone;

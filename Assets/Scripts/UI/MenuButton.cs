@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using Zenject;
 
-public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public sealed class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Inject] private MenuHint _hint;
     [SerializeField] private string _message;
