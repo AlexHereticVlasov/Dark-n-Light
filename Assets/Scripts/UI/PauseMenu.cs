@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+using SceneLoad;
 
 public sealed class PauseMenu : MonoBehaviour
 {

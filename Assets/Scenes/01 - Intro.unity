@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 5883441}
   - component: {fileID: 5883439}
   - component: {fileID: 5883440}
+  - component: {fileID: 5883445}
+  - component: {fileID: 5883444}
   - component: {fileID: 5883442}
   - component: {fileID: 5883443}
   m_Layer: 0
@@ -167,8 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea9f9d2853942141b8c42473e962b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadBar: {fileID: 1158542930}
-  _progressText: {fileID: 1701130730}
   _loadingScreen: {fileID: 45185021}
 --- !u!4 &5883441
 Transform:
@@ -211,6 +211,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 664223390}
+--- !u!114 &5883444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b65b801505e0634fa3fa77677634ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadBar: {fileID: 1158542930}
+  _progressText: {fileID: 1701130730}
+  _presenter: {fileID: 5883445}
+--- !u!114 &5883445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7526c4f18b111c3438feb7974881b847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screen: {fileID: 5883440}
 --- !u!1 &45185021 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5913547415919112042, guid: 6a51c5ae4ca39ae4cb7d859b7c797aaa, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Zenject;
+using SceneLoad;
 
 public sealed class Opening : MonoBehaviour
 {

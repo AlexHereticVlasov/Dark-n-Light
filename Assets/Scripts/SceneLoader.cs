@@ -3,31 +3,34 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public sealed class SceneLoader : MonoBehaviour
+namespace SceneLoad
 {
-    public event UnityAction StartLoading;
-    public event UnityAction<float> Loading;
-
-    private int SceneIndex => SceneManager.GetActiveScene().buildIndex;
-
-    public void LoadScene(int buildIndex) => StartCoroutine(Load(buildIndex));
-
-    public void LoadNextScene() => StartCoroutine(Load(GetCurrentSceneIndex() + 1));
-
-    public void Restart() => LoadScene(SceneIndex);
-
-    private IEnumerator Load(int buildIndex)
+    public sealed class SceneLoader : MonoBehaviour
     {
-        StartLoading?.Invoke();
+        public event UnityAction StartLoading;
+        public event UnityAction<float> Loading;
 
-        var asyncOperation = SceneManager.LoadSceneAsync(buildIndex);
+        private int SceneIndex => SceneManager.GetActiveScene().buildIndex;
 
-        while (asyncOperation.isDone == false)
+        public void LoadScene(int buildIndex) => StartCoroutine(Load(buildIndex));
+
+        public void LoadNextScene() => StartCoroutine(Load(GetCurrentSceneIndex() + 1));
+
+        public void Restart() => LoadScene(SceneIndex);
+
+        private IEnumerator Load(int buildIndex)
         {
-            Loading?.Invoke(asyncOperation.progress);
-            yield return null;
-        }
-    }
+            StartLoading?.Invoke();
 
-    private int GetCurrentSceneIndex() => SceneManager.GetActiveScene().buildIndex;
+            var asyncOperation = SceneManager.LoadSceneAsync(buildIndex);
+
+            while (asyncOperation.isDone == false)
+            {
+                Loading?.Invoke(asyncOperation.progress);
+                yield return null;
+            }
+        }
+
+        private int GetCurrentSceneIndex() => SceneManager.GetActiveScene().buildIndex;
+    }
 }
