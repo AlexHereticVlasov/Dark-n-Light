@@ -1,18 +1,9 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
-public class LevelFadePanel : MonoBehaviour
+public sealed class LevelFadePanel : BaseFadePanel
 {
-    private const string FadeIn = "FadeIn";
-
-    [SerializeField] private Animator _animator;
-    
     [Inject] private Lose _lose;
     [Inject] private Victory _victory;
-
-    private int _fadeInHash;
-
-    private void Awake() => _fadeInHash = Animator.StringToHash(FadeIn);
 
     private void OnEnable()
     {
@@ -26,7 +17,7 @@ public class LevelFadePanel : MonoBehaviour
         _lose.Defeate -= OnDefeate;
     }
 
-    private void OnDefeate() => _animator.SetTrigger(_fadeInHash);
+    private void OnDefeate() => FadeIn();
 
-    private void OnWin() => _animator.SetTrigger(_fadeInHash);
+    private void OnWin() => FadeIn();
 }

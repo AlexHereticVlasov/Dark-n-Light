@@ -1,16 +1,23 @@
 using UnityEngine;
 using Zenject;
 using SceneLoad;
-
+using System.Collections;
 
 public sealed class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] _panels;
-    
+    [SerializeField] private BaseFadePanel _fadePanel;
+
     [Inject] private SceneLoader _loader;
 
-    //Hack:TempSolution
-    public void Play() => _loader.LoadScene(Constants.MapSceneIndex);
+    public void Play(int index) => StartCoroutine(StartPlay(index));
+
+    private IEnumerator StartPlay(int index)
+    {
+        _fadePanel.FadeIn();
+        yield return new WaitForSeconds(1);
+        _loader.LoadScene(index);
+    }
 
     public void ShowPanel(GameObject panelToShow)
     {
