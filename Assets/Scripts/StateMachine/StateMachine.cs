@@ -43,23 +43,31 @@ namespace FinalStateMachine
         protected StateMachine _stateMachine;
         protected Player _player;
         protected PlayerSettings _config;
+        protected PlayerMovement _movement;
 
-        public BaseCharacterState(Observation observation, StateMachine machine, Player player, PlayerSettings config)
+        public BaseCharacterState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config)
         {
             _observation = observation;
             _stateMachine = machine;
             _player = player;
             _config = config;
+            _movement = movement;
+        }
+
+        public override void Update()
+        {
+            if (_observation.IsWarp)
+            {
+                _movement.Warp();
+                _observation.SetIsWarp(false);
+            }
         }
     }
 
     public abstract class LevitationState : BaseCharacterState
     {
-        protected PlayerMovement _movement;
-
-        protected LevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        protected LevitationState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
     }
 
@@ -95,15 +103,14 @@ namespace FinalStateMachine
 
     public abstract class OnGroundState : BaseCharacterState
     {
-        protected PlayerMovement _movement;
 
-        protected OnGroundState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        protected OnGroundState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
 
         public override void Update()
         {
+            base.Update();
             if (_observation.IsOnEarth() == false)
                 TransiteToInAirState();
 
@@ -170,19 +177,17 @@ namespace FinalStateMachine
     }
     public abstract class JumpState : BaseCharacterState
     {
-        protected JumpState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
+        protected JumpState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
     }
 
     public class StartJumpState : JumpState
     {
-        private PlayerMovement _movement;
         private float _delay;
 
-        public StartJumpState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        public StartJumpState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
 
         public override void Enter()
@@ -206,11 +211,9 @@ namespace FinalStateMachine
 
     public class InAirState : JumpState
     {
-        private PlayerMovement _movement;
 
-        public InAirState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        public InAirState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
 
         public override void Enter()
@@ -220,6 +223,7 @@ namespace FinalStateMachine
 
         public override void Update()
         {
+            base.Update();
             if (Mathf.Abs(_observation.Direction) > 0.5f)
                 if (_observation.YVelocity > -6)
                     _movement.SetXVelocity(_observation.Direction * _config.NormalSpeed);
@@ -240,7 +244,7 @@ namespace FinalStateMachine
     }
     public class LandingState : JumpState
     {
-        public LandingState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
+        public LandingState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 
@@ -312,11 +316,9 @@ namespace FinalStateMachine
 
     public class DeathState : BaseCharacterState
     {
-        private PlayerMovement _movement;
 
-        public DeathState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        public DeathState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
 
         public override void Enter()
@@ -334,14 +336,12 @@ namespace FinalStateMachine
 
     public class LevelCompliteState : BaseCharacterState
     {
-        PlayerMovement _movement;
         private Transform _destination;
         private float _factor;
         private bool _isComplited;
 
-        public LevelCompliteState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, config)
+        public LevelCompliteState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
-            _movement = movement;
         }
 
         public override void Enter()
@@ -372,7 +372,7 @@ namespace FinalStateMachine
 
     public class InPrisonState : BaseCharacterState
     {
-        public InPrisonState(Observation observation, StateMachine machine, Player player, PlayerSettings config) : base(observation, machine, player, config)
+        public InPrisonState(Observation observation, StateMachine machine, Player player, PlayerMovement movement, PlayerSettings config) : base(observation, machine, player, movement, config)
         {
         }
 

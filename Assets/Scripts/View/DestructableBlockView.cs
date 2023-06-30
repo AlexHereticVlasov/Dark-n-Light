@@ -37,7 +37,7 @@ public class DestructableBlockView : MonoBehaviour, IRecoloreable
 
     private void OnRestored() => _shadowCaster.enabled = true;
 
-    private void OnStartMelted(Elements element) => _shadowCaster.enabled = false;
+    private void OnStartMelted(Elements element, Vector2 position) => _shadowCaster.enabled = false;
 
     public void Recolor()
     {

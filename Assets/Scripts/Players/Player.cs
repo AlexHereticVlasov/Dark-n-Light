@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public event UnityAction Unlished;
     public event UnityAction Captured;
     public event UnityAction Death;
-    public event UnityAction<Elements> Spawned;
+    public event UnityAction<Elements, Vector2> Spawned;
 
     public IdleState IdleState { get; private set; }
     public WalkState WalkState { get; private set; }
@@ -29,8 +29,8 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public LevitationState IdleLevitationState { get; private set; }
     public LevitationState MoveLevitationState { get; private set; }
     public LevelCompliteState LevelCompliteState { get; private set; }
-
     public InPrisonState InPrisonState { get; private set; }
+
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
     private void Awake()
@@ -42,14 +42,14 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         WalkState = new WalkState(_observation, _stateMachine, this, _movement, config);
         StartJumpState = new StartJumpState(_observation, _stateMachine, this, _movement, config);
         InAirState = new InAirState(_observation, _stateMachine, this, _movement, config);
-        LandingState = new LandingState(_observation, _stateMachine, this, config);
+        LandingState = new LandingState(_observation, _stateMachine, this, _movement, config);
         InteractionState = new InteractionState(_observation, _stateMachine, this, _movement, config);
         PushState = new PushState(_observation, _stateMachine, this, _movement, config);
         DeathState = new DeathState(_observation, _stateMachine, this, _movement, config);
         IdleLevitationState = new IdleLevitationState(_observation, _stateMachine, this, _movement, config);
         MoveLevitationState = new MoveLevitationState(_observation, _stateMachine, this, _movement, config);
         LevelCompliteState = new LevelCompliteState(_observation, _stateMachine, this, _movement, config);
-        InPrisonState = new InPrisonState(_observation, _stateMachine, this, config);
+        InPrisonState = new InPrisonState(_observation, _stateMachine, this, _movement, config);
 
         _stateMachine.Init(IdleState);
     }
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     private void Die()
     {
         _stateMachine.ChangeState(DeathState);
-        Spawned?.Invoke(Element);
+        Spawned?.Invoke(Element, transform.position);
         Death?.Invoke();
     }
 

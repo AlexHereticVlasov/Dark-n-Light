@@ -7,14 +7,14 @@ public class SoulPrison : MonoBehaviour, IDamageable, IEffectOrigin
 
     [field:SerializeField] public Elements Element { get; private set; }
 
-    public event UnityAction<Elements> Spawned;
+    public event UnityAction<Elements, Vector2> Spawned;
 
     public void TakeDamage()
     {
         _collider.enabled = false;
         var player = transform.GetChild(0).GetComponent<Player>();
         player.Unlish();
-        Spawned?.Invoke(Element);
+        Spawned?.Invoke(Element, transform.position);
         Destroy(gameObject);
     }
 }

@@ -24,10 +24,9 @@ public class LightPlatform : BaseActivailiable
     {
         if (collision.transform.TryGetComponent(out Player player))
         {
-            if (player.Element == Elements.Dark)
-            {
-                Debug.Log($"{player.name} must Die!");
-            }
+            if (player.Element != Elements.Dark) return;
+
+            Debug.Log($"{player.name} must Die!");
         }
     }
 }

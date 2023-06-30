@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EffectSpawner : MonoBehaviour
+public sealed class EffectSpawner : MonoBehaviour
 {
     [SerializeField] private ElementBean _effectBeans;
 
@@ -16,17 +16,17 @@ public class EffectSpawner : MonoBehaviour
 
     private void OnDisable() => _effectOrigin.Spawned -= OnSpawned;
 
-    private void OnSpawned(Elements elements) => SpawnEffects(elements);
+    private void OnSpawned(Elements elements, Vector2 position) => SpawnEffects(elements, position);
 
-    private void SpawnEffects(Elements elements)
+    private void SpawnEffects(Elements elements, Vector2 position)
     {
         foreach (var particle in _effectBeans[elements].Particles)
-            SpawnEffect(particle);
+            SpawnEffect(particle, position);
     }
 
-    private void SpawnEffect(ParticleSystem particle)
+    private void SpawnEffect(ParticleSystem particle, Vector2 position)
     {
-        var effect = Instantiate(particle, transform.position, Quaternion.identity);
+        var effect = Instantiate(particle, position, Quaternion.identity);
         float duration = effect.main.duration;
         Destroy(effect, duration);
     }

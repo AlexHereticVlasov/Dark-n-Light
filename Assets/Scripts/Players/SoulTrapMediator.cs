@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SoulTrapMediator : MonoBehaviour
+public sealed class SoulTrapMediator : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Collider2D _collider;

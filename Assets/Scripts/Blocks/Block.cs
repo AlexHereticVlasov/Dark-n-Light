@@ -6,7 +6,7 @@ public class Block : MonoBehaviour, IActor, IPhysicMovement, IDamageable, IEffec
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private bool _isFreazeable;
 
-    public event UnityAction<Elements> Spawned;
+    public event UnityAction<Elements, Vector2> Spawned;
 
     public Vector2 Velocity { get; private set; }
     public float AngularVelocity { get; private set; }
@@ -45,7 +45,7 @@ public class Block : MonoBehaviour, IActor, IPhysicMovement, IDamageable, IEffec
 
     public void TakeDamage()
     {
-        Spawned?.Invoke(Element);
+        Spawned?.Invoke(Element, transform.position);
         Destroy(gameObject);
     }
 }

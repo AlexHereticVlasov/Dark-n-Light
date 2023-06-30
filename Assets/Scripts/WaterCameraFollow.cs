@@ -24,13 +24,9 @@ public sealed class WaterCameraFollow : MonoBehaviour
 
     private void Update()
     {
-        if (Camera.main.transform.position != _previousPosition)
-        {
-            _previousPosition = Camera.main.transform.position;
-            _waterCamera.transform.position = new Vector3(_previousPosition.x, _currentY, _z);
-            ClampLocalPosition();
-            transform.position = new Vector3(_previousPosition.x, _y, _z);
-        }
+        if (IsSamePosition()) return;
+
+        Follow();
     }
 
     private void OnDisable() => _cameraFollow.SizeChanged -= OnSizeChanged;
@@ -41,6 +37,16 @@ public sealed class WaterCameraFollow : MonoBehaviour
         _viev.localScale = new Vector3(screenWidthInUnits, _viev.localScale.y);
         _waterCamera.orthographicSize = size;
         _currentY = _y - 5 + size;
+    }
+
+    private bool IsSamePosition() => Camera.main.transform.position == _previousPosition;
+
+    private void Follow()
+    {
+        _previousPosition = Camera.main.transform.position;
+        _waterCamera.transform.position = new Vector3(_previousPosition.x, _currentY, _z);
+        ClampLocalPosition();
+        transform.position = new Vector3(_previousPosition.x, _y, _z);
     }
 
     private float CalculateWidthInUnits(float size)

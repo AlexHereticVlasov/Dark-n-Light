@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DangerZoneView : MonoBehaviour, IRecoloreable
+public sealed class DangerZoneView : MonoBehaviour, IRecoloreable
 {
     [SerializeField] DangerZone _zone;
     [SerializeField] private SpriteRenderer _renderer;

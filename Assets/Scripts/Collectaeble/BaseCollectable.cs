@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
 {
     public event UnityAction<BaseCollectable> Collected;
-    public event UnityAction<Elements> Spawned;
+    public event UnityAction<Elements, Vector2> Spawned;
 
     [field: SerializeField] public int Cost { get; private set; } = 50;
     [field: SerializeField] public Elements Element { get; private set; }
@@ -25,7 +25,7 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
 
     protected abstract bool CanCollect(Player player);
 
-    protected void Spawn() => Spawned?.Invoke(Element);
+    protected void Spawn() => Spawned?.Invoke(Element, transform.position);
 }
 
 public class Rune : BaseCollectable

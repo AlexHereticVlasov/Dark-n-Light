@@ -1,6 +1,7 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public interface IEffectOrigin
 {
-    event UnityAction<Elements> Spawned;
+    event UnityAction<Elements, Vector2> Spawned;
 }

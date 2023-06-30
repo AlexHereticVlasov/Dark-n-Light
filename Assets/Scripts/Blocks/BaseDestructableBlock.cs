@@ -8,7 +8,7 @@ public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin
 
     public event UnityAction Restored;
     public event UnityAction<float> TransperancyChanged;
-    public event UnityAction<Elements> Spawned;
+    public event UnityAction<Elements, Vector2> Spawned;
 
     [field: SerializeField] public Elements Element { get; private set; }
 
@@ -26,7 +26,7 @@ public abstract class BaseDestructableBlock : MonoBehaviour, IEffectOrigin
     private IEnumerator Melt()
     {
         _isMelted = true;
-        Spawned?.Invoke(Element);
+        Spawned?.Invoke(Element, transform.position);
         float factor = 1;
 
         while (factor > 0)

@@ -4,7 +4,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Zenject;
 
-public class PostProcessingEffects : MonoBehaviour
+public sealed class PostProcessingEffects : MonoBehaviour
 {
     [Inject] private Lose _lose;
     [SerializeField] private Volume _volume;
@@ -36,6 +36,5 @@ public class PostProcessingEffects : MonoBehaviour
             parameter.Interp(_from, _to, t);
             yield return null;
         }
-
     }
 }
