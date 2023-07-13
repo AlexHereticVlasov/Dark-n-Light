@@ -5,16 +5,9 @@ public sealed class MirrorEdge : BasePoint, IEffectOrigin
 {
     public event UnityAction<Elements, Vector2> Spawned;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.TryGetComponent(out Player player))
-            SpawnParticles(player);
-    }
-
-    private void SpawnParticles(Player player)
-    {
-        Vector2 playerPosition = player.transform.position;
-        Vector2 spawnPosition = new Vector2(transform.position.x, playerPosition.y);
-        Spawned?.Invoke(player.Element, spawnPosition);
+        if (collision.transform.TryGetComponent(out Player player))
+            Spawned?.Invoke(0, collision.contacts[0].point);
     }
 }

@@ -22,14 +22,8 @@ public sealed class Shadow : MonoBehaviour, IEffectOrigin
         if (IsWarpPossible())
             Blink();
     }
-    
-    private bool IsWarpPossible()
-    {
-        if (Physics2D.OverlapCircleAll(transform.position, Radius, _mask).Length > 0)
-            return false;
 
-        return true;
-    }
+    private bool IsWarpPossible() => Physics2D.OverlapCircle(transform.position, Radius, _mask) == null;
 
     private void Blink()
     {
