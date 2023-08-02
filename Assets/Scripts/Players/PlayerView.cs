@@ -29,7 +29,7 @@ public class PlayerView : MonoBehaviour
         _player.Unlished -= OnUnlished;
     }
 
-    private void OnDeath() => _body.Stop();
+    private void OnDeath(Vector2 position) => _body.Stop();
 
     private void OnCaptured()
     {

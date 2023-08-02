@@ -24,7 +24,7 @@ public class Lose : MonoBehaviour
     }
 
     //ToDo: Invoke Event to fix camera on Dead Player;
-    private void OnDeath() => StartCoroutine(Die());
+    private void OnDeath(Vector2 position) => StartCoroutine(Die());
 
     private IEnumerator Die()
     {

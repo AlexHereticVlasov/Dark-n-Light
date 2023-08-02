@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public event UnityAction Deselected;
     public event UnityAction Unlished;
     public event UnityAction Captured;
-    public event UnityAction Death;
+    public event UnityAction<Vector2> Death;
     public event UnityAction<Elements, Vector2> Spawned;
 
     public IdleState IdleState { get; private set; }
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     {
         _stateMachine.ChangeState(DeathState);
         Spawned?.Invoke(Element, transform.position);
-        Death?.Invoke();
+        Death?.Invoke(transform.position);
     }
 
     public void AddForce(Vector2 force) => _movement.AddForce(force);
