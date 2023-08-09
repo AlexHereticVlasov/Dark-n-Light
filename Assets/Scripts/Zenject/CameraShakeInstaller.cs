@@ -8,7 +8,7 @@ public sealed class CameraShakeInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<CameraShake>().FromInstance(_cameraShake).AsSingle().NonLazy();
+        Container.Bind<ICameraShake>().FromInstance(_cameraShake).AsSingle().NonLazy();
         Container.QueueForInject(_cameraShake);
     }
 }

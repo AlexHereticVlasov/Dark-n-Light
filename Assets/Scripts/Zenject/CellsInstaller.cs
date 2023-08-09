@@ -7,7 +7,7 @@ public sealed class CellsInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Cells>().FromInstance(_cells).AsSingle().NonLazy();
+        Container.Bind<ICells>().FromInstance(_cells).AsSingle().NonLazy();
         Container.QueueForInject(_cells);
     }
 }

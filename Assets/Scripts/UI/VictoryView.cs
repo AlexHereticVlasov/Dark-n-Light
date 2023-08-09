@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VictoryView : MonoBehaviour
@@ -7,7 +5,12 @@ public class VictoryView : MonoBehaviour
     
 }
 
-public class PopUp : MonoBehaviour
+public interface IPopUp
+{
+    void Spawn(Vector2 position, Message message);
+}
+
+public sealed class PopUp : MonoBehaviour, IPopUp
 {
     [SerializeField] private PopUpMessage _template;
 

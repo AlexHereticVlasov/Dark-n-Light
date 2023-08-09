@@ -1,7 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public sealed class Inventory : MonoBehaviour
+public interface IInventory //ToDo: Separate if it need, think about it
+{
+    event UnityAction<int[]> AmountChanged;
+    event UnityAction<int[]> Initialized;
+    event UnityAction<Elements> AllWasCollected;
+
+    void Init(int[] diamonds);
+    void Collected(Elements element);
+}
+
+public sealed class Inventory : MonoBehaviour, IInventory
 {
     public event UnityAction<int[]> AmountChanged;
     public event UnityAction<int[]> Initialized;

@@ -3,7 +3,12 @@ using UnityEngine.Events;
 
 namespace CameraShaker
 {
-    public sealed class CameraShakeTimer : MonoBehaviour
+    public interface ICameraShakeTimer
+    {
+        public event UnityAction TimeIsRunnongOut;
+    }
+
+    public sealed class CameraShakeTimer : MonoBehaviour, ICameraShakeTimer
     {
         [SerializeField] private float _averageRate;
         [SerializeField] private float _rateDiviaton;

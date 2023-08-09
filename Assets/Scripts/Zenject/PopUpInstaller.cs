@@ -7,7 +7,7 @@ public sealed class PopUpInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<PopUp>().FromInstance(_popUp).AsSingle().NonLazy();
+        Container.Bind<IPopUp>().FromInstance(_popUp).AsSingle().NonLazy();
         Container.QueueForInject(_popUp);
     }
 }

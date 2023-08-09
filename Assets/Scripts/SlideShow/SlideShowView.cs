@@ -4,7 +4,7 @@ using Zenject;
 
 public sealed class SlideShowView : MonoBehaviour
 {
-    [Inject] private SlideShow _slideShow;
+    [Inject] private ISlideShow _slideShow;
     [SerializeField] private TMP_Text _text;
 
     private void OnEnable() => _slideShow.SlideChanged += OnSlideChanged;

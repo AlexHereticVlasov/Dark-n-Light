@@ -30,7 +30,7 @@ public sealed class PendulumMovement : BaseMovement
 
     private void ApplyForce(float sin)
     {
-        float force = 0.0000981f * sin;
+        float force = 0.000981f * sin;
         _angularAcseleration = force / _length;
         _angularVelocity += _angularAcseleration;
         _angleInRadians += _angularVelocity;

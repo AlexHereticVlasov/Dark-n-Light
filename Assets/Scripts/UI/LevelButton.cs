@@ -1,10 +1,11 @@
 using UnityEngine;
 using SceneLoad;
 using System.Collections;
+using Zenject;
 
-public class LevelButton : MonoBehaviour
+public sealed class LevelButton : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _loader;
+    [Inject] private ISceneLoader _loader;
     [SerializeField] private BaseFadePanel _fadePanel;
 
     [field:SerializeField] public int Value { get; private set; }

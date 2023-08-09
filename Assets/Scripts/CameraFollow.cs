@@ -4,7 +4,15 @@ using UnityEngine.Events;
 using Cinemachine;
 using System;
 
-public sealed class CameraFollow : MonoBehaviour
+public interface ICameraFollow
+{
+    event UnityAction<float> SizeChanged;
+    
+    void ChangeTarget(Transform target);
+    void ChangeView();
+}
+
+public sealed class CameraFollow : MonoBehaviour, ICameraFollow
 {
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
     [SerializeField] private float _maxSize = 15;

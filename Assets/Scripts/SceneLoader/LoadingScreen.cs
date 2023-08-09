@@ -8,7 +8,7 @@ namespace SceneLoad
     {
         [SerializeField] private GameObject _loadingScreen = default;
 
-        [Inject] private SceneLoader _sceneLoader;
+        [Inject] private ISceneLoader _sceneLoader;
 
         public event UnityAction<float> ValueChanged;
 

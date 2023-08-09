@@ -7,7 +7,7 @@ public class BaseSave : MonoBehaviour
 
     private void Awake()
     {
-        if (Saver.TryLoadData<SaveData>(SaveName, out SaveData data))
+        if (Saver.TryLoadData(SaveName, out SaveData data))
         {
             Debug.Log("Loaded");
             Data = data;
@@ -17,6 +17,13 @@ public class BaseSave : MonoBehaviour
         Debug.Log("Created");
         Data = new SaveData();
         Saver.SaveData(Data, SaveName);
+    }
+
+    private void OnVictory()
+    {
+        //ToDo: Change Data to save
+
+        Saver.SaveData<SaveData>(Data, SaveName);
     }
 
     public int GetTotalScore()

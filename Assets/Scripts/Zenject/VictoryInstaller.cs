@@ -7,7 +7,7 @@ public sealed class VictoryInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Victory>().FromInstance(_victory).AsSingle().NonLazy();
+        Container.Bind<IVictory>().FromInstance(_victory).AsSingle().NonLazy();
         Container.QueueForInject(_victory);
     }
 }

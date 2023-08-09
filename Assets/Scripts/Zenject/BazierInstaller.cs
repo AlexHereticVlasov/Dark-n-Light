@@ -7,7 +7,7 @@ public sealed class BazierInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<BazierCurve>().FromInstance(_curve).AsSingle().NonLazy();
+        Container.Bind<IBazier>().FromInstance(_curve).AsSingle().NonLazy();
         Container.QueueForInject(_curve);
     }
 }

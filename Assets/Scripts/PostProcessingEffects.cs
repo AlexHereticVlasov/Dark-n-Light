@@ -6,7 +6,7 @@ using Zenject;
 
 public sealed class PostProcessingEffects : MonoBehaviour
 {
-    [Inject] private Lose _lose;
+    [Inject] private ILose _lose;
     [SerializeField] private Volume _volume;
     [SerializeField] private TextureCurve _from;
     [SerializeField] private TextureCurve _to;

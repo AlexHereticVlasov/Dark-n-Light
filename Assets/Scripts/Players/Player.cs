@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using FinalStateMachine;
 
+//TODO: Create Player installer and separate this class to different interfaces
 public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 {
     [SerializeField] private Observation _observation;

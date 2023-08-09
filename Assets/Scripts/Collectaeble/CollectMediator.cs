@@ -1,11 +1,12 @@
 ﻿using System;
+using Timer;
 using UnityEngine;
 using Zenject;
 
 public class CollectMediator : MonoBehaviour
 {
-    [Inject] private Inventory _inventory;
-    [Inject] private Score _score;
+    [Inject] private IInventory _inventory;
+    [Inject] private IScore _score;
 
     private BaseCollectable[] _collectables;
 

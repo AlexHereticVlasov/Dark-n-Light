@@ -2,7 +2,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Lose : MonoBehaviour
+public interface ILose
+{
+    event UnityAction Defeate;
+}
+
+public class Lose : MonoBehaviour, ILose
 {
     [SerializeField] private Player[] _players;
     [SerializeField] private GameObject _panel;

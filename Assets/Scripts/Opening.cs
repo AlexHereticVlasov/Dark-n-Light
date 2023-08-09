@@ -5,7 +5,7 @@ using SceneLoad;
 
 public sealed class Opening : MonoBehaviour
 {
-    [Inject] private SceneLoader _loader;
+    [Inject] private ISceneLoader _loader;
     
     private void Start() => StartCoroutine(LoadMainScene());
 

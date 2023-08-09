@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 namespace SceneLoad
 {
-    public sealed class SceneLoader : MonoBehaviour
+    public interface ISceneLoader
+    {
+        event UnityAction StartLoading;
+        event UnityAction<float> Loading;
+
+        void LoadScene(int buildIndex);
+        void LoadNextScene();
+        void Restart();
+    }
+
+    public sealed class SceneLoader : MonoBehaviour, ISceneLoader
     {
         public event UnityAction StartLoading;
         public event UnityAction<float> Loading;

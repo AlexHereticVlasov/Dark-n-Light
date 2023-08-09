@@ -6,7 +6,7 @@ using Zenject;
 public sealed class Diamond : BaseCollectable
 {
     [SerializeField] private Collider2D _collider;
-    [Inject] private BazierCurve _curve;
+    [Inject] private IBazier _curve;
 
     public event UnityAction StartCollected;
     public event UnityAction EndCollected;
@@ -29,7 +29,7 @@ public sealed class Diamond : BaseCollectable
     private IEnumerator Fly()
     {
         Vector2 position = transform.position;
-         float factor = 0;
+        float factor = 0;
         while (factor < 1)
         {
             yield return null;
@@ -37,6 +37,6 @@ public sealed class Diamond : BaseCollectable
             transform.position = _curve.GetPosition(position, factor);
         }
 
-        transform.SetParent(_curve.transform);
+        transform.SetParent(_curve.Transform);
     }
 }

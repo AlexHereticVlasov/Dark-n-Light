@@ -6,8 +6,8 @@ public sealed class UserInput : BaseUserInput
 {
     [SerializeField] private Observation[] _observation;
 
-    [Inject] private PauseMenu _pause;
-    [Inject] private CameraFollow _cameraFollow;
+    [Inject] private IPauseMenu _pause;
+    [Inject] private ICameraFollow _cameraFollow;
     
     private int _current;
 

@@ -27,8 +27,8 @@ public sealed class EffectSpawner : MonoBehaviour
     private void SpawnEffect(ParticleSystem particle, Vector2 position)
     {
         var effect = Instantiate(particle, position, Quaternion.identity);
-        float duration = effect.main.duration;
-        Destroy(effect, duration);
+        float duration = effect.main.duration + Time.deltaTime;
+        Destroy(effect.gameObject, duration);
     }
 
     private void CheckIsEffectoriginContaines()
