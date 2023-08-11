@@ -32,3 +32,8 @@ public class Rune : BaseCollectable
 {
     protected override bool CanCollect(Player player) => true;
 }
+
+public class SunShard : BaseCollectable
+{
+    protected override bool CanCollect(Player player) => true;
+}

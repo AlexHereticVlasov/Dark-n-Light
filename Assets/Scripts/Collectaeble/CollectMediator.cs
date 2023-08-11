@@ -43,7 +43,14 @@ public class CollectMediator : MonoBehaviour
             return;
         }
 
-        //Collectable is Rune, add rune to RuneStorage
+        //ToDo:Collectable is SunShard
+        if (collectable is SunShard shard)
+        {
+            //
+            return;
+        }
+
+        //ToDo:Collectable is Rune, add rune to RuneStorage
         //if (true)
         //{
             

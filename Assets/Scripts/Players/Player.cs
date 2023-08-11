@@ -36,6 +36,12 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 
     private void Awake()
     {
+        InitializeStateMachine();
+        gameObject.layer = _configs[(int)Element].Layer;
+    }
+
+    private void InitializeStateMachine()
+    {
         _stateMachine = new StateMachine();
         var config = _configs[(int)Element];
 
@@ -114,4 +120,6 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         _stateMachine.ChangeState(InPrisonState);
         Captured?.Invoke();
     }
+
+    public void SetIsJumpAble(bool value) => _observation.SetIsJumpAble(value);
 }

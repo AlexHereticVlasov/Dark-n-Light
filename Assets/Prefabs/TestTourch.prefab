@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983550450235104727}
   - component: {fileID: 4983550450235104726}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983550451747406307}
   - component: {fileID: 4983550451747406306}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 4983550452241836513}
   - component: {fileID: 4983550452241836524}
   - component: {fileID: 4983550452241836525}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TestTourch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 374963977062343166}
   - component: {fileID: 7849118393606807543}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,6 +404,18 @@ PrefabInstance:
     - target: {fileID: 1433813493516420, guid: fbcbf92b672076846a74ebc55f9cf6d9, type: 3}
       propertyPath: m_Name
       value: Glowing orb 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433813493516420, guid: fbcbf92b672076846a74ebc55f9cf6d9, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753597982544018, guid: fbcbf92b672076846a74ebc55f9cf6d9, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819280528807396, guid: fbcbf92b672076846a74ebc55f9cf6d9, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4502052557348012, guid: fbcbf92b672076846a74ebc55f9cf6d9, type: 3}
       propertyPath: m_RootOrder

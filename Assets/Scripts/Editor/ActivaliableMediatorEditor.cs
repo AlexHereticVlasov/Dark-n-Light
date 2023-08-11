@@ -1,3 +1,4 @@
+using Bridges;
 using UnityEngine;
 using UnityEditor;
 
@@ -43,6 +44,19 @@ public sealed class FlameBridgeEditor : Editor
 
 [CustomEditor(typeof(VoidBridge))]
 public sealed class VoidBridgeEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var lightBridge = (MagicBridge)target;
+        if (GUILayout.Button(nameof(lightBridge.Recolor)))
+            lightBridge.Recolor();
+    }
+}
+
+[CustomEditor(typeof(WaterBridge))]
+public sealed class WaterBridgeEditor : Editor
 {
     public override void OnInspectorGUI()
     {

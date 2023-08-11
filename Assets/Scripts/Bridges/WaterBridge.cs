@@ -2,15 +2,25 @@
 
 namespace Bridges
 {
-    public sealed class FlameBridge : PositiveBridge
+    public sealed class WaterBridge : NegativeBridge
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.transform.TryGetComponent(out IDamageable damageable))
+            if (collision.transform.TryGetComponent(out Player player))
             {
-                if (damageable.Element == Elements.Fire) return;
+                if (player.Element == Elements.Water) return;
 
-                damageable.TakeDamage();
+                player.SetIsJumpAble(false);
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            if (collision.transform.TryGetComponent(out Player player))
+            {
+                if (player.Element == Elements.Water) return;
+
+                player.SetIsJumpAble(true);
             }
         }
     }

@@ -15,5 +15,5 @@ MonoBehaviour:
   <NormalSpeed>k__BackingField: 3.25
   <InAirSpeed>k__BackingField: 1.625
   <OnIceSpeed>k__BackingField: 6.5
-  <NormalJumpForce>k__BackingField: 310
-  <FromIceJumpForce>k__BackingField: 0
+  <NormalJumpForce>k__BackingField: 325
+  <Layer>k__BackingField: 6

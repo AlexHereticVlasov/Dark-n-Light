@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-
-namespace Bridges
+﻿namespace Bridges
 {
-    public sealed class FlameBridge : PositiveBridge
+    public abstract class NegativeBridge : MagicBridge
     {
-        private void OnCollisionEnter2D(Collision2D collision)
+        public override void Activate()
         {
-            if (collision.transform.TryGetComponent(out IDamageable damageable))
-            {
-                if (damageable.Element == Elements.Fire) return;
+            base.Activate();
+            StartCoroutine(DeactivateRoutine());
+        }
 
-                damageable.TakeDamage();
-            }
+        public override void Deactivate()
+        {
+            base.Deactivate();
+            StartCoroutine(ActivateRoutine());
         }
     }
 }

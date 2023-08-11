@@ -16,6 +16,8 @@ public class Observation : MonoBehaviour
 
     public float Direction { get; private set; }
     public bool IsJumping { get; private set; }
+
+    public bool IsJumpAble { get; private set; } = true;
     public bool IsInteract { get; private set; }
     public bool IsOnIce { get; private set; }
     //ToDo: Create Warp Counter
@@ -39,6 +41,8 @@ public class Observation : MonoBehaviour
     public void Stop() => Direction = 0;
 
     public void SetIsJumping(bool value) => IsJumping = value;
+
+    public void SetIsJumpAble(bool value) => IsJumpAble = value;
 
     public void SetIsInteract(bool value) => IsInteract = value;
 
