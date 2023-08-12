@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class LightRay : MonoBehaviour
+public sealed class LightRay : MonoBehaviour
 {
     private const string ReflectionTag = "Mirror";
 
     [SerializeField] private LineRenderer _renderer;
     [SerializeField] private float _angularSpeed;
 
-    private void Start()
-    {
-        _renderer.SetPosition(0, transform.position);
-    }
+    private void Start() => _renderer.SetPosition(0, transform.position);
 
     private void Update()
     {

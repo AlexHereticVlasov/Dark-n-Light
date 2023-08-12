@@ -27,6 +27,7 @@ public class LightPlatform : BaseActivailiable
             if (player.Element != Elements.Dark) return;
 
             Debug.Log($"{player.name} must Die!");
+            player.TakeDamage();
         }
     }
 }

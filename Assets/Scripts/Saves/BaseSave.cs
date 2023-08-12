@@ -23,7 +23,7 @@ public class BaseSave : MonoBehaviour
     {
         //ToDo: Change Data to save
 
-        Saver.SaveData<SaveData>(Data, SaveName);
+        Saver.SaveData(Data, SaveName);
     }
 
     public int GetTotalScore()

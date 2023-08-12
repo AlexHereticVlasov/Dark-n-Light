@@ -7,7 +7,7 @@ public interface ILose
     event UnityAction Defeate;
 }
 
-public class Lose : MonoBehaviour, ILose
+public sealed class Lose : MonoBehaviour, ILose
 {
     [SerializeField] private Player[] _players;
     [SerializeField] private GameObject _panel;
