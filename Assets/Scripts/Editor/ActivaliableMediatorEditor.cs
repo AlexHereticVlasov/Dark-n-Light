@@ -67,3 +67,16 @@ public sealed class WaterBridgeEditor : Editor
             lightBridge.Recolor();
     }
 }
+
+[CustomEditor(typeof(EndZoneMediator))]
+public sealed class EndZoneMediatorEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var mediator = (EndZoneMediator)target;
+        if (GUILayout.Button(nameof(mediator.Recolor)))
+            mediator.Recolor();
+    }
+}

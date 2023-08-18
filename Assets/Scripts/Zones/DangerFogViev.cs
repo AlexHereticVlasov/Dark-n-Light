@@ -28,7 +28,7 @@ namespace GameObjectView
         {
             var color = _bean[_zone.Element].MainColor;
             color.a = 0.33f;
-            _renderer.sharedMaterial.color = color;
+            _renderer.material.color = color;
         }
     }
 }

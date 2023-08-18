@@ -22,7 +22,7 @@ public class WindEffect : BaseZoneEffect
 [System.Serializable]
 public class Exit
 {
-    [SerializeField] private Elements _element;
+    [field: SerializeField] public Elements Element { get; private set; }
 
     public void Warp(Vector2 position)
     {
@@ -63,7 +63,7 @@ public class Exit
 
     private void OnPlayeroutside(Player player)
     {
-        if (player.Element != _element) return;
+        if (player.Element != Element) return;
         
         IsInside = false;
         StateChanged?.Invoke();
@@ -71,7 +71,7 @@ public class Exit
 
     private void OnPlayerInside(Player player)
     {
-        if (player.Element != _element) return;
+        if (player.Element != Element) return;
 
         IsInside = true;
         StateChanged?.Invoke();

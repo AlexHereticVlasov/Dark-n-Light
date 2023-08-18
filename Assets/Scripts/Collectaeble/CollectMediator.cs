@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Timer;
 using UnityEngine;
 using Zenject;
@@ -7,8 +8,11 @@ public class CollectMediator : MonoBehaviour
 {
     [Inject] private IInventory _inventory;
     [Inject] private IScore _score;
+    [Inject] private IGlobalLighting _lighting;
 
     private BaseCollectable[] _collectables;
+
+    //private Dictionary<Type, Action> keyValuePairs;
 
     private void Awake() => _collectables = GetComponentsInChildren<BaseCollectable>();
 
@@ -36,6 +40,8 @@ public class CollectMediator : MonoBehaviour
 
     private void OnCollected(BaseCollectable collectable)
     {
+        var type = collectable.GetType();
+
         if (collectable is Diamond diamond)
         {
             _score.Add(diamond);
@@ -46,13 +52,13 @@ public class CollectMediator : MonoBehaviour
         //ToDo:Collectable is SunShard
         if (collectable is SunShard sunShard)
         {
-            //
+            _lighting.FadeOut();
             return;
         }
 
         if (collectable is MoonShard moonShard)
         {
-            //
+            _lighting.FadeIn();
             return;
         }
 

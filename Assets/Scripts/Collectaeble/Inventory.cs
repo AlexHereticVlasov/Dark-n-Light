@@ -16,7 +16,7 @@ public sealed class Inventory : MonoBehaviour, IInventory
     public event UnityAction<int[]> AmountChanged;
     public event UnityAction<int[]> Initialized;
     public event UnityAction<Elements> AllWasCollected;
-
+ 
     private int[] _diamonds;
     private int[] _collected;
     
@@ -39,5 +39,18 @@ public sealed class Inventory : MonoBehaviour, IInventory
     {
         if (_diamonds[(int)element] == 0)
             AllWasCollected?.Invoke(element);
+    }
+}
+
+public sealed class RuneStorage : MonoBehaviour
+{
+    public event UnityAction<int> AmountChanged;
+
+    public int Amount { get; private set; }
+
+    public void Add()
+    {
+        Amount++;
+        AmountChanged?.Invoke(Amount);
     }
 }

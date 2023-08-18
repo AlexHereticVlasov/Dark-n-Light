@@ -9649,6 +9649,7 @@ GameObject:
   - component: {fileID: 76175116}
   - component: {fileID: 76175117}
   - component: {fileID: 5430721311992811617}
+  - component: {fileID: 4780963960666398178}
   m_Layer: 31
   m_Name: Orb (portal) green
   m_TagString: Untagged
@@ -14547,6 +14548,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enterEffect: {fileID: 76175116}
   _particles: {fileID: 4502864742993696936}
+--- !u!114 &4780963960666398178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814944186237054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df928f110517c445ae0828e830ca789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particle: {fileID: 198394945424714818}
 --- !u!1 &2509414791988768455
 GameObject:
   m_ObjectHideFlags: 0
