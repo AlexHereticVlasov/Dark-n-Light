@@ -444,7 +444,7 @@ MonoBehaviour:
   - {fileID: 6373273793133009741}
   _groundMask:
     serializedVersion: 2
-    m_Bits: 1921
+    m_Bits: 67457
   _blockMask:
     serializedVersion: 2
     m_Bits: 128
