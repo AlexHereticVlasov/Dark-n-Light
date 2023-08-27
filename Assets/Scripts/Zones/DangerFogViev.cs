@@ -11,6 +11,24 @@ namespace GameObjectView
 
     public sealed class DangerFogViev : BaseDangerZoneView
     {
+        [SerializeField] private ActivailiableFog _activailiableFog;
+
+        private void OnEnable()
+        {
+            _activailiableFog.Activated += OnActivated;
+            _activailiableFog.Deactivated += OnDeactivated;
+        }
+
+        private void OnDisable()
+        {
+            _activailiableFog.Activated -= OnActivated;
+            _activailiableFog.Deactivated -= OnDeactivated;
+        }
+
+        private void OnDeactivated() => _particles.Stop(); 
+
+        private void OnActivated() => _particles.Play();
+
         protected override void SetParticlesShapeScale()
         {
             var shape = _particles.shape;

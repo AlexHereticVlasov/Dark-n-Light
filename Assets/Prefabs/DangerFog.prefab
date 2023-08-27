@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3352669906601914152}
   - component: {fileID: 4377627097384894623}
   - component: {fileID: 5508277197700554770}
+  - component: {fileID: 5846809973812452542}
   m_Layer: 0
   m_Name: DangerFog
   m_TagString: Untagged
@@ -115,6 +116,20 @@ MonoBehaviour:
   _particles: {fileID: 553956127118880414}
   _size: {x: 1, y: 1}
   _particleAmountMultiplier: 10
+  _activailiableFog: {fileID: 5846809973812452542}
+--- !u!114 &5846809973812452542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352669906601914154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d165d396e0b383e4f8822860afff9f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 3352669906601914152}
 --- !u!1 &4258008055824797359
 GameObject:
   m_ObjectHideFlags: 0

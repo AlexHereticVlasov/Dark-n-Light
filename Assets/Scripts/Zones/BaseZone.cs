@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class BaseZone : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public abstract class BaseZoneEffect : MonoBehaviour
 
 public abstract class TrueVisionBaseZoneEffect : BaseZoneEffect
 {
-    [SerializeField] protected BaseFakeObject[] FakeObjects; 
+    [SerializeField] protected BaseFakeObject[] FakeObjects;
 }
 
 public sealed class TrueVisionEnterZoneEffect : TrueVisionBaseZoneEffect
@@ -69,7 +68,7 @@ public sealed class SpriteFakeObject : BaseFakeObject
 
         while (true)
         {
-           
+
             yield return null;
         }
     }
@@ -79,5 +78,3 @@ public sealed class SpriteFakeObject : BaseFakeObject
         yield return null;
     }
 }
-
-

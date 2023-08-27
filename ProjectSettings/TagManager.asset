@@ -24,10 +24,10 @@ TagManager:
   - Collectable
   - Interactable
   - Torch
-  - 
-  - 
-  - 
-  - 
+  - EarthWall
+  - AirWall
+  - FallingStone
+  - FallingStoneTrigger
   - 
   - 
   - 
