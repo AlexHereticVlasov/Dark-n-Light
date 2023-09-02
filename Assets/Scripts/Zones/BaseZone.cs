@@ -17,6 +17,7 @@ public abstract class BaseZoneEffect : MonoBehaviour
     public abstract void Apply(Player player);
 }
 
+#region TrueVision
 public abstract class TrueVisionBaseZoneEffect : BaseZoneEffect
 {
     [SerializeField] protected BaseFakeObject[] FakeObjects;
@@ -78,3 +79,5 @@ public sealed class SpriteFakeObject : BaseFakeObject
         yield return null;
     }
 }
+#endregion
+

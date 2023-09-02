@@ -41,16 +41,3 @@ public sealed class Inventory : MonoBehaviour, IInventory
             AllWasCollected?.Invoke(element);
     }
 }
-
-public sealed class RuneStorage : MonoBehaviour
-{
-    public event UnityAction<int> AmountChanged;
-
-    public int Amount { get; private set; }
-
-    public void Add()
-    {
-        Amount++;
-        AmountChanged?.Invoke(Amount);
-    }
-}

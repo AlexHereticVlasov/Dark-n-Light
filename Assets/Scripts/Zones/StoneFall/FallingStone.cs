@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Pool;
 
 namespace StoneFall
 {
-    public sealed class FallingStone : MonoBehaviour
+    public sealed class FallingStone : MonoBehaviour, IPooleable
     {
+        [SerializeField] private Rigidbody2D _rigidbody;
+
         public event UnityAction Hited;
+        public event UnityAction<IPooleable> UseageComplited;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -22,7 +26,14 @@ namespace StoneFall
         public void Kill()
         {
             Hited?.Invoke();
-            Destroy(gameObject);
+            UseageComplited?.Invoke(this);
+            //gameObject.SetActive(false);
+        }
+
+        public void Reuse()
+        {
+            _rigidbody.velocity = Vector2.zero;
+            gameObject.SetActive(true);
         }
     }
 

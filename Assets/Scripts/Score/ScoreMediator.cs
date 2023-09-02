@@ -6,6 +6,7 @@ namespace Timer
     public sealed class ScoreMediator : MonoBehaviour
     {
         [Inject] private IHardModeCounter _hardModeCounter;
+        [Inject] private IHardModeLauncher _hardModeLauncher;
 
         private void OnEnable()
         {
@@ -19,14 +20,15 @@ namespace Timer
             _hardModeCounter.TimeRestored -= OnTimeRestored;
         }
 
-        private void OnTimeRestored()
-        {
-            Debug.Log("Restored");
-        }
+        private void OnTimeRestored() => _hardModeLauncher.Cancel();
 
-        private void OnTimeIsOwer()
-        {
-            Debug.Log("Over");
-        }
+        private void OnTimeIsOwer() => _hardModeLauncher.Launch();
     }
+}
+
+public interface IHardModeLauncher
+{
+    void Launch();
+    void Cancel();
+
 }

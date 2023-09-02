@@ -9650,6 +9650,8 @@ GameObject:
   - component: {fileID: 76175117}
   - component: {fileID: 5430721311992811617}
   - component: {fileID: 4780963960666398178}
+  - component: {fileID: 4476160686401628201}
+  - component: {fileID: 7863589859110786077}
   m_Layer: 31
   m_Name: Orb (portal) green
   m_TagString: Untagged
@@ -14561,6 +14563,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: {fileID: 198394945424714818}
+--- !u!114 &4476160686401628201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814944186237054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83337b1be31cff4b9e65976b521daa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 1
+--- !u!114 &7863589859110786077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814944186237054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052619a47cd1e0841964c6664e586d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endZone: {fileID: 4476160686401628201}
+  _particles: {fileID: 198394945424714818}
+  _collider: {fileID: 76175114}
+  _light: {fileID: 1661412395548454453}
 --- !u!1 &2509414791988768455
 GameObject:
   m_ObjectHideFlags: 0
