@@ -11,6 +11,7 @@ public class CollectMediator : MonoBehaviour
     [Inject] private IScore _score;
     [Inject] private IGlobalLighting _lighting;
     [Inject] private IRuneStorage _runeStorage;
+    [Inject] private IGravity _gravity;
 
     private BaseCollectable[] _collectables;
 
@@ -35,8 +36,15 @@ public class CollectMediator : MonoBehaviour
             { typeof(Diamond), AddDiamond},
             { typeof(SunShard), FadeOut},
             { typeof(MoonShard), FadeIn},
-            { typeof(Rune), AddRune}
+            { typeof(Rune), AddRune},
+            { typeof(AntigravityCollectable), ChangeGravity}
         };
+    }
+
+    private void OnDisable()
+    {
+        foreach (var collectable in _collectables)
+            collectable.Collected -= OnCollected;
     }
 
     private int[] CountDiamonds()
@@ -45,14 +53,8 @@ public class CollectMediator : MonoBehaviour
         foreach (var collectable in _collectables)
             if (collectable is Diamond diamond)
                 diamonds[(int)diamond.Element] = diamonds[(int)diamond.Element] + 1;
-        
-        return diamonds;
-    }
 
-    private void OnDisable()
-    {
-        foreach (var collectable in _collectables)
-            collectable.Collected -= OnCollected;
+        return diamonds;
     }
 
     private void OnCollected(BaseCollectable collectable)
@@ -72,4 +74,6 @@ public class CollectMediator : MonoBehaviour
         _score.Add(diamond);
         _inventory.Collected(diamond.Element);
     }
+
+    private void ChangeGravity(BaseCollectable collectable) => _gravity.Reverse();
 }

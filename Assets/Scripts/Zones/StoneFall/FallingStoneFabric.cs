@@ -11,7 +11,7 @@ namespace StoneFall
     {
         [SerializeField] private FallingStone _template;
         [SerializeField] private StoneFallPoint[] _points;
-        [SerializeField] private int _cyclesAmmount = 4;
+       
 
         private System.Func<IEnumerator, Coroutine> _corutine;
         private ICameraShake _cameraShake;
@@ -27,9 +27,9 @@ namespace StoneFall
             _corutine = courutine;
         }
 
-        private IEnumerator SpawnRoutine()
+        private IEnumerator SpawnRoutine(int cyclesAmount)
         {
-            for (int i = 0; i < _cyclesAmmount; i++)
+            for (int i = 0; i < cyclesAmount; i++)
             {
                 _points.Shuffle();
                 yield return ShowAttentions();
@@ -39,7 +39,7 @@ namespace StoneFall
             FallComplited?.Invoke();
         }
 
-        public void StartFall() => _corutine.Invoke(SpawnRoutine());
+        public Coroutine StartFall(int cyclesAmount) => _corutine.Invoke(SpawnRoutine(cyclesAmount));
 
         private IEnumerator ShowAttentions()
         {

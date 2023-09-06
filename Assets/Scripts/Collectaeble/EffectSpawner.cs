@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Pool;
+using UnityEngine;
 
 public sealed class EffectSpawner : MonoBehaviour
 {
@@ -6,10 +7,20 @@ public sealed class EffectSpawner : MonoBehaviour
 
     private IEffectOrigin _effectOrigin;
 
+    private ObjectPool<PoolableParticles>[] _objectPools;
+    //TODO:Add ObjectPool
+
     private void Awake()
     {
         _effectOrigin = GetComponent<IEffectOrigin>();
         CheckIsEffectoriginContaines();
+
+        //_objectPools = new ObjectPool<PoolableParticles>[_effectBeans.Length];
+
+        //for (int i = 0; i < _effectBeans.Length; i++)
+        //{
+        //    _objectPools[i] = new ObjectPool<PoolableParticles>(_effectBeans[(Elements)i][]);
+        //}
     }
 
     private void OnEnable() => _effectOrigin.Spawned += OnSpawned;

@@ -5,8 +5,8 @@ namespace Timer
 {
     public sealed class ScoreMediator : MonoBehaviour
     {
-        [Inject] private IHardModeCounter _hardModeCounter;
-        [Inject] private IHardModeLauncher _hardModeLauncher;
+        [Inject] private readonly IHardModeCounter _hardModeCounter;
+        [Inject] private readonly IHardModeLauncher _hardModeLauncher;
 
         private void OnEnable()
         {
@@ -24,11 +24,4 @@ namespace Timer
 
         private void OnTimeIsOwer() => _hardModeLauncher.Launch();
     }
-}
-
-public interface IHardModeLauncher
-{
-    void Launch();
-    void Cancel();
-
 }

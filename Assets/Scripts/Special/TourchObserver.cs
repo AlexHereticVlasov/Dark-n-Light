@@ -7,9 +7,9 @@ namespace Special
     public class TourchObserver : MonoBehaviour
     {
         [SerializeField] private Tourch[] _tourches;
-        [Inject] private IPopUp _popUp;
         [SerializeField] private Message _message;
 
+        [Inject] private readonly IPopUp _popUp;
 
         private void OnEnable()
         {

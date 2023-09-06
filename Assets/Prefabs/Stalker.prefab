@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3943373444705052016}
   - component: {fileID: 3943373444705052017}
+  - component: {fileID: 2091550680943504269}
+  - component: {fileID: 770044002739764097}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -83,6 +85,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2091550680943504269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943373444705052014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e66aa3ef086ed4ba293006a5e1c147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: ff40961ddf6629041a691fedc33a469f, type: 2}
+  _movement: {fileID: 770044002739764097}
+  _borderPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  _nest: {fileID: 0}
+--- !u!114 &770044002739764097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943373444705052014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9827118b89643f4b8c697f01a37a658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Speed>k__BackingField: 2
 --- !u!1 &8704970835235545810
 GameObject:
   m_ObjectHideFlags: 0

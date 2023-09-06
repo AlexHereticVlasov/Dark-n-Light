@@ -7,10 +7,10 @@ namespace Timer
 {
     public sealed class Score : MonoBehaviour, IScore, IHardModeCounter
     {
-        private readonly int _startValue = 100;
+        private readonly int _startValue = 60;
         private readonly WaitForSeconds _delay = new WaitForSeconds(1);
 
-        [Inject] private IVictory _victory;
+        [Inject] private readonly IVictory _victory;
 
         private int _value;
         private bool _isGameOver;

@@ -70,7 +70,7 @@ public class Observation : MonoBehaviour
     public bool IsOnEarth()
     {
         foreach (var point in _groundCheckPoints)
-            if (Physics2D.Raycast(point.transform.position, Vector2.down, Radius, _groundMask))
+            if (Physics2D.Raycast(point.transform.position, Physics2D.gravity, Radius, _groundMask))
                 return true;
 
         return false;

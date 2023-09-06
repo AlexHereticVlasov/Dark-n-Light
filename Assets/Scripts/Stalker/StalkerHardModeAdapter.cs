@@ -1,5 +1,4 @@
-﻿using FinalStateMachine;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public sealed class StalkerHardModeAdapter : HardModeAdapter
@@ -11,59 +10,6 @@ public sealed class StalkerHardModeAdapter : HardModeAdapter
     public override void Launch() => _stalker.StartHunt();
 }
 
-[CreateAssetMenu(fileName = nameof(StalkerConfig), menuName = nameof(ScriptableObject) + " / " + nameof(StalkerConfig))]
-public sealed class StalkerConfig : ScriptableObject
-{ 
-    [field: SerializeField] public float Speed { get; private set; }
-    [field: SerializeField] public float TrampLength { get; private set; }
-    [field: SerializeField] public float FollowLength { get; private set; }
-}
-
-public sealed class Stalker : MonoBehaviour
-{
-    private StateMachine _stateMachine;
-
-    [SerializeField] private StalkerConfig _config;
-    [SerializeField] private StalkerMovement _movement;
-    [SerializeField] private StalkerBorderPoint[] _borderPoints;
-    [SerializeField] private NestPoint _nest;
-
-    public SleapStalkerState SleapStalkerState { get; private set; }
-    public TrampStalkerState TrampStalkerState { get; private set; }
-    public FollowStalkerState FollowStalkerState { get; private set; }
-    public MoveToNestStalkerState MoveToNestStalkerState { get; private set; }
-
-    private void Awake() => InitStateMachine();
-
-    private void Update() => _stateMachine.Current.Update();
-
-    private void InitStateMachine()
-    {
-        _stateMachine = new StateMachine();
-
-        SleapStalkerState = new SleapStalkerState();
-        TrampStalkerState = new TrampStalkerState(_config, _movement, _borderPoints);
-        FollowStalkerState = new FollowStalkerState(_config, _movement);
-        MoveToNestStalkerState = new MoveToNestStalkerState(_movement, _nest);
-
-        _stateMachine.Init(SleapStalkerState);
-    }
-
-    public void ReturnToSleep() => _stateMachine.ChangeState(MoveToNestStalkerState);
-
-    public void StartHunt() => _stateMachine.ChangeState(TrampStalkerState);
-}
-
-public class StalkerMovement : MonoBehaviour
-{
-    [field: SerializeField] public float Speed { get; private set; } = 2;
-
-    public void MoveTo(Vector2 target)
-    {
-        transform.position = Vector2.MoveTowards(transform.position, target, Speed * Time.deltaTime);
-    }
-}
-
 namespace FinalStateMachine
 {
     public abstract class BaseStalkerState : BaseState
@@ -71,9 +17,16 @@ namespace FinalStateMachine
         protected StateMachine StateMachine;
         protected Stalker Stalker;
 
-        public BaseStalkerState()
+        public BaseStalkerState(StateMachine stateMachine, Stalker stalker)
         {
+            StateMachine = stateMachine;
+            Stalker = stalker;
+        }
 
+        public override void Enter()
+        {
+            base.Enter();
+            Debug.Log(this.GetType());
         }
     }
 
@@ -81,9 +34,11 @@ namespace FinalStateMachine
     {
         protected StalkerMovement Movement;
 
-        public MovementStalkerState( StalkerMovement movement)
+        public MovementStalkerState(StateMachine stateMachine, StalkerMovement movement, Stalker stalker) : base(stateMachine, stalker)
         {
+            
             Movement = movement;
+            Debug.Log(stalker == null);
         }
     }
 
@@ -91,16 +46,16 @@ namespace FinalStateMachine
     {
         protected StateTimer Timer;
 
-        public TimedStalkerState(StalkerConfig config, StalkerMovement movement) : base(movement)
+        public TimedStalkerState(StateMachine stateMachine, StalkerConfig config, StalkerMovement movement, Stalker stalker) : base(stateMachine, movement, stalker)
         {
             ;
         }
 
         public override void Enter()
         {
-            base.Enter();
             Timer.Reset();
             Timer.TimeOver += OnTimeOver;
+            base.Enter();
         }
 
         public override void Update() => Timer.Update();
@@ -116,6 +71,10 @@ namespace FinalStateMachine
 
     public sealed class SleapStalkerState : BaseStalkerState
     {
+        public SleapStalkerState(StateMachine stateMachine, Stalker stalker) : base(stateMachine, stalker)
+        {
+        }
+
         public override void Update()
         {
             
@@ -126,7 +85,7 @@ namespace FinalStateMachine
     {
         private NestPoint _nest;
 
-        public MoveToNestStalkerState(StalkerMovement movement, NestPoint nest) : base(movement)
+        public MoveToNestStalkerState(StateMachine stateMachine, StalkerMovement movement, Stalker stalker, NestPoint nest) : base(stateMachine, movement, stalker)
         {
             _nest = nest;
         }
@@ -148,7 +107,7 @@ namespace FinalStateMachine
         private StalkerBorderPoint[] _stalkerBorderPoints;
         private Vector2 _target;
 
-        public TrampStalkerState(StalkerConfig config, StalkerMovement movement, StalkerBorderPoint[] stalkerBorderPoints) : base(config, movement)
+        public TrampStalkerState(StateMachine stateMachine, StalkerConfig config, StalkerMovement movement, Stalker stalker, StalkerBorderPoint[] stalkerBorderPoints) : base(stateMachine, config, movement, stalker)
         {
             Timer = new StateTimer(config.TrampLength);
             _stalkerBorderPoints = stalkerBorderPoints;
@@ -188,11 +147,19 @@ namespace FinalStateMachine
 
     public sealed class FollowStalkerState : TimedStalkerState
     {
+        private Player[] _players;
         private Transform _target;
 
-        public FollowStalkerState(StalkerConfig config, StalkerMovement movement) : base(config, movement)
+        public FollowStalkerState(StateMachine stateMachine, StalkerConfig config, StalkerMovement movement, Stalker stalker, Player[] players) : base(stateMachine, config, movement, stalker)
         {
             Timer = new StateTimer(config.FollowLength);
+            _players = players;
+        }
+
+        public override void Enter()
+        {
+            _target = _players[Random.Range(0, _players.Length)].transform;
+            base.Enter();
         }
 
         public override void Update()
@@ -222,13 +189,5 @@ namespace FinalStateMachine
         }
 
         public void Reset() => Value = _lenght;
-    }
-
-    public sealed class NestPoint : BasePoint { }
-
-    public sealed class StalkerBorderPoint : BasePoint 
-    {
-        public float X => Position.x;
-        public float Y => Position.y;
     }
 }

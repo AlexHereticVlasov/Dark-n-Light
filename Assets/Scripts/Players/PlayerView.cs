@@ -31,15 +31,7 @@ public class PlayerView : MonoBehaviour
 
     private void OnDeath(Vector2 position) => _body.Stop();
 
-    private void OnCaptured()
-    {
-        Debug.Log("Pause");
-        _body.Pause();
-    }
+    private void OnCaptured() => _body.Pause();
 
-    private void OnUnlished()
-    {
-        Debug.Log("Play");
-        _body.Play();
-    }
+    private void OnUnlished() => _body.Play();
 }

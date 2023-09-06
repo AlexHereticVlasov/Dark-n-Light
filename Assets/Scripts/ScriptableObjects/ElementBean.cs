@@ -6,4 +6,6 @@ public class ElementBean : ScriptableObject
     [SerializeField] private Element[] _element;
 
     public Element this[Elements index] => _element[(int)index];
+
+    public int Length => _element.Length;
 }

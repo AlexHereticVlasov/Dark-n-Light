@@ -1,4 +1,5 @@
 ﻿using CameraShaker;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -9,9 +10,13 @@ namespace StoneFall
         [SerializeField] private StoneFallingZoneEffect _zoneEffect;
         [SerializeField] private FallingStoneFabric _stoneFabric;
 
-        [SerializeField] private float _timeBetweenFalls = 10;
 
-        [Inject] private ICameraShake _cameraShake;
+        [SerializeField] private float _timeBetweenFalls = 10;
+        [SerializeField] private int _cyclesAmmount = 4;
+
+        [Inject] private readonly ICameraShake _cameraShake;
+
+        private Coroutine _fallRoutine;
 
         private void OnEnable()
         {
@@ -30,7 +35,7 @@ namespace StoneFall
         private void OnFallStarted()
         {
             _zoneEffect.FallStarted -= OnFallStarted;
-            _stoneFabric.StartFall();
+            _fallRoutine = _stoneFabric.StartFall(_cyclesAmmount);
         }
 
         private void OnFallComplited()
@@ -41,6 +46,17 @@ namespace StoneFall
         private void Wait()
         {
             _zoneEffect.FallStarted += OnFallStarted;
+        }
+
+        internal void StopFall()
+        {
+            StopCoroutine(_fallRoutine);
+        }
+
+        internal void StartLongFall()
+        {
+            _zoneEffect.FallStarted -= OnFallStarted;
+            _fallRoutine = _stoneFabric.StartFall(int.MaxValue);
         }
     }
 }
