@@ -27,7 +27,6 @@ namespace StoneFall
         {
             Hited?.Invoke();
             UseageComplited?.Invoke(this);
-            //gameObject.SetActive(false);
         }
 
         public void Reuse()

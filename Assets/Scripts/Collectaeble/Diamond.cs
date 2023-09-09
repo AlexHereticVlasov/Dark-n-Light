@@ -6,7 +6,7 @@ using Zenject;
 public sealed class Diamond : BaseCollectable
 {
     [SerializeField] private Collider2D _collider;
-    [Inject] private IBazier _curve;
+    [Inject] private readonly IBazier _curve;
 
     public event UnityAction StartCollected;
     public event UnityAction EndCollected;

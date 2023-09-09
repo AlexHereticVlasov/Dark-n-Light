@@ -7,11 +7,11 @@ using Zenject;
 
 public class CollectMediator : MonoBehaviour
 {
-    [Inject] private IInventory _inventory;
-    [Inject] private IScore _score;
-    [Inject] private IGlobalLighting _lighting;
-    [Inject] private IRuneStorage _runeStorage;
-    [Inject] private IGravity _gravity;
+    [Inject] private readonly IInventory _inventory;
+    [Inject] private readonly IScore _score;
+    [Inject] private readonly IGlobalLighting _lighting;
+    [Inject] private readonly IRuneStorage _runeStorage;
+    [Inject] private readonly IGravity _gravity;
 
     private BaseCollectable[] _collectables;
 
@@ -37,7 +37,8 @@ public class CollectMediator : MonoBehaviour
             { typeof(SunShard), FadeOut},
             { typeof(MoonShard), FadeIn},
             { typeof(Rune), AddRune},
-            { typeof(AntigravityCollectable), ChangeGravity}
+            { typeof(AntigravityCollectable), ChangeGravity},
+            { typeof(GeluPart), ActivatePortals}
         };
     }
 
@@ -76,4 +77,9 @@ public class CollectMediator : MonoBehaviour
     }
 
     private void ChangeGravity(BaseCollectable collectable) => _gravity.Reverse();
+
+    private void ActivatePortals(BaseCollectable collectable)
+    { 
+    
+    }
 }

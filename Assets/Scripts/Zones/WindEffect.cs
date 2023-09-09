@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WindEffect : BaseZoneEffect
+public sealed class WindEffect : BaseZoneEffect
 {
     private readonly float _minForce = 0.4f;
     private readonly float _power = 9.81f * 1.2f;
