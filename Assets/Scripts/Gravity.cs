@@ -24,17 +24,4 @@ public sealed class Gravity : MonoBehaviour, IGravity
         Physics2D.gravity *= -1;
         Reversed?.Invoke();
     }
-
-    //Undone: Refactoring!!
-    //private void ReverseGravity()
-    //{
-    //    Physics2D.gravity *= -1;
-    //    var m = FindObjectsOfType<PlayerMovement>();
-
-    //    Debug.Log(m.Length);
-    //    foreach (var p in m)
-    //    {
-    //        p.SetJumpDirection(-Physics2D.gravity.normalized);
-    //    }
-    //}
 }

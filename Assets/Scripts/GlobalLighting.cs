@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public interface IGlobalLighting
 {
@@ -12,7 +12,7 @@ public sealed class GlobalLighting : MonoBehaviour, IGlobalLighting
 {
     private const float FadeSpeed = 0.3f;
 
-    [SerializeField] private Light2D _globalLight;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _globalLight;
 
     private Coroutine _fadeRoutine;
 

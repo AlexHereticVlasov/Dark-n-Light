@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 namespace GameObjectView
 {
@@ -10,7 +10,7 @@ namespace GameObjectView
         [SerializeField] private BaseDestructableBlock _block;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private ElementBean _bean;
-        [SerializeField] private ShadowCaster2D _shadowCaster;
+        [SerializeField] private UnityEngine.Rendering.Universal.ShadowCaster2D _shadowCaster;
         [SerializeField] private DissolvedEffect _effect;
 
         private void OnEnable()

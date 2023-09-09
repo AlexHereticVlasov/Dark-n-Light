@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class GhostPlatform : Platform
 {
     [SerializeField] private float _rate;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private ShadowCaster2D _shadowCaster;
+    [SerializeField] private UnityEngine.Rendering.Universal.ShadowCaster2D _shadowCaster;
 
     private WaitForSeconds _delay;
 
