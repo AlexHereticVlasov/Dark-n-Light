@@ -2,11 +2,17 @@ using UnityEngine;
 using Zenject;
 using SceneLoad;
 
-public sealed class PauseMenu : MonoBehaviour
+public interface IPauseMenu
+{
+    void PauseGame();
+    void Continue();
+}
+
+public sealed class PauseMenu : MonoBehaviour, IPauseMenu
 {
     [SerializeField] private GameObject _panel;
     
-    [Inject] private SceneLoader _loader;
+    [Inject] private ISceneLoader _loader;
 
     public void PauseGame()
     {

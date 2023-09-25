@@ -3,8 +3,8 @@ using Zenject;
 
 public class InventoryViev : MonoBehaviour
 {
-    [Inject] private Cells cells;
-    [Inject] private Inventory _inventory;
+    [Inject] private ICells _cells;
+    [Inject] private IInventory _inventory;
 
     private void OnEnable()
     {
@@ -18,7 +18,7 @@ public class InventoryViev : MonoBehaviour
         _inventory.AmountChanged -= OnAmountChanged;
     }
 
-    private void OnAmountChanged(int[] diamonds) => cells.ChangeAmount(diamonds);
+    private void OnAmountChanged(int[] diamonds) => _cells.ChangeAmount(diamonds);
 
-    private void OnInitialized(int[] diamonds) => cells.Init(diamonds);
+    private void OnInitialized(int[] diamonds) => _cells.Init(diamonds);
 }

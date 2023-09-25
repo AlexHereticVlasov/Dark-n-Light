@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public sealed class EndZoneMediator : MonoBehaviour
 {
     [SerializeField] private Exit[] _exits;
+    [SerializeField] private ElementBean _bean;
 
     private Coroutine _checkRoutine;
     private WaitForSeconds _delay = new WaitForSeconds(1.75f);
@@ -44,6 +45,17 @@ public sealed class EndZoneMediator : MonoBehaviour
         }
 
         _checkRoutine = StartCoroutine(CheckForVictory());
+    }
+
+    public void Recolor()
+    {
+        foreach (var exit in _exits)
+        {
+            var view = exit.ExitEffect.GetComponent<LevelZoneView>();
+            var colors = new Color[1];
+            colors[0] = _bean[exit.Element].MainColor;
+            view.Recolor(colors);
+        }
     }
 
     private IEnumerator CheckForVictory()

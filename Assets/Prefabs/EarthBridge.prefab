@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 360698197794051081}
   - component: {fileID: 360698197794051080}
   - component: {fileID: 360698197794051078}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: EarthBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

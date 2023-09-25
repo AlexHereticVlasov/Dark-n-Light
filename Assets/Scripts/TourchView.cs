@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class TourchView : MonoBehaviour, IObjectViev
 {
-    [SerializeField] private Light2D _light;
-    [SerializeField] private Light2D _subLight;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _subLight;
     [SerializeField] private Tourch _tourch;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private ParticleSystem _orb;

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85364b5b589ffc340a18f771e7d442de, type: 3}
   m_Name: 16 - Message
   m_EditorClassIdentifier: 
-  <Text>k__BackingField: Touch the sun stone with the light and it disappears
+  <Text>k__BackingField: Touch the sunstone with the light and it disappears
   <Clip>k__BackingField: {fileID: 8300000, guid: 159edd26e24738f439f68df0f2f6bbe9, type: 3}

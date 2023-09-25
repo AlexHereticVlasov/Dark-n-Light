@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class LightPlatform : BaseActivailiable
 {
     [SerializeField] private BoxCollider2D _collider;
-    [SerializeField] private Light2D _light;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
 
     public override void Activate()
     {
@@ -27,6 +27,7 @@ public class LightPlatform : BaseActivailiable
             if (player.Element != Elements.Dark) return;
 
             Debug.Log($"{player.name} must Die!");
+            player.TakeDamage();
         }
     }
 }

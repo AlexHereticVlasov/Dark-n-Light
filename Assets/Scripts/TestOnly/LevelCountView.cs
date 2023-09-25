@@ -8,6 +8,8 @@ public sealed class LevelCountView : MonoBehaviour
 
     private void Start()
     {
+        if (Application.isEditor == false) return;
+        
         int number = SceneManager.GetActiveScene().buildIndex - Constants.LevelOffset + 1;
         _text.text = $"Level {number}";
     }

@@ -1,7 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Victory : MonoBehaviour
+public interface IVictory
+{
+    event UnityAction Win;
+}
+
+public class Victory : MonoBehaviour, IVictory
 {
     [SerializeField] private EndZoneMediator _endZone;
     [SerializeField] private GameObject _victoryPanel;

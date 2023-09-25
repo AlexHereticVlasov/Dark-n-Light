@@ -30,8 +30,8 @@ public class ProjectileMover : MonoBehaviour
             }
         }
 
-        Destroy(gameObject,5);
-	}
+        Destroy(gameObject, 5);
+    }
 
     private void FixedUpdate() => Move();
 
@@ -57,12 +57,12 @@ public class ProjectileMover : MonoBehaviour
         {
             var hitInstance = Instantiate(hit, position, rotation);
             if (UseFirePointRotation)
-                hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); 
-            else if (rotationOffset != Vector3.zero) 
+                hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0);
+            else if (rotationOffset != Vector3.zero)
                 hitInstance.transform.rotation = Quaternion.Euler(rotationOffset);
-            else 
-                hitInstance.transform.LookAt(contact.point + contact.normal); 
-            
+            else
+                hitInstance.transform.LookAt(contact.point + contact.normal);
+
 
             var hitPs = hitInstance.GetComponent<ParticleSystem>();
             if (hitPs == null)

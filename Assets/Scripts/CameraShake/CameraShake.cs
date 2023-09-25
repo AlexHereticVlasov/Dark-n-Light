@@ -5,7 +5,13 @@ using Zenject;
 
 namespace CameraShaker
 {
-    public sealed class CameraShake : MonoBehaviour
+    public interface ICameraShake
+    {
+        public void StartShake();
+        public void StartShake(float intencity, float length);
+    }
+
+    public sealed class CameraShake : MonoBehaviour, ICameraShake
     {
         private const float Intencity = 1.5f;
         private const float Length = 0.5f;

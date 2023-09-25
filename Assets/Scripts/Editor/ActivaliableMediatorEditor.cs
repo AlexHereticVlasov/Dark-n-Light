@@ -1,3 +1,4 @@
+using Bridges;
 using UnityEngine;
 using UnityEditor;
 
@@ -51,5 +52,31 @@ public sealed class VoidBridgeEditor : Editor
         var lightBridge = (MagicBridge)target;
         if (GUILayout.Button(nameof(lightBridge.Recolor)))
             lightBridge.Recolor();
+    }
+}
+
+[CustomEditor(typeof(WaterBridge))]
+public sealed class WaterBridgeEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var lightBridge = (MagicBridge)target;
+        if (GUILayout.Button(nameof(lightBridge.Recolor)))
+            lightBridge.Recolor();
+    }
+}
+
+[CustomEditor(typeof(EndZoneMediator))]
+public sealed class EndZoneMediatorEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var mediator = (EndZoneMediator)target;
+        if (GUILayout.Button(nameof(mediator.Recolor)))
+            mediator.Recolor();
     }
 }

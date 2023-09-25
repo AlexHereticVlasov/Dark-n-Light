@@ -7,7 +7,7 @@ public sealed class PauseMenuInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<PauseMenu>().FromInstance(_pauseMenu).AsSingle().NonLazy();
+        Container.Bind<IPauseMenu>().FromInstance(_pauseMenu).AsSingle().NonLazy();
         Container.QueueForInject(_pauseMenu);
     }
 }

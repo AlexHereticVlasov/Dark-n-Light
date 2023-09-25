@@ -5,8 +5,8 @@ namespace CameraShaker
 {
     public sealed class CameraShakeMediator : MonoBehaviour
     {
-        [Inject] private CameraShakeTimer _timer;
-        [Inject] private CameraShake _cameraShake;
+        [Inject] private ICameraShakeTimer _timer;
+        [Inject] private ICameraShake _cameraShake;
 
         private void OnEnable() => _timer.TimeIsRunnongOut += OnTimeIsRunnongOut;
 

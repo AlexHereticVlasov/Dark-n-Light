@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class LevelButtonView : MonoBehaviour
+public sealed class LevelButtonView : MonoBehaviour
 {
     private int LevelOffset = 1;
 

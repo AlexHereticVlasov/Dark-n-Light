@@ -1,9 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
+
+    [Inject] private readonly IGravity _gravity;
+
+    private void OnEnable() => _gravity.Reversed += OnGravityReversed;
+
+    private void OnDisable() => _gravity.Reversed -= OnGravityReversed;
+
+    private void OnGravityReversed() => _jumpDirection *= -1;
+
     private Vector2 _jumpDirection = Vector2.up;
 
     public event UnityAction Warped;

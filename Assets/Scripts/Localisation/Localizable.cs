@@ -3,7 +3,7 @@ using TMPro;
 
 public class Localizable : MonoBehaviour
 {
-    [SerializeField] private Localization _localization;
+    [SerializeField] private Localization _localization; //ToDo: Inject it
     [SerializeField] private LocalizationBean _bean;
     [SerializeField] private TMP_Text _text;
 

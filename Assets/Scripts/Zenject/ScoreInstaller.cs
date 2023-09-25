@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Zenject;
+using Timer;
 
 public class ScoreInstaller : MonoInstaller
 {
@@ -7,7 +8,8 @@ public class ScoreInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Score>().FromInstance(_score).AsSingle().NonLazy();
+        Container.Bind<IScore>().FromInstance(_score).AsSingle().NonLazy();
+        Container.Bind<IHardModeCounter>().FromInstance(_score).AsSingle().NonLazy();
         Container.QueueForInject(_score);
     }
 }

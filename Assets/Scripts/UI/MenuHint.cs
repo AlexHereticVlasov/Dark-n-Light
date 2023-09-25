@@ -1,7 +1,13 @@
 using UnityEngine;
 using TMPro;
 
-public class MenuHint : MonoBehaviour
+public interface IMenuHint
+{
+    void Show(string message);
+    void Hide();
+}
+
+public class MenuHint : MonoBehaviour, IMenuHint
 {
     [SerializeField] private TMP_Text _text;
 

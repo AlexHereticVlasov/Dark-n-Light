@@ -7,7 +7,7 @@ public class CameraFollowInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<CameraFollow>().FromInstance(_cameraFollow).AsSingle().NonLazy();
+        Container.Bind<ICameraFollow>().FromInstance(_cameraFollow).AsSingle().NonLazy();
         Container.QueueForInject(_cameraFollow);
     }
 }

@@ -7,7 +7,7 @@ public class MenuHintInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<MenuHint>().FromInstance(_menuHint).AsSingle().NonLazy();
+        Container.Bind<IMenuHint>().FromInstance(_menuHint).AsSingle().NonLazy();
         Container.QueueForInject(_menuHint);
     }
 }

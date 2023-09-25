@@ -7,7 +7,7 @@ public sealed class SlideShowinstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<SlideShow>().FromInstance(_slideShow).AsSingle().NonLazy();
+        Container.Bind<ISlideShow>().FromInstance(_slideShow).AsSingle().NonLazy();
         Container.QueueForInject(_slideShow);
     }
 }

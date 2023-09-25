@@ -4,12 +4,18 @@ using UnityEngine.Events;
 using Zenject;
 using SceneLoad;
 
-public class SlideShow : MonoBehaviour
+public interface ISlideShow
+{
+    event UnityAction<Slide> SlideChanged;
+    void Skip();
+}
+
+public sealed class SlideShow : MonoBehaviour, ISlideShow
 {
     [SerializeField] private int _nextScene;
     [SerializeField] private Slide[] slides;
 
-    [Inject] private SceneLoader _loader;
+    [Inject] private ISceneLoader _loader;
 
     private bool _canSkip = true;
     private Coroutine _playRoutine;

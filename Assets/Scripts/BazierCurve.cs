@@ -1,8 +1,16 @@
 using UnityEngine;
 
-public sealed class BazierCurve : MonoBehaviour
+public interface IBazier
+{
+    Transform Transform { get; }
+    Vector2 GetPosition(Vector2 start, float t);
+}
+
+public sealed class BazierCurve : MonoBehaviour, IBazier
 {
     [SerializeField] private BazierPoint[] _points;
+
+    public Transform Transform => transform;
 
     public Vector2 GetPosition(Vector2 start, float t)
     {

@@ -192,8 +192,14 @@ namespace FinalStateMachine
 
         public override void Enter()
         {
-            //ToDo:Remove constants to player Config
             base.Enter();
+
+            if (_observation.IsJumpAble == false)
+            {
+                _stateMachine.ChangeState(_player.IdleState);
+                return;
+            }
+
             _movement.Jump(_config.NormalJumpForce);
             _delay = .25f;
         }

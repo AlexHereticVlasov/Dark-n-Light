@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 
-public sealed class FlameBridge : LightBridge
+namespace Bridges
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public sealed class FlameBridge : PositiveBridge
     {
-        if (collision.transform.TryGetComponent(out IDamageable damageable))
-            if (damageable.Element != Elements.Fire)
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.transform.TryGetComponent(out IDamageable damageable))
+            {
+                if (damageable.Element == Elements.Fire) return;
+
                 damageable.TakeDamage();
+            }
+        }
     }
 }
 

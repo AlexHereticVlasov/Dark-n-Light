@@ -22,16 +22,25 @@ public sealed class PendulumMovement : BaseMovement
     protected override void Move()
     {
         float sin = Mathf.Sin(_angleInRadians);
-        float force = 0.0000981f * sin;
+        ApplyForce(sin);
+
+        _bob.position = ResetPosition(sin);
+        _lineRenderer.SetPosition(1, _bob.position);
+    }
+
+    private void ApplyForce(float sin)
+    {
+        float force = 0.000981f * sin;
         _angularAcseleration = force / _length;
         _angularVelocity += _angularAcseleration;
         _angleInRadians += _angularVelocity;
+    }
 
+    private Vector3 ResetPosition(float sin)
+    {
         float bobX = _length * sin + _origin.position.x;
         float bobY = _length * Mathf.Cos(_angleInRadians) + _origin.position.y;
-
-        _bob.position = new Vector3(bobX, bobY, _bob.position.z);
-        _lineRenderer.SetPosition(1, _bob.position);
+        return new Vector3(bobX, bobY, _bob.position.z);
     }
 
     public void CalculateLength(float time, int n)
@@ -39,5 +48,5 @@ public sealed class PendulumMovement : BaseMovement
         float k = 16f;
         _length = 9.81f * Mathf.Pow(time / (2 * Mathf.PI * (k + n + 1)), 2);
         transform.position += Vector3.up * _length;
-    }   
+    }
 }

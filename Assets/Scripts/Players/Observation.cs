@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Observation : MonoBehaviour
@@ -12,11 +13,13 @@ public class Observation : MonoBehaviour
     [SerializeField] private LayerMask _interactableMask;
     //private int _facingDirection = 1;
 
-    [field:SerializeField] public CoyotityTime CayotityTime { get; private set; }
+    [field: SerializeField] public CoyotityTime CayotityTime { get; private set; }
 
     public float Direction { get; private set; }
     public bool IsJumping { get; private set; }
+
     public bool IsInteract { get; private set; }
+    public bool IsJumpAble { get; private set; } = true;
     public bool IsOnIce { get; private set; }
     //ToDo: Create Warp Counter
     public bool IsWarp { get; private set; }
@@ -29,7 +32,7 @@ public class Observation : MonoBehaviour
 
         Direction = direction;
     }
-    
+
     private bool IsNeedToFlip(float direction) => direction != 0 &&
         Mathf.Sign(direction) != Mathf.Sign(transform.localScale.x) /*_facingDirection*/;
 
@@ -40,6 +43,25 @@ public class Observation : MonoBehaviour
 
     public void SetIsJumping(bool value) => IsJumping = value;
 
+    public void SetIsJumpAble(bool value)
+    {
+
+        if (value)
+        {
+            CayotityTime.SetLastAsWater();
+            StartCoroutine(JumpAbleRoutine());
+            return;
+        }
+
+        IsJumpAble = value;
+    }
+
+    private IEnumerator JumpAbleRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        IsJumpAble = true;
+    }
+
     public void SetIsInteract(bool value) => IsInteract = value;
 
     public void SetIsWarp(bool value) => IsWarp = value;
@@ -48,13 +70,13 @@ public class Observation : MonoBehaviour
     public bool IsOnEarth()
     {
         foreach (var point in _groundCheckPoints)
-            if (Physics2D.Raycast(point.transform.position, Vector2.down, Radius, _groundMask))
+            if (Physics2D.Raycast(point.transform.position, Physics2D.gravity, Radius, _groundMask))
                 return true;
 
         return false;
     }
 
-    public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(/*_facingDirection*/ 
+    public bool IsPooshing() => Physics2D.Raycast(transform.position, new Vector2(/*_facingDirection*/
                                 transform.localScale.x, 0), 0.55f, _blockMask);
 
     public Transform GetDestinaton()
@@ -69,7 +91,10 @@ public class Observation : MonoBehaviour
 
     public bool CanJump() => IsOnEarth() || CayotityTime.CanJump();
 
-    public void ResetCayotityTime() => CayotityTime.ResetValue();
+    public void ResetCayotityTime()
+    {
+        CayotityTime.ResetValue();
+    }
 
     public bool CanInteract()
     {

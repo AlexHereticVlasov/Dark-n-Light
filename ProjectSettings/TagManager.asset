@@ -23,11 +23,11 @@ TagManager:
   - Lux
   - Collectable
   - Interactable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Torch
+  - EarthWall
+  - AirWall
+  - FallingStone
+  - FallingStoneTrigger
   - 
   - 
   - 

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BaseZone : MonoBehaviour
 {
@@ -17,9 +17,10 @@ public abstract class BaseZoneEffect : MonoBehaviour
     public abstract void Apply(Player player);
 }
 
+#region TrueVision
 public abstract class TrueVisionBaseZoneEffect : BaseZoneEffect
 {
-    [SerializeField] protected BaseFakeObject[] FakeObjects; 
+    [SerializeField] protected BaseFakeObject[] FakeObjects;
 }
 
 public sealed class TrueVisionEnterZoneEffect : TrueVisionBaseZoneEffect
@@ -42,22 +43,41 @@ public sealed class TrueVisionExitZoneEffect : TrueVisionBaseZoneEffect
 
 public abstract class BaseFakeObject : MonoBehaviour
 {
-    public abstract void BecomeNormal();
+    protected Coroutine Coroutine;
 
-    public abstract void BecomeTransperent();
+    public void BecomeNormal()
+    {
+        Coroutine = StartCoroutine(BecomeNormalRoutine());
+    }
+
+    public void BecomeTransperent()
+    {
+        Coroutine = StartCoroutine(BecomeTransperentRoutine());
+    }
+
+    public abstract IEnumerator BecomeNormalRoutine();
+
+    public abstract IEnumerator BecomeTransperentRoutine();
 }
 
 public sealed class SpriteFakeObject : BaseFakeObject
 {
-    public override void BecomeNormal()
+    [SerializeField] private SpriteRenderer _renderer;
+
+    public override IEnumerator BecomeNormalRoutine()
     {
 
+        while (true)
+        {
+
+            yield return null;
+        }
     }
 
-    public override void BecomeTransperent()
+    public override IEnumerator BecomeTransperentRoutine()
     {
-        
+        yield return null;
     }
 }
-
+#endregion
 

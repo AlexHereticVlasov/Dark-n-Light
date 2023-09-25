@@ -7,7 +7,7 @@ public class InventoryInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Inventory>().FromInstance(_inventory).AsSingle().NonLazy();
+        Container.Bind<IInventory>().FromInstance(_inventory).AsSingle().NonLazy();
         Container.QueueForInject(_inventory);
     }
 }

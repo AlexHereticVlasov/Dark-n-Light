@@ -6,8 +6,8 @@ public sealed class UserInput : BaseUserInput
 {
     [SerializeField] private Observation[] _observation;
 
-    [Inject] private PauseMenu _pause;
-    [Inject] private CameraFollow _cameraFollow;
+    [Inject] private IPauseMenu _pause;
+    [Inject] private ICameraFollow _cameraFollow;
     
     private int _current;
 
@@ -54,10 +54,8 @@ public sealed class UserInput : BaseUserInput
         if (Input.GetKeyDown(KeyCode.LeftControl))
             _cameraFollow.ChangeView();
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             _observation[_current].SetIsWarp(true);
-        }
     }
 
     private bool ShouldInteract() => Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.F);

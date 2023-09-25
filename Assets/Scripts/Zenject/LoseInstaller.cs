@@ -7,7 +7,7 @@ public class LoseInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Lose>().FromInstance(_lose).AsSingle().NonLazy();
+        Container.Bind<ILose>().FromInstance(_lose).AsSingle().NonLazy();
         Container.QueueForInject(_lose);
     }
 }

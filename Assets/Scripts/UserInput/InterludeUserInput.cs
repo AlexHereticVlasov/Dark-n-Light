@@ -3,7 +3,7 @@ using Zenject;
 
 public sealed class InterludeUserInput : BaseUserInput
 {
-    [Inject] private SlideShow _slideShow;
+    [Inject] private ISlideShow _slideShow;
 
     protected override void ReadInput()
     {

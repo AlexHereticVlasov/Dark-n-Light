@@ -1,15 +1,8 @@
-﻿public class LightBridge : MagicBridge
+﻿namespace Bridges
 {
-    public override void Activate()
+    public sealed class LightBridge : PositiveBridge
     {
-        base.Activate();
-        StartCoroutine(ActivateRoutine());
-    }
 
-    public override void Deactivate()
-    {
-        base.Deactivate();
-        StartCoroutine(DeactivateRoutine());
     }
 }
 

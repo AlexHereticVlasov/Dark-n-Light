@@ -9,15 +9,17 @@ public class SelectionMark : MonoBehaviour
     {
         _player.Selected += OnSelected;
         _player.Deselected += OnDeselected;
-        _player.Death += OnDeselected;
+        _player.Death += OnDeath;
     }
 
     private void OnDisable()
     {
         _player.Selected -= OnSelected;
         _player.Deselected -= OnDeselected;
-        _player.Death -= OnDeselected;
+        _player.Death -= OnDeath;
     }
+
+    private void OnDeath(Vector2 position) => OnDeselected();
 
     private void OnDeselected() => _renderer.enabled = false;
 

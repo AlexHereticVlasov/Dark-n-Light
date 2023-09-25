@@ -4,11 +4,11 @@ public class TrampMovement : BaseMovement
 {
     [SerializeField] private Path _path;
     [SerializeField] private int _currentPoint;
-    [SerializeField] private float _speed;
+    [SerializeField] protected float Speed;
  
     protected override void Move()
     {
-        float delta = Time.deltaTime * _speed;
+        float delta = Time.deltaTime * Speed;
         Vector2 target = _path.GetPoint(_currentPoint);
         transform.position = Vector2.MoveTowards(transform.position, target, delta);
         CheckIsDestinationReached(delta, target);

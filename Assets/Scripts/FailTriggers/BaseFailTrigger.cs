@@ -9,7 +9,7 @@ namespace FailTrigger
         public event UnityAction Activated;
 
         public abstract void OnTriggerEnter2D(Collider2D collider);
-        public abstract void OnTriggerExit2D(Collider2D collider);
+        public abstract void OnTriggerExit2D(Collider2D collider); //Hack: We needn't it
 
         protected void Activate() => Activated?.Invoke();
     }
@@ -28,6 +28,16 @@ namespace FailTrigger
                     Activate();
             }
         }
+
+        public override void OnTriggerExit2D(Collider2D collider)
+        {
+            ;
+        }
+    }
+
+    public sealed class Level22FailTrigger : BaseFailTrigger
+    {
+        public override void OnTriggerEnter2D(Collider2D collider) => Activate();
 
         public override void OnTriggerExit2D(Collider2D collider)
         {

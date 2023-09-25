@@ -8,7 +8,7 @@ public sealed class MainMenu : MonoBehaviour
     [SerializeField] private GameObject[] _panels;
     [SerializeField] private BaseFadePanel _fadePanel;
 
-    [Inject] private SceneLoader _loader;
+    [Inject] private ISceneLoader _loader;
 
     public void Play(int index) => StartCoroutine(StartPlay(index));
 

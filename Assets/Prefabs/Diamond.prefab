@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8166c8a7f84dff4ba77748cc0383785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Cost>k__BackingField: 50
+  <Cost>k__BackingField: 25
   <Element>k__BackingField: 0
   _collider: {fileID: 7215859138128920280}
 --- !u!114 &7215859138128920278

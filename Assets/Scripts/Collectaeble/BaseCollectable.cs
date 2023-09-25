@@ -27,8 +27,3 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
 
     protected void Spawn() => Spawned?.Invoke(Element, transform.position);
 }
-
-public class Rune : BaseCollectable
-{
-    protected override bool CanCollect(Player player) => true;
-}

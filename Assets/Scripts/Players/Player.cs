@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using FinalStateMachine;
 
+//TODO: Create Player installer and separate this class to different interfaces
 public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 {
     [SerializeField] private Observation _observation;
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public event UnityAction Deselected;
     public event UnityAction Unlished;
     public event UnityAction Captured;
-    public event UnityAction Death;
+    public event UnityAction<Vector2> Death;
     public event UnityAction<Elements, Vector2> Spawned;
 
     public IdleState IdleState { get; private set; }
@@ -34,6 +35,12 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
     private void Awake()
+    {
+        InitializeStateMachine();
+        gameObject.layer = _configs[(int)Element].Layer;
+    }
+
+    private void InitializeStateMachine()
     {
         _stateMachine = new StateMachine();
         var config = _configs[(int)Element];
@@ -90,7 +97,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     {
         _stateMachine.ChangeState(DeathState);
         Spawned?.Invoke(Element, transform.position);
-        Death?.Invoke();
+        Death?.Invoke(transform.position);
     }
 
     public void AddForce(Vector2 force) => _movement.AddForce(force);
@@ -113,4 +120,6 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
         _stateMachine.ChangeState(InPrisonState);
         Captured?.Invoke();
     }
+
+    public void SetIsJumpAble(bool value) => _observation.SetIsJumpAble(value);
 }

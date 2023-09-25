@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using GameObjectView;
 
 [CustomEditor(typeof(LeverMidiator))]
 public class LeverMediatorEditor : Editor
@@ -48,6 +49,19 @@ public class DangerZoneViewEditor : Editor
         DrawDefaultInspector();
 
         var view = (DangerZoneView)target;
+        if (GUILayout.Button(nameof(view.Recolor)))
+            view.Recolor();
+    }
+}
+
+[CustomEditor(typeof(DangerFogViev))]
+public class DangerFogViewEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        var view = (DangerFogViev)target;
         if (GUILayout.Button(nameof(view.Recolor)))
             view.Recolor();
     }
