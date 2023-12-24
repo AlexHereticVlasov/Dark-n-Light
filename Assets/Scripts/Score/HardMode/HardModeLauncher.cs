@@ -8,12 +8,19 @@ public sealed class HardModeLauncher : MonoBehaviour, IHardModeLauncher
     public void Cancel()
     {
         Debug.Log("Restored");
-        _adapter.Cancel();
+        _adapter?.Cancel();
     }
 
     public void Launch()
     {
+        //Hack: Debug only
+        if (_adapter is null)
+        {
+            Debug.LogError("Current Level not containes HardModeAdapter");
+            return;
+        }
+
         Debug.Log("Over");
-        _adapter.Launch();
+        _adapter?.Launch();
     }
 }
