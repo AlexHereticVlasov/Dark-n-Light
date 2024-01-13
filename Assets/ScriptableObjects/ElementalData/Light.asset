@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particles:
   - {fileID: 198459042000340154, guid: e90b0a20dc997ef4c9e67b1c8b6db6c9, type: 3}
+  _name: Lux
   <MainColor>k__BackingField: {r: 1, g: 0.8980392, b: 0.20392157, a: 1}
   <AdditionalColor>k__BackingField: {r: 0.98039216, g: 1, b: 0.5803922, a: 1}
   <DissolveColor>k__BackingField:

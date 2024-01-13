@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using FinalStateMachine;
 
-//TODO: Create Player installer and separate this class to different interfaces
-public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
+//TODO: Separate this class to different interfaces
+public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
 {
     [SerializeField] private Observation _observation;
     [SerializeField] private PlayerMovement _movement;
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public event UnityAction Captured;
     public event UnityAction<Vector2> Death;
     public event UnityAction<Elements, Vector2> Spawned;
+    public event UnityAction<float, float> HealthChanged;
 
     public IdleState IdleState { get; private set; }
     public WalkState WalkState { get; private set; }
@@ -32,10 +33,17 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
     public LevelCompliteState LevelCompliteState { get; private set; }
     public InPrisonState InPrisonState { get; private set; }
 
+    public float MaxHealth { get; private set; }
+    [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
     private void Awake()
     {
+        //Hack: Temp Solution
+        MaxHealth = 5;
+        Health = MaxHealth;
+
+
         InitializeStateMachine();
         gameObject.layer = _configs[(int)Element].Layer;
     }
@@ -85,13 +93,26 @@ public class Player : MonoBehaviour, IDamageable, IActor, IEffectOrigin
 
     public void Deselect() => Deselected?.Invoke();
 
+    public void Heal(float amount)
+    {
+        Health += amount;
+        Health = Mathf.Clamp(Health, 0, MaxHealth);
+        HealthChanged?.Invoke(Health, MaxHealth);
+    }
+
     public void TakeDamage()
     {
         if (_stateMachine.Current == LevelCompliteState) return;
+        if (Health <= 0) return;
+        //Hack:Temp Solution
+        Health--;
+        HealthChanged?.Invoke(Health, MaxHealth);
 
-        if (_stateMachine.Current != DeathState)
+        if (CanDie())
             Die();
     }
+
+    private bool CanDie() => _stateMachine.Current != DeathState && Health <= 0;
 
     private void Die()
     {

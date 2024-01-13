@@ -15,6 +15,7 @@ MonoBehaviour:
   _particles:
   - {fileID: 198888474367897224, guid: c9e6ddab55c69eb4b81803e860d80c55, type: 3}
   - {fileID: 198563800904457666, guid: 983ffc7b1f02f0d46a330ab4d104d17d, type: 3}
+  _name: Igny
   <MainColor>k__BackingField: {r: 1, g: 0.047058824, b: 0, a: 1}
   <AdditionalColor>k__BackingField: {r: 1, g: 0.047058824, b: 0, a: 1}
   <DissolveColor>k__BackingField:

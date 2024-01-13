@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class RestorableBlock : BaseDestructableBlock
 {
+    private readonly WaitForSeconds _delay = new WaitForSeconds(3);
+
     [SerializeField] private Collider2D _collider;
 
     protected override void Finish() => StartCoroutine(RestoreRoutine());
@@ -12,7 +14,7 @@ public class RestorableBlock : BaseDestructableBlock
     private IEnumerator RestoreRoutine()
     {
         _collider.enabled = false;
-        yield return new WaitForSeconds(3f);
+        yield return _delay;
 
         float factor = 0;
         while (factor < 1)

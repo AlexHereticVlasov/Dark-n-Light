@@ -1,5 +1,4 @@
 ﻿using CameraShaker;
-using System;
 using UnityEngine;
 using Zenject;
 
