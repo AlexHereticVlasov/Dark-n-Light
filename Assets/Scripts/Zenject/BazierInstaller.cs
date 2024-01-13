@@ -11,3 +11,14 @@ public sealed class BazierInstaller : MonoInstaller
         Container.QueueForInject(_curve);
     }
 }
+
+public sealed class PlayersInstaller : MonoInstaller
+{
+    [SerializeField] private Player[] _player;
+
+    public override void InstallBindings()
+    {
+        Container.Bind<Player[]>().FromInstance(_player).AsSingle().NonLazy();
+        Container.QueueForInject(_player);
+    }
+}

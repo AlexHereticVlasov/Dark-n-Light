@@ -7,10 +7,13 @@ public class Block : MonoBehaviour, IActor, IPhysicMovement, IDamageable, IEffec
     [SerializeField] private bool _isFreazeable;
 
     public event UnityAction<Elements, Vector2> Spawned;
+    public event UnityAction<float, float> HealthChanged;
 
     public Vector2 Velocity { get; private set; }
     public float AngularVelocity { get; private set; }
+    public float MaxHealth { get; private set; }
 
+    [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public Elements Element { get; private set; }
 
     public void SetParent(Transform parent)

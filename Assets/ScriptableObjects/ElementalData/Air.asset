@@ -15,6 +15,7 @@ MonoBehaviour:
   _particles:
   - {fileID: 198717023933481710, guid: 29fec53fa5329e345981c83555fa131e, type: 3}
   - {fileID: 198988523848601504, guid: df365974c854a33438e5aea62ca4b975, type: 3}
+  _name: Air
   <MainColor>k__BackingField: {r: 0.45882353, g: 0.94509804, b: 1, a: 1}
   <AdditionalColor>k__BackingField: {r: 0.45882353, g: 0.94509804, b: 1, a: 1}
   <DissolveColor>k__BackingField:
