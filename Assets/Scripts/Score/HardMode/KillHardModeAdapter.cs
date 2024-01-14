@@ -12,6 +12,6 @@ public sealed class KillHardModeAdapter : HardModeAdapter
     public override void Launch()
     {
         foreach (var player in _players)
-            player.TakeDamage();
+            player.TakeDamage(float.MaxValue);
     }
 }

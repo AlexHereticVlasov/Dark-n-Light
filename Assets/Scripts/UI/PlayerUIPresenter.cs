@@ -11,11 +11,11 @@ public sealed class PlayerUIPresenter : MonoBehaviour
     public void Init(Player player)
     {
         _player = player;
-        _player.HealthChanged += OnHealthChanged;
+        _player.Health.ValueChanged += OnHealthChanged;
         PlayerDeterminated?.Invoke(_player.Element);
     }
 
-    private void OnDisable() => _player.HealthChanged -= OnHealthChanged;
+    private void OnDisable() => _player.Health.ValueChanged -= OnHealthChanged;
 
     private void OnHealthChanged(float current, float max)
     {

@@ -6,5 +6,5 @@ public class PenetrationDeathTriger : MonoBehaviour
 
     private void Awake() => _damageable = transform.parent.GetComponent<IDamageable>();
 
-    private void OnTriggerEnter2D(Collider2D collision) => _damageable.TakeDamage();
+    private void OnTriggerEnter2D(Collider2D collision) => _damageable.TakeDamage(float.MaxValue);
 }
