@@ -32,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: a7b4b47c4f9e6c84b820552a5d2b2912, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -64,9 +64,9 @@ Material:
     - Vector1_c77053437ccb4d36845a83d328eaeba8: 0.12
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_41dc9fabba784326bbc093af44dc7990: {r: 1, g: 1, b: 1, a: 0.78431374}
+    - Color_41dc9fabba784326bbc093af44dc7990: {r: 0.9716981, g: 0.33459416, b: 0.33459416, a: 0.78431374}
     - Color_586304366ebf4318ae005194d10bb988: {r: 0.004538984, g: 0.021893928, b: 0.05660379, a: 1}
-    - Color_d50bf5d71819463c9844c067d1a46d6b: {r: 0.546092, g: 0.5541623, b: 0.57030296, a: 0.78431374}
+    - Color_d50bf5d71819463c9844c067d1a46d6b: {r: 0.01886797, g: 1.3459126, b: 4, a: 0.78431374}
     - Vector2_55bccd26c16a4b7e869879808494059f: {r: 0, g: 0.07, b: 0, a: 0}
     - Vector2_5ece255a12c84a4592cca9af38aad022: {r: 1, g: -1, b: 0, a: 0}
     - Vector2_9491744b350b424cb4b1f2806c786ef1: {r: 0.5, g: 0, b: 0, a: 0}
