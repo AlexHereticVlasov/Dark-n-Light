@@ -10,7 +10,7 @@ namespace Bridges
             {
                 if (damageable.Element == Elements.Fire) return;
 
-                damageable.TakeDamage();
+                damageable.TakeDamage(1); //Hack:TempSolution
             }
         }
     }

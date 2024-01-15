@@ -2,13 +2,12 @@
 
 public interface IDamageable
 {
-    float MaxHealth { get; }
-    float Health { get; }
+    //Health Health { get; }
     Elements Element { get; }
 
     event UnityAction<float, float> HealthChanged;
 
-    void TakeDamage();
+    void TakeDamage(float amount);
 }
 
 public interface IHeliable : IDamageable

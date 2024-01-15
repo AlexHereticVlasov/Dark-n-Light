@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
     [SerializeField] private PlayerSettings[] _configs;
 
     private StateMachine _stateMachine;
+    public Health Health { get; private set; }
 
     public event UnityAction Selected;
     public event UnityAction Deselected;
@@ -33,15 +34,12 @@ public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
     public LevelCompliteState LevelCompliteState { get; private set; }
     public InPrisonState InPrisonState { get; private set; }
 
-    public float MaxHealth { get; private set; }
-    [field: SerializeField] public float Health { get; private set; }
     [field: SerializeField] public Elements Element { get; private set; } = Elements.Dark;
 
     private void Awake()
     {
-        //Hack: Temp Solution
-        MaxHealth = 5;
-        Health = MaxHealth;
+        //Hack: Temp Solution, create health here. Get value from save data
+        Health = new Health(5);
 
 
         InitializeStateMachine();
@@ -93,32 +91,25 @@ public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
 
     public void Deselect() => Deselected?.Invoke();
 
-    public void Heal(float amount)
-    {
-        Health += amount;
-        Health = Mathf.Clamp(Health, 0, MaxHealth);
-        HealthChanged?.Invoke(Health, MaxHealth);
-    }
+    public void Heal(float amount) => Health.Heal(amount);
 
-    public void TakeDamage()
+    public void TakeDamage(float amount)
     {
         if (_stateMachine.Current == LevelCompliteState) return;
-        if (Health <= 0) return;
-        //Hack:Temp Solution
-        Health--;
-        HealthChanged?.Invoke(Health, MaxHealth);
-
-        if (CanDie())
-            Die();
+        Health.TakeDamage(amount); //Hack: Temp Solutin
+        TryDie();
     }
 
-    private bool CanDie() => _stateMachine.Current != DeathState && Health <= 0;
+    private bool CanDie() => _stateMachine.Current != DeathState && Health.Value <= 0;
 
-    private void Die()
+    private void TryDie()
     {
-        _stateMachine.ChangeState(DeathState);
-        Spawned?.Invoke(Element, transform.position);
-        Death?.Invoke(transform.position);
+        if (CanDie())
+        {
+            _stateMachine.ChangeState(DeathState);
+            Spawned?.Invoke(Element, transform.position);
+            Death?.Invoke(transform.position);
+        }
     }
 
     public void AddForce(Vector2 force) => _movement.AddForce(force);
@@ -143,4 +134,39 @@ public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
     }
 
     public void SetIsJumpAble(bool value) => _observation.SetIsJumpAble(value);
+}
+
+public sealed class Health
+{
+    private readonly int _max;
+
+    public float Value { get; private set; }
+
+    public event UnityAction<float, float> ValueChanged;
+
+    public Health(int value)
+    {
+        _max = value;
+        Value = value;
+    }
+
+    public void Heal(float amount)
+    {
+        Value += amount;
+        Value = Mathf.Clamp(Value, 0, _max);
+        ValueChanged?.Invoke(Value, _max);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        //if (_stateMachine.Current == LevelCompliteState) return;
+        if (Value <= 0) return;
+
+        Value -= amount;
+        ValueChanged?.Invoke(Value, _max);
+
+        //ToDo: Death event
+        //if (CanDie())
+        //    Die();
+    }
 }

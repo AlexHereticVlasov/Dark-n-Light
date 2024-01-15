@@ -12,7 +12,7 @@ public class SoulPrison : MonoBehaviour, IDamageable, IEffectOrigin
     public event UnityAction<Elements, Vector2> Spawned;
     public event UnityAction<float, float> HealthChanged;
     //ToDo: Use health
-    public void TakeDamage()
+    public void TakeDamage(float amount)
     {
         _collider.enabled = false;
         var player = transform.GetChild(0).GetComponent<Player>();

@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeLevels/Level 07(P).unity
     guid: 7f4f377fec5c57641b57ea9dee06e2fe
   - enabled: 1
-    path: Assets/Scenes/PrototypeLevels/Level 8(P) - Race.unity
+    path: Assets/Scenes/PrototypeLevels/Level 08(P) - Race.unity
     guid: d3c7ca2c37589534f945a5239ce04588
   - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Level 09(P) - StoneGoes Down.unity

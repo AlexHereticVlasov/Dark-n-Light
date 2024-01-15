@@ -19,7 +19,7 @@ namespace StoneFall
 
         private void DealDamage(IDamageable damageable)
         {
-            damageable.TakeDamage();
+            damageable.TakeDamage(5); //Hack: Temp Solution
             Kill();
         }
 

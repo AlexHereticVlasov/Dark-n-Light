@@ -46,7 +46,7 @@ public class Block : MonoBehaviour, IActor, IPhysicMovement, IDamageable, IEffec
 
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float amount)
     {
         Spawned?.Invoke(Element, transform.position);
         Destroy(gameObject);
