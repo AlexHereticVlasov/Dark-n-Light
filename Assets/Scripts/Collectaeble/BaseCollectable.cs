@@ -17,6 +17,7 @@ public abstract class BaseCollectable : MonoBehaviour, IEffectOrigin
                 StartCoroutine(Collect(player));
     }
 
+    //ToDo: Refactor this method. Remove collision disable and spawn fx logic to base
     protected virtual IEnumerator Collect(Player player)
     {
         Collected?.Invoke(this);

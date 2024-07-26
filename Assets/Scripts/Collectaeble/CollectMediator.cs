@@ -38,7 +38,8 @@ public class CollectMediator : MonoBehaviour
             { typeof(MoonShard), FadeIn},
             { typeof(Rune), AddRune},
             { typeof(AntigravityCollectable), ChangeGravity},
-            { typeof(GeluPart), ActivatePortals}
+            { typeof(GeluPart), ActivatePortals},
+            { typeof(TimeBonus), AddTime}
         };
     }
 
@@ -70,16 +71,18 @@ public class CollectMediator : MonoBehaviour
 
     private void AddRune(BaseCollectable collectable) => _runeStorage.Add();
 
-    private void AddDiamond(BaseCollectable diamond)
-    {
-        _score.Add(diamond);
-        _inventory.Collected(diamond.Element);
-    }
+    private void AddDiamond(BaseCollectable diamond) => _inventory.Collected(diamond.Element);
 
     private void ChangeGravity(BaseCollectable collectable) => _gravity.Reverse();
 
     private void ActivatePortals(BaseCollectable collectable)
     { 
     
+    }
+
+    private void AddTime(BaseCollectable bonus)
+    {
+        Debug.Log(nameof(AddTime));
+        _score.Add(bonus);
     }
 }

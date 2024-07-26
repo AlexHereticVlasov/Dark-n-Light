@@ -9,6 +9,8 @@ namespace StoneFall
         [SerializeField] private StoneFallPoint _point;
         [SerializeField] private SpriteRenderer _renderer;
 
+        private readonly WaitForSeconds _delay = new WaitForSeconds(0.5f);
+
         private void OnEnable() => _point.Attention += OnAttention;
 
         private void OnDisable() => _point.Attention -= OnAttention;
@@ -19,7 +21,7 @@ namespace StoneFall
         private IEnumerator ShowAttention()
         {
             _renderer.enabled = true;
-            yield return new WaitForSeconds(0.5f);
+            yield return _delay;
             _renderer.enabled = false;
         }
     }

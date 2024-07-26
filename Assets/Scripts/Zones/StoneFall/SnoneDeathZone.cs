@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace StoneFall
 {
     public sealed class SnoneDeathZone : MonoBehaviour
