@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 
 public sealed class DiamondViev : MonoBehaviour, IRecoloreable
@@ -8,7 +9,7 @@ public sealed class DiamondViev : MonoBehaviour, IRecoloreable
 
     [SerializeField] private Diamond _diamond;
     [SerializeField] private SpriteRenderer _renderer;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
+    [SerializeField] private Light2D _light;
     [SerializeField] private ParticleSystem _trail;
     [SerializeField] private ParticleSystem _star;
 

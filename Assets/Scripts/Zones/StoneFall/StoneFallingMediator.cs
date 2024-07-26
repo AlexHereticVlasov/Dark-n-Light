@@ -9,7 +9,6 @@ namespace StoneFall
         [SerializeField] private StoneFallingZoneEffect _zoneEffect;
         [SerializeField] private FallingStoneFabric _stoneFabric;
 
-
         [SerializeField] private float _timeBetweenFalls = 10;
         [SerializeField] private int _cyclesAmmount = 4;
 
@@ -37,20 +36,11 @@ namespace StoneFall
             _fallRoutine = _stoneFabric.StartFall(_cyclesAmmount);
         }
 
-        private void OnFallComplited()
-        {
-            Invoke(nameof(Wait), _timeBetweenFalls);
-        }
+        private void OnFallComplited() => Invoke(nameof(Wait), _timeBetweenFalls);
 
-        private void Wait()
-        {
-            _zoneEffect.FallStarted += OnFallStarted;
-        }
+        private void Wait() => _zoneEffect.FallStarted += OnFallStarted;
 
-        internal void StopFall()
-        {
-            StopCoroutine(_fallRoutine);
-        }
+        internal void StopFall() => StopCoroutine(_fallRoutine);
 
         internal void StartLongFall()
         {

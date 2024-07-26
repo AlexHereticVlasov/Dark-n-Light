@@ -6,7 +6,7 @@ using Zenject;
 public sealed class LevelButton : MonoBehaviour
 {
     [Inject] private ISceneLoader _loader;
-    [SerializeField] private BaseFadePanel _fadePanel;
+    [SerializeField] private BaseFadePanel _fadePanel; //ToDo: Remove It And Create LevelSelectionFadeMediator
 
     [field:SerializeField] public int Value { get; private set; }
 
