@@ -29,7 +29,7 @@ namespace PopUp
 
         private void Start() => Invoke(nameof(TurnOff), Lifetime);
 
-        private void Update() => transform.Translate(Vector2.up * Time.deltaTime * _speed);
+        private void Update() => transform.Translate(_speed * Time.deltaTime * Vector2.up);
 
         private void TurnOff()
         {

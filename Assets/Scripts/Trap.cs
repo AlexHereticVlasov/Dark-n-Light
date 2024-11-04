@@ -5,11 +5,11 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     private const float DamageRate = 0.2f;
-    private readonly WaitForSeconds _delay = new WaitForSeconds(DamageRate);
+    private readonly WaitForSeconds _delay = new(DamageRate);
 
     [SerializeField] private float _damageAmount = 1f;
 
-    private List<IDamageable> _contacts = new List<IDamageable>();
+    private readonly List<IDamageable> _contacts = new();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

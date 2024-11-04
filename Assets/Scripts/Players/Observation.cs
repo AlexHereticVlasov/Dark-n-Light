@@ -100,7 +100,7 @@ public class Observation : MonoBehaviour
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position, Constants.InteractionRadius, _interactableMask);
         foreach (var collider in colliders)
-            if (collider.TryGetComponent(out IInteractable interactable))
+            if (collider.TryGetComponent(out IInteractable _))
                 return true;
 
         return false;
@@ -132,7 +132,7 @@ public class RayCheck : MonoBehaviour
         //ToDO: Masks and etc...
         var colliders = Physics2D.OverlapPointAll(transform.position, _interactableMask);
         foreach (var collider in colliders)
-            if (collider.TryGetComponent(out IInteractable interactable))
+            if (collider.TryGetComponent(out IInteractable _))
                 return true;
 
         return false;

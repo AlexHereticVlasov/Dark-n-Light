@@ -3,18 +3,25 @@ using UnityEngine;
 
 public class GeluPart : BaseCollectable
 {
+    [SerializeField] private float _speed = 5;
+
     protected override bool CanCollect(Player player) => true;
 
     protected override IEnumerator Collect(Player player)
     {
-        float counter = 5;
-        while (counter > 0)
+        float length = 5;
+        while (length > 0)
         {
-            counter -= Time.deltaTime;
-            transform.Translate(Vector3.up * Time.deltaTime * 5);
-            yield return null;
+            length -= Time.deltaTime;
+            yield return Move();
         }
 
         yield return base.Collect(player);   
+    }
+
+    private IEnumerator Move()
+    {
+        transform.Translate(_speed * Time.deltaTime * Vector3.up);
+        yield return null;
     }
 }

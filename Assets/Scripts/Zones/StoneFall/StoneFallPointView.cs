@@ -9,7 +9,7 @@ namespace StoneFall
         [SerializeField] private StoneFallPoint _point;
         [SerializeField] private SpriteRenderer _renderer;
 
-        private readonly WaitForSeconds _delay = new WaitForSeconds(0.5f);
+        private readonly WaitForSeconds _delay = new(0.5f);
 
         private void OnEnable() => _point.Attention += OnAttention;
 

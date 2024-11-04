@@ -2,7 +2,7 @@
 
 public class PressingButton : BaseButton
 {
-    private List<IActor> _actors = new List<IActor>();
+    private readonly List<IActor> _actors = new();
 
     protected override void TryActivate(IActor actor)
     {

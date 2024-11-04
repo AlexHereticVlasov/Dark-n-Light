@@ -3,7 +3,7 @@ using Zenject;
 
 public sealed class PlayerHealthMediator : MonoBehaviour
 {
-    [Inject] private Player[] _players;
+    [Inject] private readonly Player[] _players;
     [SerializeField] private PlayerUIPresenter[] _presenters;
 
     private void Start()

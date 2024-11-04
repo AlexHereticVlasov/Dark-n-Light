@@ -8,8 +8,8 @@ public static class Saver
     {
         string path = GetPath(fileName);
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream fileStream = new FileStream(path, FileMode.Create);
+        BinaryFormatter formatter = new();
+        FileStream fileStream = new(path, FileMode.Create);
         formatter.Serialize(fileStream, data);
         fileStream.Close();
     }
@@ -20,8 +20,8 @@ public static class Saver
 
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream fileStream = new FileStream(path, FileMode.Open);
+            BinaryFormatter formatter = new();
+            FileStream fileStream = new(path, FileMode.Open);
             T resoult = (T)formatter.Deserialize(fileStream);
             fileStream.Close();
             return resoult;

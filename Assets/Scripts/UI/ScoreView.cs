@@ -7,7 +7,7 @@ public sealed class ScoreView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     
-    [Inject] private IScore _score;
+    [Inject] private readonly IScore _score;
 
     private void OnEnable() => _score.ValueChanged += OnValueChanged;
 

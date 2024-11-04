@@ -17,7 +17,7 @@ public class Hovl_LaserDemo : MonoBehaviour
 
     public float MainTextureLength = 1f;
     public float NoiseTextureLength = 1f;
-    private Vector4 Length = new Vector4(1,1,1,1);
+    private Vector4 Length = new(1,1,1,1);
     //private Vector4 LaserSpeed = new Vector4(0, 0, 0, 0); {DISABLED AFTER UPDATE}
     //private Vector4 LaserStartSpeed; {DISABLED AFTER UPDATE}
     //One activation per shoot
@@ -49,14 +49,14 @@ public class Hovl_LaserDemo : MonoBehaviour
         if (Laser != null && UpdateSaver == false)
         {
             Laser.SetPosition(0, transform.position);
-            RaycastHit hit; //DELETE THIS IF YOU WANT USE LASERS IN 2D
+            //DELETE THIS IF YOU WANT USE LASERS IN 2D
             //ADD THIS IF YOU WANNT TO USE LASERS IN 2D: RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, MaxLength);       
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, MaxLength))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
             {
                 //End laser position if collides with object
                 Laser.SetPosition(1, hit.point);
 
-                    HitEffect.transform.position = hit.point + hit.normal * HitOffset;
+                HitEffect.transform.position = hit.point + hit.normal * HitOffset;
                 if (useLaserRotation)
                     HitEffect.transform.rotation = transform.rotation;
                 else
@@ -74,7 +74,7 @@ public class Hovl_LaserDemo : MonoBehaviour
                 //LaserSpeed[2] = (LaserStartSpeed[2] * 4) / (Vector3.Distance(transform.position, hit.point));
                 //Destroy(hit.transform.gameObject); // destroy the object hit
                 //hit.collider.SendMessage("SomeMethod"); // example
-                if (hit.collider.tag == "Target")
+                if (hit.collider.CompareTag("Target"))
                 {
                     hit.collider.GetComponent<HittedObject>().TakeDamage(damageOverTime * Time.deltaTime);
                 }

@@ -7,8 +7,8 @@ public sealed class EffectSpawner : MonoBehaviour
 
     private IEffectOrigin _effectOrigin;
 
-    private ObjectPool<PoolableParticles>[] _objectPools;
     //TODO:Add ObjectPool
+    //private ObjectPool<PoolableParticles>[] _objectPools;
 
     private void Awake()
     {

@@ -2,7 +2,7 @@
 
 public sealed class GravityHardModeAdapter : HardModeAdapter
 {
-    [Inject] private IGravity _gravity;
+    [Inject] private readonly IGravity _gravity;
 
     public override void Cancel() => _gravity.Reverse();
 

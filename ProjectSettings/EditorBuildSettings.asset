@@ -95,19 +95,37 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Level 25(P) - Part of Gelu.unity
     guid: 152e8786cd2c1b84cbc5632663cae833
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 26(P) 1.unity
+    guid: a2470954763337048a27021ed31d2d15
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 27(P).unity
+    guid: e644fb00292ec7045b8efea454f935c2
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 28(P).unity
+    guid: d7bda5da5a249dc4aaee068dea5d28bc
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 29(P).unity
+    guid: 0ba8a19b1f81d3b49b8584065b0139c2
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 30(P) - Run.unity
+    guid: 7f0a45def4d852847b5d2ebd724ea55b
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Episod II/Level 31(P) - First stalker.unity
+    guid: e783136f1956b15469b1fca401e205c1
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 0.unity
     guid: 9f00bc9ebf04e9946aca795c4d92e733
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 1.unity
     guid: ebbfd1ba41813ef4287984322a41e5e5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 2.unity
     guid: f9e38b061a4c66942b415693ba9025c3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 3 Pendulum Fall.unity
     guid: 7abaa6f4aac85574dbb851c771eb9c31
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 4 Between to
       Walls.unity
     guid: 1c1e8b139bb42cd498a8d0259a255cdc

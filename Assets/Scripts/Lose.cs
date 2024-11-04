@@ -12,7 +12,7 @@ public sealed class Lose : MonoBehaviour, ILose
     [SerializeField] private Player[] _players;
     [SerializeField] private GameObject _panel;
 
-    private WaitForSeconds _delay = new WaitForSeconds(1);
+    private readonly WaitForSeconds _delay = new(1);
 
     public event UnityAction Defeate;
 

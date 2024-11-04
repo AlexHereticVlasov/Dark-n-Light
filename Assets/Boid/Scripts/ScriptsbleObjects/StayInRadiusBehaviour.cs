@@ -19,7 +19,7 @@ namespace Boid
                 return Vector2.zero;
             }
 
-            return centerOffset * t * t;
+            return t * t * centerOffset;
         }
     }
 }

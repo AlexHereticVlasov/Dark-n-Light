@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RestorableBlock : BaseDestructableBlock
 {
-    private readonly WaitForSeconds _delay = new WaitForSeconds(3);
+    private readonly WaitForSeconds _delay = new(3);
 
     [SerializeField] private Collider2D _collider;
 

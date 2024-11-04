@@ -6,7 +6,7 @@ namespace Runes
 {
     public sealed class RuneStorageView : MonoBehaviour
     {
-        [Inject] private IRuneStorage _storage;
+        [Inject] private readonly IRuneStorage _storage;
         
         [SerializeField] private TMP_Text _text;
 

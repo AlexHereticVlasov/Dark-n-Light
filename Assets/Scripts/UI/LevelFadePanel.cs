@@ -2,8 +2,8 @@
 
 public sealed class LevelFadePanel : BaseFadePanel
 {
-    [Inject] private ILose _lose;
-    [Inject] private IVictory _victory;
+    [Inject] private readonly ILose _lose;
+    [Inject] private readonly IVictory _victory;
 
     private void OnEnable()
     {

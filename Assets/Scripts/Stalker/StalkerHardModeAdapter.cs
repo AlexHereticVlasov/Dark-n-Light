@@ -104,7 +104,7 @@ namespace FinalStateMachine
 
     public sealed class TrampStalkerState : TimedStalkerState
     {
-        private StalkerBorderPoint[] _stalkerBorderPoints;
+        private readonly StalkerBorderPoint[] _stalkerBorderPoints;
         private Vector2 _target;
 
         public TrampStalkerState(StateMachine stateMachine, StalkerConfig config, StalkerMovement movement, Stalker stalker, StalkerBorderPoint[] stalkerBorderPoints) : base(stateMachine, config, movement, stalker)

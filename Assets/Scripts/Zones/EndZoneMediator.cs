@@ -8,7 +8,7 @@ public sealed class EndZoneMediator : MonoBehaviour
     [SerializeField] private ElementBean _bean;
 
     private Coroutine _checkRoutine;
-    private WaitForSeconds _delay = new WaitForSeconds(1.75f);
+    private readonly WaitForSeconds _delay = new(1.75f);
 
     public event UnityAction Victory;
 

@@ -16,7 +16,7 @@ namespace CameraShaker
         private const float Intencity = 1.5f;
         private const float Length = 0.5f;
 
-        [Inject] private CinemachineVirtualCamera _virtualCamera = default;
+        [Inject] private readonly CinemachineVirtualCamera _virtualCamera = default;
 
         public void StartShake() => StartShake(Intencity, Length);
 

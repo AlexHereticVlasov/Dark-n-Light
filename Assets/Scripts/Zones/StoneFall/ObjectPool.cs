@@ -5,8 +5,8 @@ namespace Pool
 {
     public sealed class ObjectPool<T> where T : MonoBehaviour, IPooleable
     {
-        private T _template;
-        private Stack<T> _stack;
+        private readonly T _template;
+        private readonly Stack<T> _stack;
 
         public ObjectPool(T template)
         {

@@ -31,7 +31,7 @@ public sealed class Altar : BaseActivator
     {
         if (_currentAmount == _targetAmount) return;
 
-        if (collision.TryGetComponent(out Player player))
+        if (collision.TryGetComponent(out Player _))
         {
             //Try Get Rune
             if (_currentAmount == _targetAmount)

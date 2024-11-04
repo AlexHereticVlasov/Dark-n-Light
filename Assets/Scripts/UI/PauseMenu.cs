@@ -12,7 +12,7 @@ public sealed class PauseMenu : MonoBehaviour, IPauseMenu
 {
     [SerializeField] private GameObject _panel;
     
-    [Inject] private ISceneLoader _loader;
+    [Inject] private readonly ISceneLoader _loader;
 
     public void PauseGame()
     {

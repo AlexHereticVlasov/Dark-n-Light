@@ -21,7 +21,7 @@ namespace FailTrigger
 
         public override void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.TryGetComponent(out RollingStone stone))
+            if (collider.TryGetComponent(out RollingStone _))
             {
                 _losedBalls++;
                 if (_losedBalls == _looseBallLimit)

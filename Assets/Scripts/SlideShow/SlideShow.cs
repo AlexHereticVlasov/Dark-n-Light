@@ -15,7 +15,7 @@ public sealed class SlideShow : MonoBehaviour, ISlideShow
     [SerializeField] private int _nextScene;
     [SerializeField] private Slide[] slides;
 
-    [Inject] private ISceneLoader _loader;
+    [Inject] private readonly ISceneLoader _loader;
 
     private bool _canSkip = true;
     private Coroutine _playRoutine;

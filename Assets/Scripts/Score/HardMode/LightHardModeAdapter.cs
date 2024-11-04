@@ -2,7 +2,7 @@
 
 public sealed class LightHardModeAdapter : HardModeAdapter
 {
-    [Inject] private IGlobalLighting _globalLighting;
+    [Inject] private readonly IGlobalLighting _globalLighting;
 
     public override void Cancel() => _globalLighting.FadeOut();
 

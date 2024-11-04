@@ -5,7 +5,7 @@ public class ConstantZone : MonoBehaviour
 {
     [SerializeField] private BaseZoneEffect _constantEffect;
 
-    private HashSet<Player> _players = new HashSet<Player>();
+    private readonly HashSet<Player> _players = new();
 
     private void FixedUpdate()
     {

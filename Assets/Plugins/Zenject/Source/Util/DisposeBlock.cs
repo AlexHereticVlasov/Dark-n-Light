@@ -8,7 +8,7 @@ namespace Zenject
     public class DisposeBlock : IDisposable
     {
         static readonly StaticMemoryPool<DisposeBlock> _pool =
-            new StaticMemoryPool<DisposeBlock>(OnSpawned, OnDespawned);
+            new(OnSpawned, OnDespawned);
 
         List<IDisposable> _disposables;
         List<SpawnedObjectPoolPair> _objectPoolPairs;

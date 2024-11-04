@@ -77,13 +77,13 @@ public class Player : MonoBehaviour, IHeliable, IActor, IEffectOrigin
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out WindEffect effect))
+        if (collision.TryGetComponent(out WindEffect _))
             _stateMachine.ChangeState(IdleLevitationState);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out WindEffect effect))
+        if (collision.TryGetComponent(out WindEffect _))
             _stateMachine.ChangeState(InAirState);
     }
 

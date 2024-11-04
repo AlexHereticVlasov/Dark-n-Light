@@ -9,10 +9,10 @@ public sealed class AimGun : MonoBehaviour, IGun //ToDo: Need to update this log
     private void Start()
     {
         Gun.Init(Instantiate);
-        InvokeRepeating(nameof(Shoot), _rate, _rate);
+        InvokeRepeating(nameof(TryShoot), _rate, _rate);
     }
 
-    private void Shoot()
+    private void TryShoot()
     {
         if (Aim())
             Gun.Shoot();
@@ -21,6 +21,6 @@ public sealed class AimGun : MonoBehaviour, IGun //ToDo: Need to update this log
     private bool Aim()
     {
         var hit = Physics2D.Raycast(transform.position, -Gun.GetDirection(), 100, _mask);
-        return hit.transform.TryGetComponent(out Player player);
+        return hit.transform.TryGetComponent(out Player _);
     }
 }

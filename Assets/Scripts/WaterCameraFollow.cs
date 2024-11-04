@@ -6,7 +6,7 @@ public sealed class WaterCameraFollow : MonoBehaviour
     [SerializeField] private Camera _waterCamera;
     [SerializeField] private Transform _viev;
 
-    [Inject] private ICameraFollow _cameraFollow;
+    [Inject] private readonly ICameraFollow _cameraFollow;
 
     private float _y;
     private float _currentY;

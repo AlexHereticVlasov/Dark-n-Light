@@ -6,7 +6,7 @@ public class TimeButton : BaseButton
     [SerializeField] private int _totalTimer;
     
     private int _currentTimer;
-    private WaitForSeconds _delay = new WaitForSeconds(1);
+    private readonly WaitForSeconds _delay = new(1);
 
     protected override void Activate()
     {

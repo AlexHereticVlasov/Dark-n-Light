@@ -17,7 +17,7 @@ public class HovlLaser : MonoBehaviour
 
     public float MainTextureLength = 1f;
     public float NoiseTextureLength = 1f;
-    private Vector4 _length = new Vector4(1, 1, 1, 1);
+    private Vector4 _length = new(1, 1, 1, 1);
 
     private bool _laserSaver = false;
     //private bool _updateSaver = false;

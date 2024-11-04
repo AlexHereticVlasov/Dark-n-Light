@@ -10,7 +10,7 @@ namespace Bridges
         [SerializeField] private Vector2 _size = Vector2.one;
         [SerializeField, Range(0, 1)] private float _rateOverTimeMultiplier = 1;
 
-        private WaitForSeconds _delay = new WaitForSeconds(1);
+        private readonly WaitForSeconds _delay = new(1);
 
         [field: SerializeField] public bool IsActive { get; protected set; }
 

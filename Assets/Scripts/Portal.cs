@@ -9,7 +9,7 @@ public class Portal : BaseActivailiable
     [SerializeField] private EdgeCollider2D _edge;
 
     private Vector2 _direction;
-    private HashSet<Rigidbody2D> _bodies = new HashSet<Rigidbody2D>();
+    private readonly HashSet<Rigidbody2D> _bodies = new();
     
     [field: SerializeField] public Transform DestinationPoint { get; private set; }
 

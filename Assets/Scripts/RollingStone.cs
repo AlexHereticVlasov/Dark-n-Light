@@ -17,7 +17,7 @@ public sealed class RollingStone : MonoBehaviour, IActor
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PressingButton button) == false) return;
+        if (collision.TryGetComponent(out PressingButton _) == false) return;
 
         _buttonsCount++;
 
@@ -30,7 +30,7 @@ public sealed class RollingStone : MonoBehaviour, IActor
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PressingButton button) == false) return;
+        if (collision.TryGetComponent(out PressingButton _) == false) return;
 
         _buttonsCount--;
 

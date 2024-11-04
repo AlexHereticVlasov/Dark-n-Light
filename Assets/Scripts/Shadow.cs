@@ -38,7 +38,7 @@ public sealed class Shadow : MonoBehaviour, IEffectOrigin
     {
         Vector2 position = _movement.transform.position;
         float deltaX = position.x - _mirrorEdge.Position.x;
-        Vector3 mirroredPosition = new Vector3(_mirrorEdge.Position.x - deltaX, position.y);
+        Vector3 mirroredPosition = new(_mirrorEdge.Position.x - deltaX, position.y);
         return mirroredPosition;
     }
 }

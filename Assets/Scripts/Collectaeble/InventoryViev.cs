@@ -3,8 +3,8 @@ using Zenject;
 
 public class InventoryViev : MonoBehaviour
 {
-    [Inject] private ICells _cells;
-    [Inject] private IInventory _inventory;
+    [Inject] private readonly ICells _cells;
+    [Inject] private readonly IInventory _inventory;
 
     private void OnEnable()
     {

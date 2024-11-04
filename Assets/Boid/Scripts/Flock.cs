@@ -21,7 +21,7 @@ namespace Boid
         private float _sqrMaxSpeed;
         private float _sqrNeighbourRadius;
 
-        private List<FlockAgent> _agents = new List<FlockAgent>();
+        private List<FlockAgent> _agents = new();
         public float SqrAwoidenceRadius { get; private set; }
 
         private void Init()

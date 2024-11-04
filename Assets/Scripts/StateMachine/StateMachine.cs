@@ -365,7 +365,7 @@ namespace FinalStateMachine
             if (_factor < 1)
             {
                 _player.transform.position = Vector2.Lerp(_player.transform.position, _destination.position, _factor);
-                _player.transform.localScale = Vector2.one * (1 - _factor) * 0.9f;
+                _player.transform.localScale = (1 - _factor) * 0.9f * Vector2.one;
                 _factor += Time.deltaTime * 1.5f;
                 _factor = Mathf.Clamp01(_factor);
                 return;
