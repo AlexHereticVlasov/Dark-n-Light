@@ -83,7 +83,7 @@ namespace FinalStateMachine
 
     public sealed class MoveToNestStalkerState : MovementStalkerState
     {
-        private NestPoint _nest;
+        private readonly NestPoint _nest;
 
         public MoveToNestStalkerState(StateMachine stateMachine, StalkerMovement movement, Stalker stalker, NestPoint nest) : base(stateMachine, movement, stalker)
         {
@@ -147,7 +147,7 @@ namespace FinalStateMachine
 
     public sealed class FollowStalkerState : TimedStalkerState
     {
-        private Player[] _players;
+        private readonly Player[] _players;
         private Transform _target;
 
         public FollowStalkerState(StateMachine stateMachine, StalkerConfig config, StalkerMovement movement, Stalker stalker, Player[] players) : base(stateMachine, config, movement, stalker)

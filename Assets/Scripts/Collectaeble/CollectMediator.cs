@@ -80,9 +80,5 @@ public class CollectMediator : MonoBehaviour
     
     }
 
-    private void AddTime(BaseCollectable bonus)
-    {
-        Debug.Log(nameof(AddTime));
-        _score.Add(bonus);
-    }
+    private void AddTime(BaseCollectable bonus) => _score.Add(bonus);
 }

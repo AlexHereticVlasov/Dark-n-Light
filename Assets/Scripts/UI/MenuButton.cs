@@ -4,7 +4,7 @@ using Zenject;
 
 public sealed class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Inject] private IMenuHint _hint;
+    [Inject] private readonly IMenuHint _hint;
     [SerializeField] private string _message;
 
     public void OnPointerClick(PointerEventData eventData) => _hint.Hide();

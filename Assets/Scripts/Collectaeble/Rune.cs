@@ -9,7 +9,7 @@ namespace Runes
 
     public class RuneView : MonoBehaviour
     {
-        private Rune _rune;
+        [SerializeField] private Rune _rune;
 
         private void OnEnable()
         {
