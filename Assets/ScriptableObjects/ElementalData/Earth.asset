@@ -20,7 +20,7 @@ MonoBehaviour:
   <AdditionalColor>k__BackingField: {r: 0.02745098, g: 0.67058825, b: 0.03529412, a: 1}
   <DissolveColor>k__BackingField:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4278190080
   <Body>k__BackingField: {fileID: 0}
   <PoolMaterial>k__BackingField: {fileID: 2100000, guid: 34632d1ffa0fc9a489d04974d4e113e0, type: 2}
   <DestructableStone>k__BackingField: {fileID: 21300000, guid: 43c512a8eb42e5945b4519325b36c1f1, type: 3}

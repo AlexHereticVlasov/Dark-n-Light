@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 
 public class TourchView : MonoBehaviour, IObjectViev
 {
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _subLight;
+    [SerializeField] private Light2D _light;
+    [SerializeField] private Light2D _subLight;
     [SerializeField] private Tourch _tourch;
     [SerializeField] private SpriteRenderer _renderer;
     [SerializeField] private ParticleSystem _orb;
@@ -19,9 +19,12 @@ public class TourchView : MonoBehaviour, IObjectViev
     private void Start()
     {
         if (_tourch.IsActive)
+        {
             OnActivated();
-        else
-            OnDeactivated();
+            return;
+        }
+
+        OnDeactivated();
     }
 
     private void OnDisable()

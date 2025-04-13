@@ -28,7 +28,7 @@ TagManager:
   - AirWall
   - FallingStone
   - FallingStoneTrigger
-  - 
+  - SpiriteSphere
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - Helper
   - ZonesAndTriggers
   m_SortingLayers:
+  - name: Stars
+    uniqueID: 4086562669
+    locked: 0
+  - name: BackMid
+    uniqueID: 3580391239
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -49,9 +55,6 @@ TagManager:
     locked: 0
   - name: Boxes
     uniqueID: 3602610327
-    locked: 0
-  - name: BackMid
-    uniqueID: 3580391239
     locked: 0
   - name: Fluids
     uniqueID: 3134876715

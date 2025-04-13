@@ -62,7 +62,8 @@ public class CollectMediator : MonoBehaviour
     private void OnCollected(BaseCollectable collectable)
     {
         var key = collectable.GetType();
-        _keyValuePairs[key].Invoke(collectable);
+        if (_keyValuePairs.ContainsKey(key))
+            _keyValuePairs[key].Invoke(collectable);
     }
 
     private void FadeOut(BaseCollectable collectable) => _lighting.FadeOut();

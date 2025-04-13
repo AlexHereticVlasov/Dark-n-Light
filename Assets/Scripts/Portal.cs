@@ -3,17 +3,12 @@ using UnityEngine;
 
 public class Portal : BaseActivailiable
 {
-    private readonly float _force = 50;
-
     [SerializeField] private Portal _other;
     [SerializeField] private EdgeCollider2D _edge;
 
-    private Vector2 _direction;
     private readonly HashSet<Rigidbody2D> _bodies = new();
     
     [field: SerializeField] public Transform DestinationPoint { get; private set; }
-
-    private void Start() => _direction = (transform.position - DestinationPoint.position).normalized;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,12 +18,11 @@ public class Portal : BaseActivailiable
 
             if (_bodies.Contains(rigidbody) == false)
             {
-                //Hack: It's a Fake programming
-
-                //ToDo: Calculate Target Position
+                var magnitude = rigidbody.velocity.magnitude;
+                rigidbody.velocity = Vector2.zero;
+                Vector3 direction = _other.transform.TransformDirection(Vector3.right) - transform.TransformDirection(Vector3.left);
                 rigidbody.position = _other.DestinationPoint.position;
-                rigidbody.AddForce(_direction * _force, ForceMode2D.Impulse);
-                //ToDo: Recalculate velocity
+                rigidbody.AddForce(direction * magnitude, ForceMode2D.Impulse);
             }
         }
     }

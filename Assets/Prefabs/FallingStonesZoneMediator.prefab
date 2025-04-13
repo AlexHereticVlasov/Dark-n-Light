@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3968139223470718603}
   - component: {fileID: 3968139223470718600}
   - component: {fileID: 3968139223470718602}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: FallingStonesZoneTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968139223470718615}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3968139224726775677}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3968139223470718614
 SpriteRenderer:
@@ -182,13 +182,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968139223919921712}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3968139224726775677}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &3968139223919921717
 EdgeCollider2D:
@@ -267,6 +267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3968139224726775674}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -293,7 +294,6 @@ Transform:
   - {fileID: 2987247079369093889}
   - {fileID: 2987247078606700369}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3968139224726775676
 MonoBehaviour:
@@ -329,6 +329,7 @@ MonoBehaviour:
     - {fileID: 2987247078535938741}
     - {fileID: 2987247079369093890}
     - {fileID: 2987247078606700370}
+    _soundPlayer: {fileID: 0}
   _timeBetweenFalls: 10
   _cyclesAmmount: 4
 --- !u!1001 &2987247079108031409

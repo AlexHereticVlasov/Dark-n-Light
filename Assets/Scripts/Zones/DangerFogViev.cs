@@ -3,15 +3,10 @@
 
 namespace GameObjectView
 {
-    //TODO:
-    //Реализовать шейдер магического тумана
-    //Градиентная Прозрачность по краям
-    //Выглядит как дым
-    //Можно настраивать цвет
-
     public sealed class DangerFogViev : BaseDangerZoneView
     {
         [SerializeField] private ActivailiableFog _activailiableFog;
+        [SerializeField] private ParticleSystem _fogParticles;
 
         private void OnEnable()
         {
@@ -23,6 +18,15 @@ namespace GameObjectView
         {
             _activailiableFog.Activated -= OnActivated;
             _activailiableFog.Deactivated -= OnDeactivated;
+        }
+
+        public override void Recolor()
+        {
+            base.Recolor();
+            var main = _fogParticles.main;
+            main.startColor = _bean[_zone.Element].MainColor;
+
+            _fogParticles.transform.localPosition = (_size.y * 0.5f) * Vector3.down;
         }
 
         private void OnDeactivated() => _particles.Stop(); 
@@ -41,7 +45,6 @@ namespace GameObjectView
             collider.size = _size - Vector2.one * 0.5f;
         }
 
-        //Hack:Temp Solution. Set material after Kate finish Danger Fog Shader
         protected override void SetMaterial()
         {
             var color = _bean[_zone.Element].MainColor;

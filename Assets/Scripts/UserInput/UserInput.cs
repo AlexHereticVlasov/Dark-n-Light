@@ -8,7 +8,7 @@ public sealed class UserInput : BaseUserInput
 
     [Inject] private readonly IPauseMenu _pause;
     [Inject] private readonly ICameraFollow _cameraFollow;
-    
+
     private int _current;
 
     public event UnityAction<Player> CharacterSwithed;
@@ -33,14 +33,8 @@ public sealed class UserInput : BaseUserInput
         float direction = Input.GetAxis("Horizontal");
         _observation[_current].SetDirection(direction);
 
-        //ToDo: Jumps power
         if (ShouldStartJump())
             TryJump();
-
-        if (ShouldJump())
-        {
-            ;
-        }
 
         if (ShouldInteract())
             TryInteract();
@@ -64,10 +58,6 @@ public sealed class UserInput : BaseUserInput
                                       Input.GetKeyDown(KeyCode.UpArrow) ||
                                       Input.GetKeyDown(KeyCode.Space);
 
-    private bool ShouldJump() => Input.GetKeyUp(KeyCode.W) ||
-                                 Input.GetKeyUp(KeyCode.UpArrow) ||
-                                 Input.GetKeyUp(KeyCode.Space);
-
     private void TryInteract()
     {
         if (_observation[_current].CanInteract())
@@ -82,23 +72,40 @@ public sealed class UserInput : BaseUserInput
 
     private void SwitchCharacter()
     {
-        _observation[_current].Stop();
-        var previous = _observation[_current].GetComponent<Player>();
-        previous.Deselect();
+        DeselectCurrent();
+        ChangeCurrent();
+        SelectCurent();
+    }
 
-        _current++;
-        _current %= _observation.Length;
-        _cameraFollow.ChangeTarget(_observation[_current].transform);
+    private void SelectCurent()
+    {
         var player = _observation[_current].GetComponent<Player>();
         CharacterSwithed?.Invoke(player);
         player.Select();
     }
 
+    private void ChangeCurrent()
+    {
+        _current++;
+        _current %= _observation.Length;
+        _cameraFollow.ChangeTarget(_observation[_current].transform);
+    }
+
+    private void DeselectCurrent()
+    {
+        _observation[_current].Stop();
+        var previous = _observation[_current].GetComponent<Player>();
+        previous.Deselect();
+    }
+
     private void StayOnPause()
     {
         if (Time.timeScale == 0)
+        {
             _pause.Continue();
-        else 
-            _pause.PauseGame();
+            return;
+        }
+
+        _pause.PauseGame();
     }
 }

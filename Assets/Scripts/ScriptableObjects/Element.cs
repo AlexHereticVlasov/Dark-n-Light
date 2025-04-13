@@ -10,7 +10,7 @@ public class Element : ScriptableObject
 
     [field: SerializeField] public Color MainColor { get; private set; }
     [field: SerializeField] public Color AdditionalColor { get; private set; }
-    [field: SerializeField] public Color32 DissolveColor { get; private set; }
+    [field: SerializeField, ColorUsage(true, true)] public Color32 DissolveColor { get; private set; }
 
     internal string GetName()
     {

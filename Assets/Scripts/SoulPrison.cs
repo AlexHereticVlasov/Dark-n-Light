@@ -7,12 +7,20 @@ public class SoulPrison : MonoBehaviour, IDamageable, IEffectOrigin
 
     public float MaxHealth { get; private set; }
     [field: SerializeField] public float Health { get; private set; }
-    [field:SerializeField] public Elements Element { get; private set; }
+    [field: SerializeField] public Elements Element { get; private set; }
 
     public event UnityAction<Elements, Vector2> Spawned;
     public event UnityAction<float, float> HealthChanged;
-    //ToDo: Use health
+    
     public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        HealthChanged?.Invoke(Health, MaxHealth);
+        if (Health <= 0)
+            Die();
+    }
+
+    private void Die()
     {
         _collider.enabled = false;
         var player = transform.GetChild(0).GetComponent<Player>();

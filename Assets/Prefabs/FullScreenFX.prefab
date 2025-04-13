@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7755105315001788625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696900499058070043}
+  - component: {fileID: 9212924629848405865}
+  - component: {fileID: 8295764625212024652}
+  m_Layer: 0
+  m_Name: FullScreenFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696900499058070043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7755105315001788625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.569477, y: -11.34396, z: -0.2639116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9212924629848405865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7755105315001788625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9ed58573d905a4b93473c0c46fb7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _displayTime: 2
+  _fadeInTime: 0
+  _fadeOutTime: 1
+  _intencity: 1.25
+  _voronoyIntencity: 2.5
+  _feature: {fileID: 3876268322909608833, guid: d870cbb6aae30f44db2f07f4c635683e, type: 2}
+  _material: {fileID: 2100000, guid: ce8bd2d1a45a8dc40a94a593fa60d0be, type: 2}
+--- !u!114 &8295764625212024652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7755105315001788625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c848ce05265ee74cb3243e06a7885d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runningTime: {fileID: 9212924629848405865}

@@ -8,10 +8,23 @@ namespace CameraShaker
         [Inject] private readonly ICameraShakeTimer _timer;
         [Inject] private readonly ICameraShake _cameraShake;
 
-        private void OnEnable() => _timer.TimeIsRunnongOut += OnTimeIsRunnongOut;
+        [SerializeField] private AudioPlayer _player;
 
-        private void OnDisable() => _timer.TimeIsRunnongOut -= OnTimeIsRunnongOut;
+        private void OnEnable()
+        {
+            _timer.TimeIsRunnongOut += OnTimeIsRunnongOut;
+            _cameraShake.Shaked += OnShaked;
+        }
+
+
+        private void OnDisable()
+        {
+            _timer.TimeIsRunnongOut -= OnTimeIsRunnongOut;
+            _cameraShake.Shaked -= OnShaked;
+        }
 
         private void OnTimeIsRunnongOut() => _cameraShake.StartShake();
+
+        private void OnShaked() => _player.PlayRandomSound();
     }
 }

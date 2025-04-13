@@ -4,7 +4,7 @@
 public sealed class Level : ScriptableObject
 { 
     [field: SerializeField] public int StartTime { get; private set; }
-    //[field: SerializeField] public 
+    [field: SerializeField] public AudioClip AmbientSound { get; private set; }
 }
 
 // Хранить спрайты не в словаре, хранить в скиптаблах пути, спрайты в атласе (После среды)

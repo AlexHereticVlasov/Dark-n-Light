@@ -14,7 +14,7 @@ namespace GameObjectView
         [SerializeField] protected Vector2 _size = Vector2.one;
         [SerializeField] private int _particleAmountMultiplier = 100;
 
-        public void Recolor()
+        public virtual void Recolor()
         {
             SetMaterial();
 

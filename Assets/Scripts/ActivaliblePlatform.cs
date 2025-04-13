@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActivaliblePlatform : BaseActivailiable
 {
@@ -9,6 +10,8 @@ public class ActivaliblePlatform : BaseActivailiable
     private int _curentPoint;
     private Coroutine _activationRoutine;
 
+    public event UnityAction MovementStarted;
+    public event UnityAction MovementStoped;
 
     public override void Activate()
     {
@@ -30,7 +33,6 @@ public class ActivaliblePlatform : BaseActivailiable
 
     private IEnumerator ChangeState()
     {
-        //ToDo:Dry
         //Undone: Something wrong with size of check area
         //ToDo: Need to add movement Check to avoid collision with dynamic objects
         var colliders = Physics2D.OverlapBoxAll(transform.position, transform.GetChild(0).localScale, 0); //ToDo: Add Mask
@@ -47,11 +49,7 @@ public class ActivaliblePlatform : BaseActivailiable
         _curentPoint %= _path.Count;
         Vector2 target = _path.GetPoint(_curentPoint);
 
-        while (Vector2.Distance(transform.position, target) > Time.deltaTime * _speed)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * _speed);
-            yield return null;
-        }
+        yield return MoveRoutine(target);
 
         transform.position = target;
         _activationRoutine = null;
@@ -65,5 +63,16 @@ public class ActivaliblePlatform : BaseActivailiable
                 physicMovement.SetParent(null);
             }
         }
+    }
+
+    private IEnumerator MoveRoutine(Vector2 target)
+    {
+        MovementStarted?.Invoke();
+        while (Vector2.Distance(transform.position, target) > Time.deltaTime * _speed)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * _speed);
+            yield return null;
+        }
+        MovementStoped?.Invoke();
     }
 }

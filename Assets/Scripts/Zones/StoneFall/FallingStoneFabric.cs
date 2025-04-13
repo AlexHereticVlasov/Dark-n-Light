@@ -11,7 +11,6 @@ namespace StoneFall
     {
         [SerializeField] private FallingStone _template;
         [SerializeField] private StoneFallPoint[] _points;
-       
 
         private System.Func<IEnumerator, Coroutine> _corutine;
         private ICameraShake _cameraShake;
@@ -76,5 +75,7 @@ namespace StoneFall
             instance.transform.position = _points[index].Position;
             instance.Reuse();
         }
+
+       
     }
 }

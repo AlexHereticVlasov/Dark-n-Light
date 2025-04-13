@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 
 [RequireComponent(typeof(PressingButton))]
 public class Floodlight : BaseActivailiable
 {
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
+    [SerializeField] private Light2D _light;
     [SerializeField] private Collider2D _collider;
 
     public override void Activate()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 
 public sealed class EndZoneView : MonoBehaviour
@@ -6,7 +7,7 @@ public sealed class EndZoneView : MonoBehaviour
     [SerializeField] private EndZoneActivailiable _endZone;
     [SerializeField] private ParticleSystem _particles;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D _light;
+    [SerializeField] private Light2D _light;
 
     private void OnEnable()
     {

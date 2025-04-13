@@ -9,8 +9,11 @@ public sealed class WindEffect : BaseZoneEffect
     [SerializeField] private AnimationCurve _curve;
 
     private float _time;
+    private float _offset;
 
-    private void Update() => _time = Mathf.PingPong(Time.time, 2);
+    private void Start() => _offset = Random.value;
+
+    private void Update() => _time = Mathf.PingPong(Time.time + _offset, 2);
 
     public override void Apply(Player player) => player.AddForce(_direction * (_power * (_minForce + _curve.Evaluate(_time))));
 }

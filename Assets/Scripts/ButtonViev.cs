@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ButtonViev : MonoBehaviour, IObjectViev
+public sealed class ButtonViev : MonoBehaviour, IObjectViev
 {
     [SerializeField] private SpriteRenderer _renderer;
 

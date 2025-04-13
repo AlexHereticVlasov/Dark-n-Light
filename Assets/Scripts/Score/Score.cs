@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Timer
 {
-    public sealed class Score : MonoBehaviour, IScore, IHardModeCounter
+    public sealed class Score : MonoBehaviour, IScore, IHardModeCounter, IInitable
     {
         private readonly int _startValue = 60;
         private readonly WaitForSeconds _delay = new(1);
@@ -22,8 +22,10 @@ namespace Timer
 
         private void Start()
         {
+            //Hack: TempSolution;
             _value = _startValue;
             ValueChanged?.Invoke(_value);
+            //
             StartCoroutine(CountTime());
         }
 
@@ -72,5 +74,16 @@ namespace Timer
         }
 
         private bool ShouldNotStartHardMode() => _timeIsRunningOut || _value > 0;
+
+        public void Init(Level level)
+        {
+            _value = level.StartTime;
+            ValueChanged?.Invoke(_value);
+        }
     }
+}
+
+public interface IInitable
+{
+    void Init(Level level);
 }

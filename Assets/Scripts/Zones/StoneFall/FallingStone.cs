@@ -42,3 +42,4 @@ namespace StoneFall
         [SerializeField] private Animator _animator;
     }
 }
+

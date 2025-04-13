@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace CameraShaker
@@ -9,6 +10,8 @@ namespace CameraShaker
     {
         public void StartShake();
         public void StartShake(float intencity, float length);
+
+        public event UnityAction Shaked;
     }
 
     public sealed class CameraShake : MonoBehaviour, ICameraShake
@@ -18,6 +21,8 @@ namespace CameraShaker
 
         [Inject] private readonly CinemachineVirtualCamera _virtualCamera = default;
 
+        public event UnityAction Shaked;
+
         public void StartShake() => StartShake(Intencity, Length);
 
         public void StartShake(float intencity, float length) => StartCoroutine(Shake(intencity, length));
@@ -26,6 +31,7 @@ namespace CameraShaker
         {
             var perlin = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             perlin.m_AmplitudeGain = intencity;
+            Shaked?.Invoke();
 
             yield return DecreaseIntencity(perlin, intencity, length);
 

@@ -26,7 +26,7 @@ public class LightPlatform : BaseActivailiable
         {
             if (player.Element != Elements.Dark) return;
 
-            player.TakeDamage(1); //Hack:TempSolution
+            player.TakeDamage(float.MaxValue);
         }
     }
 }

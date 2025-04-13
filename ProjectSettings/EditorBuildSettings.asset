@@ -114,6 +114,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PrototypeLevels/Episod II/Level 31(P) - First stalker.unity
     guid: e783136f1956b15469b1fca401e205c1
   - enabled: 1
+    path: Assets/Scenes/PrototypeLevels/Level XX2(P).unity
+    guid: 15a24629277106f4e89af3f913977ffc
+  - enabled: 1
     path: Assets/Scenes/PrototypeLevels/Mirror/Level XX(P) - Mirror 0.unity
     guid: 9f00bc9ebf04e9946aca795c4d92e733
   - enabled: 1
